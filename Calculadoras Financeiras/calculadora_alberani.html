@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+    <h1>Calculadora Financeira</h1>
+    <b style="font-size: 25px;">Faça o calculo para a nossa solução!</b> <br> <br>
+    <div style="background-color: burlywood; width: 1200px;">
+        <span style="font-size: 20px;">Você sabia que?</span> <br>
+        • Uma disposição correta dos produtos nas gôndolas pode aumentar as vendas em até <b>20%</b> <br>
+        • Displays/Stands bem alocados representam cerca de <b>80%</b> das compras impulsivas <br> <br> <br>
+    </div>
+    <div style="background-color: khaki; width: 600px; float: left;">
+        <br> 
+        <span style="font-size: 25px;">Insira os dados sobre o seu negócio:</span> <br> <br>
+        Qual foi sua <u><b>renda bruta</b></u> no último mês? <input type="text" id="renda">
+        <br><br><br><br><br><br><br><br>
+        <button onclick="calc()" style="float: right;">Calcular</button>
+    </div>
+    <div style="background-color: cornflowerblue; width: 600px; float: left;" id="divres"></div>
+</body>
+</html>
+<script>
+    function calc() {
+
+        lucro = Number(renda.value) * 0.04;
+        lucrorg = lucro * 1.2;
+        org = Number(renda.value) * 1.2;
+        lucrodisplay = ((Number(renda.value) * 1.3) * 0.8) * 0.04;
+        display = Number(renda.value) + lucrodisplay;
+        ambos = Number(renda.value) + lucrodisplay + lucrorg;
+        lucroambos = lucrodisplay + lucrorg;
+
+        divres.innerHTML = `<br>O seu lucro atualmente é de: R$${lucro} <br> <br>
+                            Com uma melhor organização o sua renda bruta subirá em até 20% resultando: R$${org} <br>
+                            Portando seu novo lucro será de: R$${lucrorg} <br> <br>
+                            Utilizando displays bem posicionados sua renda bruta subirá para: R$${display} <br>
+                            Portando seu novo lucro será de: R$${lucrodisplay} <br> <br>
+                            Utilizando ambas soluções sua nova renda bruta será de até: R$${ambos} <br>
+                            Portando seu novo lucro será de: R$${lucroambos} <br> <br> <br>`;
+    }
+</script>

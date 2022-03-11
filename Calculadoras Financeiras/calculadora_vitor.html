@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    
+
+        <h1>Calculadora</h1>
+    
+
+
+    Para se ter uma noção se o projeto está de fato sendo efetivo <br>
+    devemos Comparar o total de vendas dos produtos enquanto eles estão em determinada prateleira <br>
+    Para isso será necessario algumas informações:
+    <br>
+    <br>
+
+    O Nome do produto <input id="nome_produto" type="text">
+    <br>
+    <br>
+    O preço do produto (Varejo) <input id="preco_produto" type="text">
+
+    <br>
+    <br>
+    <br>
+    Para que hajá uma comparação de vendas, precisaremos coletar os dados das vendas do produto no mês atual, e no
+    anterior, <br>
+    serão eles os dados:
+
+    <br>
+    <br>
+    <h3>Dados do mês anterior</h3>
+    Prateleira <input id="prateleira_anterior" type="text">
+    <br>
+    Quantidade vendida <input id="venda_anterior" type="text">
+    <br>
+    <h3>Dados do Mês atual</h3>
+
+    prateleira <input id="prateleira_atual" type="text">
+    <br>
+    Quantidade Vendida <input id="venda_atual" type="text">
+    <br>
+    <br>
+    <br>
+
+    Agora é só clicar no botão Calcular e seus dados serão entregues à você :) <br>
+    <br>
+    <button onclick="funcao()">Calcular</button>
+    <br>
+    <br>
+    <span id="span_diferenca"></span> <br>
+    <br>
+    <span id="span_porcentagem"></span>
+
+
+
+
+
+</body>
+
+</html>
+<script>
+    function funcao() {
+
+        span_diferenca.innerHTML = `Enquanto ${nome_produto.value} etava na prateleira ${prateleira_atual.value} ele vendeu uma diferença de ${venda_anterior.value - venda_atual.value} <br>
+do que quando estava na prateleira ${prateleira_anterior.value}`;
+
+        span_porcentagem.innerHTML = `Sua porcentagem de venda se alterou em ${(venda_atual.value - venda_anterior) * 0, 10}%`;
+    }
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora para Projeto de TI</title>
+</head>
+<body>
+    <h3>Veja a média de produtos comprados pelos seus clientes</h3>
+    <br>
+    Quantidade de produtos comprados no mercado 
+    <br>
+    <b>(informação obtida das caixas registradoras)</b>
+    <br>
+    <input type="number" id="numProdutos" placeholder="Qtd de produtos"></input>
+    <br>
+    <br>
+    Quantidade de clientes que passaram pelo mercado 
+    <br>
+    <b>(informação obtida pelos sensores de bloqueio)</b>
+    <br>
+    <input type="number" id="numClientes" placeholder="Qtd de clientes"></input>
+    <br>
+    <br>
+    <button onclick="btMedia();">Ver média</button>
+    <br>
+    <span id="spanMedia"></span>
+</body>
+</html>
+<script>
+    function btMedia() {
+        spanMedia.innerHTML = `A média de produtos comprados por pessoa é de: ${numProdutos.value / numClientes.value}`;
+    }
+</script>
