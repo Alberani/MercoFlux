@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    background-color: #ffffff;
+    font-family: monospace;
+}
+
+.header {
+    border-bottom: 3px solid #2c81bf;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.header .container img {
+    height: 120px;
+}
+
+a {
+    text-decoration: none;
+    color: #135b90;
+}
+
+.destaque a {
+    color: #43a2e7;
+    font-weight: bolder;
+}
+
+.header .container {
+    justify-content: space-around;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    padding: 0;
+    align-items: center;
+    font-size: 30px;
+}
+
+.banner {
+    display: flex;
+    background-image: url(BG_01.jpg);
+    justify-self: center;
+    height: 800px;
+
+}
+
+.card {
+    background-color: #7abff1ec;
+    height: 400px; width: 400px;
+    display: flex;
+    border-radius: 4%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner .card {
+    height: 550px;
+    display: flex;
+}
+
+.banner .container {
+    display: flex;
+    justify-content: right;
+}
+
+.banner .card {
+    color: #135b90;
+    font-family: monospace;
+    font-size: 25px;
+}
+
+.footer {
+    background-color: #2c81bf;
+    color: #fff;
+    font-family: monospace; font-size: 18px;
+}
