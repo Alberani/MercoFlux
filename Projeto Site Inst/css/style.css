@@ -101,6 +101,7 @@ a{
     align-items: center;
 }
 
+
 /* Div calculadora  */
 .calculadora-explicacao{
     border-bottom: 3px solid #2c81bf;
@@ -153,4 +154,31 @@ a{
 .footer .container{
     display: flex;
     justify-content: center;
+}
+
+/* Div cadastro */
+
+.cont1 .card{
+    flex-direction: column; 
+    font-size: 25px;   
+}
+
+.banner .cont1{
+    justify-content: center;
+}
+
+
+.cont1 button{
+    height: 50px;
+    width: 150px;
+    font-weight: bolder;
+    font-size: 20px;  
+    font-family: monospace;
+}
+.cont1 input{
+    text-align: center;
+    margin-top: 10px;
+    height: 25px;
+    width: 160px;
+    font-family: monospace;
 }
