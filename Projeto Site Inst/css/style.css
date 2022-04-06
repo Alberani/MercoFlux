@@ -57,7 +57,8 @@ a{
 }
 
 .header .container img {
-    height: 120px;
+    /* height: 120px; */
+    height: 5vw;
 }
 
 .header .destaque a {
@@ -76,7 +77,7 @@ a{
     width: 60%;
     padding: 0;
     align-items: center;
-    font-size: 30px;
+    font-size: 1.3vw;
 }
 
 /* Div home */
@@ -137,7 +138,8 @@ a{
 .banner .card {
     color: #135b90;
     font-family: monospace;
-    font-size: 25px;
+    /* font-size: 25px; */
+    font-size: 1.1vw;
 }
 
 /* Div footer */
@@ -145,7 +147,7 @@ a{
 .footer {
     background-color: #2c81bf;
     color: #fff;
-    font-family: monospace; font-size: 18px;
+    font-family: monospace;
 }
 
 .footer .container{
