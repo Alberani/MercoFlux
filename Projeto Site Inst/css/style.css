@@ -85,14 +85,15 @@ a{
 .banner {
     display: flex;
     background-image: url(../images/BG_01.jpg);
+    background-size: cover; /* Define o tamanho do background, saiba mais em: https://cssreference.io/property/background-size/ */
     justify-self: center;
-    height: 800px;
-
+    height: 100vh;
 }
 
 .banner .card {
     background-color: #7abff1ec;
-    height: 400px; width: 400px;
+    height: 400px;
+    width: 400px;
     display: flex;
     border-radius: 4%;
     padding: 10px;
@@ -154,6 +155,7 @@ a{
 .footer .container{
     display: flex;
     justify-content: center;
+    font-size: 0.9vw;
 }
 
 /* Div cadastro */
@@ -194,7 +196,6 @@ a{
     color: #135b90;
     font-family: monospace;
     /* font-size: 25px; */
-    
     height: 300px;
     display: flex; 
     
