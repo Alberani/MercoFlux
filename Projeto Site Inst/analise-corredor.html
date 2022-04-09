@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME - Mercoflux</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="images/LogoF.png">
+            <ul class="navbar">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="Projeto.html">PROJETO</a></li>
+                <li class="destaque"><a href="simulador.html">SIMULADOR</a></li>
+                <li><a href="cadastro.html">CADASTRO</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner-fundo-analise">
+        <div class="container">
+            <div class="w50">
+                <div class="card">
+                    <h2>Análise de fluxo</h2>
+                    <div class="box">
+                        <span>Escolha um corredor:</span>
+                        <input type="text" id="inpCorredor" placeholder="10">
+                    </div>
+                    <div class="box">
+                        <p>Escolha um período:</p>
+                        <div class="periodo">
+                            <input type="text" id="dataInicio" placeholder="07/03/2022">
+                            <input type="text" id="dataFim" placeholder="09/03/2022">
+                        </div>
+                    </div>
+                    <p>Um total de <span id="totalClientes">1963</span> clientes passaram pelo corredor <span id="corredor">10</span> neste período, isso equivale a <span id="porcentagemClientes">13%</span> a mais que a média de movimentação dos demais corredores.</p>
+                    <p>Ao todo os clientes permaneceram por aproximadamente <span id="tempo">17h 18min e 53s</span> no corredor, isso equivale a <span id="porcentagemTempo">6%</span> a menos que a média de movimentação dos demais corredores.</p>
+                    <button>Imprimir</button>
+                </div>
+            </div>
+            <div class="w50">
+                <div class="imagem">
+                    <img src="images/mercado-layout.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO</p>
+        </div>
+    </div>
+</body>
+</html>

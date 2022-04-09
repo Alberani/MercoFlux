@@ -219,3 +219,93 @@ a{
     display: flex; 
     
 }
+
+/* Div analise corredor */
+.banner-fundo-analise{
+    background-image: url('https://pa1.narvii.com/6722/1b878892602a8d721aab0a725c46e024bc1a22e7_hq.gif');
+    background-size: cover;
+    min-height: 85vh; /* Míinom de altura */
+}
+
+.banner-fundo-analise .container{
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0;
+}
+
+.banner-fundo-analise .w50{
+    width: 49%;
+}
+
+.banner-fundo-analise .w50 .imagem{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-fundo-analise .w50 .imagem img{
+    width: 100%;
+}
+
+.banner-fundo-analise .card{
+    height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    background: white;
+    border-radius: 5px;
+    border: 5px solid #43a2e7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #2c81bf;
+}
+
+.banner-fundo-analise h2{
+    margin: 20px auto;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #43a2e7;
+    font-size: 1.7rem;
+    width: 80%;
+    border-bottom: 3px solid #43a2e7;
+}
+
+.banner-fundo-analise .box{
+    margin: 5px 0;
+}
+
+.banner-fundo-analise .box span{
+    font-size: 18px;
+}
+
+.banner-fundo-analise input{
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #43a2e7;
+    text-align: center;
+}
+
+.banner-fundo-analise .box p{
+    text-align: center;
+    margin: 5px auto;
+}
+
+.banner-fundo-analise .periodo input{
+    margin: 5px 20px;
+}
+
+.banner-fundo-analise p{
+    text-align: justify; /* Justificar o texto */
+    width: 80%;
+}
+
+.banner-fundo-analise p span{
+    color: #135b90;
+    font-weight: bold;
+}
+
+.banner-fundo-analise button{
+    padding: 10px;
+    width: 50%;
+}
