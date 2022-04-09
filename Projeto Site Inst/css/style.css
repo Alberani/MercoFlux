@@ -104,26 +104,45 @@ a{
 
 
 /* Div calculadora  */
-.calculadora-explicacao{
-    border-bottom: 3px solid #2c81bf;
-
-}
-
 .calculadora{
     display: flex;
+    justify-content: space-between;
+}
+
+.calculadora h3{
+    color: #2c81bf;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.calculadora b{
+    color: #135b90;
 }
 
 .calculadora .calculadora-box{
-    width: 50%;
+    width: 45%;
 }
 
 .calculadora .calculadora-box p{
     margin: 30px 0;
 }
 
-.calculadora b{
-    color: #135b90;
+.calculadora .resultado{
+    margin: 30px 0;
 }
+
+.calculadora #resultados{
+    display: none;
+}
+
+.calculadora #resultados p{
+    margin: 5px 0;
+}
+
+.calculadora span{
+    font-size: 1em;
+}
+
 
 /* Div banner */
 

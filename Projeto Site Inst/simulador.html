@@ -16,7 +16,7 @@
                     <li><a href="Projeto.html">PROJETO</a></li>
                     <li class="destaque"><a href="simulador.html">SIMULADOR</a></li>
                     <li><a href="cadastro.html">CADASTRO</a></li>
-                    <li><a href="">LOGIN</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,22 @@
                     
                     <button onclick="calcular()">Calcular lucros</button><br><br>
         
-                    <div id="resultados"></div>
+                    <div id="resultados">
+                        <div class="resultado">
+                            <h3>Seus lucros agora</h3>
+                            <p><b>Lucro bruto</b> = R$<span id="lucroBruto1">0.00</span></´p>
+                            <p><b>Lucro líquido</b> = R$<span id="lucroLiquido1">0.00</span></´p>
+                            <p><b>Margem bruta</b> = <span id="margemBruta1">0.00</span>%</´p>
+                            <p><b>Margem líquida</b> = <span id="margemLiquida1">0.00</span>%</´p>
+                        </div>
+                        <div class="resultado">
+                            <h3>Seus lucros com a nossa solução! (15% a mais de vendas)</h3>
+                            <p><b>Lucro bruto</b> = R$<span id="lucroBruto2">0.00</span></p>
+                            <p><b>Lucro líquido</b> = R$<span id="lucroLiquido2">0.00</span></p>
+                            <p><b>Margem bruta</b> = <span id="margemBruta2">0.00</span>%</p>
+                            <p><b>Margem líquida</b> = <span id="margemLiquida2">0.00</span>%</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="calculadora-box">
                     <h1>Informações úteis</h1>
@@ -64,27 +79,31 @@
 
 <script>
     function calcular(){
-        var lucroBruto = receitaTotal.value - custosVariaveis.value;
-        var lucroLiquido = receitaTotal.value - custosVariaveis.value - custosFixos.value;
-        var margemBruta = (lucroBruto / receitaTotal.value) * 100;
-        var margemLiquida = (lucroLiquido / receitaTotal.value) * 100;
-
-        resultados.innerHTML = `<h3>Seus lucros agora</h3>`;
-        resultados.innerHTML += `<b>Lucro bruto</b> = R$${lucroBruto}<br>`;
-        resultados.innerHTML += `<b>Lucro líquido</b> = R$${lucroLiquido}<br>`;
-        resultados.innerHTML += `<b>Margem bruta</b> = ${margemBruta}%<br>`;
-        resultados.innerHTML += `<b>Margem líquida</b> = ${margemLiquida}%<br>`;
-        
-        var receitaAumentada = Number(receitaTotal.value) + (15/100 * receitaTotal.value);
-        lucroBruto = receitaAumentada - custosVariaveis.value;
-        lucroLiquido = receitaAumentada - custosVariaveis.value - custosFixos.value;
-        margemBruta = (lucroBruto / receitaAumentada) * 100;
-        margemLiquida = (lucroLiquido / receitaAumentada) * 100;
-
-        resultados.innerHTML += `<h3>Seus lucros com a nossa solução! (15% a mais de vendas)</h3>`;
-        resultados.innerHTML += `<b>Lucro bruto</b> = R$${lucroBruto}<br>`;
-        resultados.innerHTML += `<b>Lucro líquido</b> = R$${lucroLiquido}<br>`;
-        resultados.innerHTML += `<b>Margem bruta</b> = ${margemBruta}%<br>`;
-        resultados.innerHTML += `<b>Margem líquida</b> = ${margemLiquida}%<br>`;
+        if(receitaTotal.value == "" || custosVariaveis.value == "" || custosFixos.value == ""){
+            alert("Preencha todos os valores!");
+        }
+        else{
+            var lucroBruto = receitaTotal.value - custosVariaveis.value;
+            var lucroLiquido = receitaTotal.value - custosVariaveis.value - custosFixos.value;
+            var margemBruta = (lucroBruto / receitaTotal.value) * 100;
+            var margemLiquida = (lucroLiquido / receitaTotal.value) * 100;
+    
+            lucroBruto1.innerHTML = lucroBruto.toFixed(2);
+            lucroLiquido1.innerHTML = lucroLiquido.toFixed(2);
+            margemBruta1.innerHTML = margemBruta.toFixed(2);
+            margemLiquida1.innerHTML = margemLiquida.toFixed(2);
+            
+            var receitaAumentada = Number(receitaTotal.value) + (15/100 * receitaTotal.value);
+            lucroBruto = receitaAumentada - custosVariaveis.value;
+            lucroLiquido = receitaAumentada - custosVariaveis.value - custosFixos.value;
+            margemBruta = (lucroBruto / receitaAumentada) * 100;
+            margemLiquida = (lucroLiquido / receitaAumentada) * 100;
+            
+            lucroBruto2.innerHTML = lucroBruto.toFixed(2);
+            lucroLiquido2.innerHTML = lucroLiquido.toFixed(2);
+            margemBruta2.innerHTML = margemBruta.toFixed(2);
+            margemLiquida2.innerHTML = margemLiquida.toFixed(2);
+            resultados.style.display = "block";
+        }
     }
 </script>
