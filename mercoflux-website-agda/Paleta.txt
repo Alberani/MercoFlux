@@ -1,0 +1,8 @@
+Azul 
+    - Tom Médio #2c81bf
+    - Tom Escuro #135b90
+    - Tom Claro #43a2e7
+    - Tom Mais Claro #7abff1ec
+
+Fontes
+    - Geral: monospace
