@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="images/LogoF.png">
+            
+            <ul class="navbar">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="Projeto.html">PROJETO</a></li>
+                <li class="destaque"><a href="simulador.html">SIMULADOR</a></li>
+                <li><a href="cadastro.html">CADASTRO</a></li>
+                <li><a href="Login.html">LOGIN</a></li>
+                <!--
+                <li><a href="analise-corredor.html">Análise de Fluxo</a></li>
+                <li class="destaque"><a href="Dashboard.html">Dashboard</a></li>
+                -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="bannerDash">
+        <div class="cardDash infoDash">
+            <h2>Dashboard</h2>
+            <div class="boxDash">
+                <span>Escolha um corredor:</span>
+                <input type="text" id="inpCorredor" placeholder="08">
+            </div>
+            <div class="boxDash sepDash">
+                <p>Escolha um mês:</p>
+                <select id="slctMes" class="slctDash">
+                    <option value="0">Selecione</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                    </select>
+                <p>Escolha uma semana:</p>
+                <select id="slctSemana" class="slctDash">
+                    <option value="0">Selecione</option>
+                    <option value="1">Primeira</option>
+                    <option value="2">Segunda</option>
+                    <option value="3">Terceira</option>
+                    <option value="4">Quarta</option>
+                    <option value="5">Quinta</option>
+                </select>
+            </div>
+            <p>Ao todo, <span id="total">2571</span> clientes passaram pelo corredor <span id="corredor">08</span> nesta semana, que equivale a <span id="porcentC">5%</span> a <span id="posinegC">menos</span> que na última semana</p>
+            <p>Ao todo, os clientes permaneceram por cerca de <span id="tempo">19h 21min 44s</span>, isso equivale a <span id="porcertT">14%</span> a <span id="posinegT">mais</span> que na última semana</p>
+            <button>Imprimir</button>
+        </div>
+        <div class="alignDash">
+            <div class="cardDash graphDash">
+                <div class="headerGraph">
+
+                </div>
+                <canvas id="graphGeral"></canvas>
+            </div>
+            <div class="cardDash graphDash"><canvas id="graphSemana"></canvas></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>
+                Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const labelsGeral = [
+      '01',
+      '02',
+      '03',
+      '04',
+      '05',
+      '06',
+      '07',
+      '08',
+      '09',
+      '10',
+    ];
+
+    const labelsSemana = [
+      'Domingo',
+      'Segunda',
+      'Terça',
+      'Quarta',
+      'Quinta',
+      'Sexta',
+      'Sabado',
+    ];
+
+    const dataGeral = {
+      labels: labelsGeral,
+      datasets: [{
+        label: 'Clientes X Corredores',
+        backgroundColor: '#ED182D',
+        borderColor: '#ED182D',
+        data: [2009, 2401, 1973, 1954, 2162, 2355, 2222, 2571, 1911, 2352],
+      }]
+    };
+
+    const dataSemana = {
+      labels: labelsSemana,
+      datasets: [{
+        label: 'Corredor x Semana',
+        backgroundColor: '#ED182D',
+        borderColor: '#ED182D',
+        data: [412, 209, 367, 452, 255, 306, 570],
+      }]
+    };
+
+    const configGeral = {
+      type: 'bar',
+      data: dataGeral,
+      options: {}
+    };
+
+    const configSemana = {
+      type: 'line',
+      data: dataSemana,
+      options: {}
+    };
+
+    const GeralChart = new Chart(
+      document.getElementById('graphGeral'),
+      configGeral
+    );
+
+    const SemanaChart = new Chart(
+      document.getElementById('graphSemana'),
+      configSemana
+    );
+</script>

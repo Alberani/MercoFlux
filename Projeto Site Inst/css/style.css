@@ -309,3 +309,117 @@ a{
     padding: 10px;
     width: 50%;
 }
+
+/* Dashboard */
+
+.bannerDash {
+    display: flex;
+    /* background: linear-gradient(-45deg, #610A12, #C71426, #ED182D, #ffffff); */
+     background: linear-gradient(-45deg, #2c81bf, #134b90, #43a2e7, #7abff1ec, #ffffff);
+    animation: gradient 15s ease infinite;
+    background-size: 400%;
+    justify-self: center;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    color: #ED182D;
+}
+
+/* Animação do BG */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.bannerDash .cardDash {
+    background-color: white;
+    border-radius: 5px;
+    border: solid 5px #610A12;
+}
+
+.bannerDash .infoDash {
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    width: 30vw;
+    align-items: center;
+    padding-inline: 80px;
+}
+
+.bannerDash .graphDash {
+    height: 45vh;
+    width: 45vw;
+    margin-top: 15px;
+}
+
+.alignDash {
+    display: flex;
+    flex-direction: column;
+}
+
+.bannerDash h2{
+    margin: 20px auto;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #ED182D;
+    font-size: 1.7rem;
+    width: 80%;
+    border-bottom: 3px solid #ED182D;
+}
+
+.bannerDash input{
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #ED182D;
+    text-align: center;
+}
+
+.bannerDash .boxDash {
+    display: flex;
+    align-items: center;
+}
+
+/* tentativa de estilizar o select */
+.bannerDash .boxDash .slctDash {
+    font-family: monospace;
+    position: relative;
+    background-color: transparent;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    padding: 5px;
+    margin-inline: 15px;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    border-bottom: 2px solid #ED182D;
+}
+
+.bannerDash button {
+    width: 50%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #ED182D;
+    border: 1px solid #A1101F;
+}
+
+.bannerDash p span {
+    font-weight: bold;
+    color: #A1101F;
+}
+
+.bannerDash .sepDash p{
+    margin-left: 30px;
+}
+
+.bannerDash .boxDash span {
+    font-size: 1.2rem;
+}
