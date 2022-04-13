@@ -84,7 +84,7 @@ a{
 
 .banner {
     display: flex;
-    background-image: url(../images/BG_01.jpg);
+    background-image: url(../images/BG_01.png);
     background-size: cover; /* Define o tamanho do background, saiba mais em: https://cssreference.io/property/background-size/ */
     justify-self: center;
     height: 100vh;
@@ -426,7 +426,7 @@ a{
 
 /* Div projeto */
 .projeto {
-    background-image: url(../images/BG_01.jpg);
+    background-image: url(../images/BG_01.png);
     background-size: cover;
     height: 100vh;
     color: #000000;
