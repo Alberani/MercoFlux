@@ -423,3 +423,46 @@ a{
 .bannerDash .boxDash span {
     font-size: 1.2rem;
 }
+
+/* Div projeto */
+.projeto {
+    background-image: url(../images/BG_01.jpg);
+    background-size: cover;
+    height: 100vh;
+    color: #000000;
+    display: flex;
+}
+
+.projeto .eslogan p b {
+    font-weight: 1000;
+}
+
+.projeto .eslogan p {
+    width: 10%;
+    justify-items: center;
+}
+
+.projeto .eslogan {
+    justify-items: center;
+    font-size: 30px;
+}
+
+.social {
+    background-color: white;
+    display: flex;
+}
+
+.box img {
+    width: 150px;
+}
+
+.social .container .boxes {
+    display: flex;
+}
+
+.box {
+    margin-top: 50px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
