@@ -102,6 +102,30 @@ a{
     align-items: center;
 }
 
+#cardIndex {
+    height: 200px;
+}
+
+.container.home {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boxHome h1{
+    font-size: 4.5vh;
+    margin-top: 1vh;
+}
+
+.boxHome {
+    width: 30vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
 
 /* Div calculadora  */
 .calculadora{
