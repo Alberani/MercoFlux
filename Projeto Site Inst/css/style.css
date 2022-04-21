@@ -339,14 +339,14 @@ a{
 .bannerDash {
     display: flex;
     /* background: linear-gradient(-45deg, #610A12, #C71426, #ED182D, #ffffff); */
-     background: linear-gradient(-45deg, #2c81bf, #134b90, #43a2e7, #7abff1ec, #ffffff);
+    background: linear-gradient(-45deg, #2c81bf, #134b90, #43a2e7, #7abff1ec, #ffffff);
     animation: gradient 15s ease infinite;
     background-size: 400%;
     justify-self: center;
     height: 100vh;
-    justify-content: space-around;
     align-items: center;
     color: #ED182D;
+    flex-direction: column;
 }
 
 /* Animação do BG */
@@ -360,6 +360,34 @@ a{
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+.bannerDash .headerDash {
+   width: 90vw;
+   height: 6vh;
+   margin-top: 3vh;
+   display: flex;
+   align-items: center;
+}
+
+.navbarDash li .here {
+    color: #ED182D;
+    font-weight: bolder;
+}
+
+.navbarDash {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    margin: 0;
+    margin-right: 5vw;
+    padding: 0;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.navbarDash a {
+    color: #610A12;
 }
 
 .bannerDash .cardDash {
@@ -378,14 +406,21 @@ a{
 }
 
 .bannerDash .graphDash {
-    height: 45vh;
-    width: 45vw;
+    height: 40vh;
+    width: 47vw;
     margin-top: 15px;
+    margin-left: 15px;
+}
+
+.bannerDash .graphDashG {
+    height: 40vh;
+    width: 96vw;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .alignDash {
     display: flex;
-    flex-direction: column;
 }
 
 .bannerDash h2{
@@ -393,7 +428,7 @@ a{
     padding-bottom: 10px;
     text-align: center;
     color: #ED182D;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     width: 80%;
     border-bottom: 3px solid #ED182D;
 }
@@ -403,6 +438,7 @@ a{
     border-radius: 0;
     border-bottom: 2px solid #ED182D;
     text-align: center;
+    width: 3vw;
 }
 
 .bannerDash .boxDash {
@@ -411,7 +447,7 @@ a{
 }
 
 /* tentativa de estilizar o select */
-.bannerDash .boxDash .slctDash {
+.headerDash .slctDash {
     font-family: monospace;
     position: relative;
     background-color: transparent;

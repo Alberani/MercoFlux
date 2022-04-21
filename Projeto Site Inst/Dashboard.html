@@ -28,52 +28,48 @@
     </div>
 
     <div class="bannerDash">
-        <div class="cardDash infoDash">
-            <h2>Dashboard</h2>
-            <div class="boxDash">
-                <span>Escolha um corredor:</span>
-                <input type="text" id="inpCorredor" placeholder="08">
-            </div>
-            <div class="boxDash sepDash">
-                <p>Escolha um mês:</p>
-                <select id="slctMes" class="slctDash">
-                    <option value="0">Selecione</option>
-                    <option value="1">Janeiro</option>
-                    <option value="2">Fevereiro</option>
-                    <option value="3">Março</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Maio</option>
-                    <option value="6">Junho</option>
-                    <option value="7">Julho</option>
-                    <option value="8">Agosto</option>
-                    <option value="9">Setembro</option>
-                    <option value="10">Outubro</option>
-                    <option value="11">Novembro</option>
-                    <option value="12">Dezembro</option>
-                    </select>
-                <p>Escolha uma semana:</p>
-                <select id="slctSemana" class="slctDash">
-                    <option value="0">Selecione</option>
-                    <option value="1">Primeira</option>
-                    <option value="2">Segunda</option>
-                    <option value="3">Terceira</option>
-                    <option value="4">Quarta</option>
-                    <option value="5">Quinta</option>
-                </select>
-            </div>
-            <p>Ao todo, <span id="total">2571</span> clientes passaram pelo corredor <span id="corredor">08</span> nesta semana, que equivale a <span id="porcentC">5%</span> a <span id="posinegC">menos</span> que na última semana</p>
-            <p>Ao todo, os clientes permaneceram por cerca de <span id="tempo">19h 21min 44s</span>, isso equivale a <span id="porcertT">14%</span> a <span id="posinegT">mais</span> que na última semana</p>
-            <button>Imprimir</button>
-        </div>
+      <div class="cardDash headerDash">
+        <ul class="navbarDash">
+          <li><a href="dashboard.html" class="here">Dashboard</a></li>
+          <li><a>|</a></li>
+          <li><a href="analise-corredor.html">Análise de Fluxo</a></li>
+        </ul>
+        <p>Escolha um mês:</p>
+        <select id="slctMes" class="slctDash">
+            <option value="0">Selecione</option>
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+            </select>
+        <p>Escolha uma semana:</p>
+        <select id="slctSemana" class="slctDash">
+            <option value="0">Selecione</option>
+            <option value="1">Primeira</option>
+            <option value="2">Segunda</option>
+            <option value="3">Terceira</option>
+            <option value="4">Quarta</option>
+            <option value="5">Quinta</option>
+        </select>
+        <p>Focos:</p>
+        <input type="text" id="inpCorredor" placeholder="08">
+        <p>|</p>
+        <input type="text" id="inpCorredor" placeholder="03">
+      </div>
         <div class="alignDash">
-            <div class="cardDash graphDash">
-                <div class="headerGraph">
-
-                </div>
-                <canvas id="graphGeral"></canvas>
-            </div>
-            <div class="cardDash graphDash"><canvas id="graphSemana"></canvas></div>
+          <div class="cardDash graphDash"><canvas id="graphMes"></canvas></div>
+          <div class="cardDash graphDash"><canvas id="graphSemana"></canvas></div>
         </div>
+        <div class="cardDash graphDashG"><canvas id="graphGeral"></canvas></div>
+      </div>
     </div>
 
     <div class="footer">
@@ -97,6 +93,16 @@
       '08',
       '09',
       '10',
+      '11',
+      '12',
+      '13',
+      '14',
+      '15',
+      '16',
+      '17',
+      '18',
+      '19',
+      '20',
     ];
 
     const labelsSemana = [
@@ -109,37 +115,95 @@
       'Sabado',
     ];
 
+    const labelsMes = [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro',
+    ];
+
     const dataGeral = {
       labels: labelsGeral,
       datasets: [{
-        label: 'Clientes X Corredores',
+        label: 'Clientes x Corredores',
         backgroundColor: '#ED182D',
         borderColor: '#ED182D',
-        data: [2009, 2401, 1973, 1954, 2162, 2355, 2222, 2571, 1911, 2352],
+        data: [2009, 2401, 1973, 1954, 2162, 2355, 2222, 2571, 1911, 2352, 2009, 2401, 1973, 1954, 2162, 2355, 2222, 2571, 1911, 2352],
       }]
     };
 
     const dataSemana = {
       labels: labelsSemana,
       datasets: [{
-        label: 'Corredor x Semana',
+        label: 'Foco1 x Semana',
         backgroundColor: '#ED182D',
         borderColor: '#ED182D',
         data: [412, 209, 367, 452, 255, 306, 570],
-      }]
+      },
+      {
+        label: 'Foco2 x Semana',
+        backgroundColor: '#A1101F',
+        borderColor: '#A1101F',
+        data: [382, 244, 301, 416, 277, 158, 489],
+      }
+      ]
+    };
+
+    const dataMes = {
+      labels: labelsMes,
+      datasets: [{
+        label: 'Foco1 x Mês',
+        backgroundColor: '#ED182D',
+        borderColor: '#ED182D',
+        data: [2571, 2487, 2088, 2866, 2501, 2297, 2309, 2134, 1988, 1714, 1855, 2063],
+      },
+      {
+        label: 'Foco2 x Mês',
+        backgroundColor: '#A1101F',
+        borderColor: '#A1101F',
+        data: [1973, 1879, 2166, 2567, 2234, 1864, 1906, 1860, 1706, 1643, 1784, 1936],
+      }
+      ]
     };
 
     const configGeral = {
       type: 'bar',
       data: dataGeral,
-      options: {}
+      options: {
+        maintainAspectRatio: false,
+        height:  '40vh',
+        width:   '96vw',
+      }
     };
 
     const configSemana = {
       type: 'line',
       data: dataSemana,
-      options: {}
+      options: {
+        maintainAspectRatio: false,
+        height:  '40vh',
+        width:   '45vw',
+      }
     };
+
+    const configMes = {
+      type: 'line',
+      data: dataSemana,
+      options: {
+        maintainAspectRatio: false,
+        height:  '40vh',
+        width:   '45vw',
+      }
+    };
+
 
     const GeralChart = new Chart(
       document.getElementById('graphGeral'),
@@ -149,5 +213,10 @@
     const SemanaChart = new Chart(
       document.getElementById('graphSemana'),
       configSemana
+    );
+
+    const MesChart = new Chart(
+      document.getElementById('graphMes'),
+      configMes
     );
 </script>
