@@ -247,6 +247,10 @@ a{
     
 }
 
+button {
+    cursor: pointer;
+}
+
 /* Div analise corredor */
 .banner-fundo-analise{
     /* background-image: url('https://pa1.narvii.com/6722/1b878892602a8d721aab0a725c46e024bc1a22e7_hq.gif'); */

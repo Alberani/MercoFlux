@@ -46,15 +46,15 @@
         <div class="container cont1">
             <div class="card">
                Entre com o seu e-mail: <br>
-               <input type="text" placeholder="Entre com seu e-mail"><br>
+               <input type="text" placeholder="Entre com seu e-mail" id="email"><br>
                Entre com seu CNPJ: <br>
-               <input type="text" placeholder="Entre com seu CNPJ"> <br>
+               <input type="text" placeholder="Entre com seu CNPJ" id="cnpj"> <br>
                Entre com sua senha: <br>
-               <input type="password" placeholder="********"><br>
+               <input type="password" placeholder="********" id="senhaa"><br>
                Confirme a sua senha: <br>
-               <input type="password" placeholder="********"> <br>
+               <input type="password" placeholder="********" id="confirmar"> <br>
                <button onclick="verificar()">Cadastrar</button>
-
+                <span id="visor"></span>
             </div>
         </div>
     </div> <!--Div Banner-->
@@ -65,4 +65,13 @@
         </div>
     </div>
 </body>
+<script>
+    function verificar() {
+        if (email.value == "mercoflux@gmail.com" && cnpj.value == 40656542000131 && senhaa.value == 1234 && confirmar.value == 1234) {
+            window.location.href = "Login.html";
+        } else {
+           visor.innerHTML = "cadastro incorreto" 
+        }
+    }
+</script>
 </html>

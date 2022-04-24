@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <title>Login - Mercoflux</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="header">
         <div class="container">
             <img src="images/LogoF.png">
             <ul class="navbar">
-                <li  >
+                <li>
                     <a href="index.html">
                         HOME
                     </a>
@@ -39,26 +41,29 @@
                 </li>
             </ul>
         </div>
-    </div> <!--Div Header-->
+    </div>
+    <!--Div Header-->
 
     <div class="banner">
         <div class="container cont1">
             <div class="card log">
                 <div class="login">
-                    
+
                     Login: <br>
-                    <input type="text" placeholder="Seu login"> <br> <br>
+                    <input type="text" placeholder="Seu login" id="login"> <br> <br>
                     Senha: <br>
-                    <input type="text" placeholder="*******"> <br> <br>
-                    <button><a href="">Login </a></button>
+                    <input type="text" placeholder="*******" id="senha"> <br> <br>
+                    <button onclick="logar()">Login</button>
+                    <span id="visor"></span>
                 </div>
-                
-                
-                </div>
-                
+
+
             </div>
+
         </div>
-    </div> <!--Div Banner-->
+    </div>
+    </div>
+    <!--Div Banner-->
 
     <div class="footer">
         <div class="container">
@@ -66,4 +71,14 @@
         </div>
     </div>
 </body>
+<script>
+    function logar() {
+        if (login.value == "mercoflux@gmail.com" && senha.value == 1234) {
+            window.location.href = "Dashboard.html";
+        } else {
+            visor.innerHTML = "login ou senha incorreto"
+        }
+    }
+</script>
+
 </html>
