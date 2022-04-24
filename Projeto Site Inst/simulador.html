@@ -40,6 +40,8 @@
                     <input type="text" id="custosFixos" placeholder="0.00"><br><br>
                     
                     <button onclick="calcular()">Calcular lucros</button><br><br>
+
+                    <div id="aviso"></div>
         
                     <div id="resultados">
                         <div class="resultado">
@@ -80,30 +82,47 @@
 <script>
     function calcular(){
         if(receitaTotal.value == "" || custosVariaveis.value == "" || custosFixos.value == ""){
-            alert("Preencha todos os valores!");
+            aviso.innerHTML = "Preencha todos os valores!";
+            resultados.style.display = "none";
         }
         else{
-            var lucroBruto = receitaTotal.value - custosVariaveis.value;
-            var lucroLiquido = receitaTotal.value - custosVariaveis.value - custosFixos.value;
-            var margemBruta = (lucroBruto / receitaTotal.value) * 100;
-            var margemLiquida = (lucroLiquido / receitaTotal.value) * 100;
+            var receita = Number(receitaTotal.value);
+            var custosV = Number(custosVariaveis.value);
+            var custosF = Number(custosFixos.value);
+            
+            if(receita < 0 || custosV < 0 || custosF < 0){
+                aviso.innerHTML = "Nenhum valor pode ser negativo";
+                resultados.style.display = "none";
+            }
+            else if(receita == 0){
+                aviso.innerHTML = "A receita não pode ser igual a zero";
+                resultados.style.display = "none";
+            }
+            else{
+                aviso.innerHTML = "";
     
-            lucroBruto1.innerHTML = lucroBruto.toFixed(2);
-            lucroLiquido1.innerHTML = lucroLiquido.toFixed(2);
-            margemBruta1.innerHTML = margemBruta.toFixed(2);
-            margemLiquida1.innerHTML = margemLiquida.toFixed(2);
-            
-            var receitaAumentada = Number(receitaTotal.value) + (15/100 * receitaTotal.value);
-            lucroBruto = receitaAumentada - custosVariaveis.value;
-            lucroLiquido = receitaAumentada - custosVariaveis.value - custosFixos.value;
-            margemBruta = (lucroBruto / receitaAumentada) * 100;
-            margemLiquida = (lucroLiquido / receitaAumentada) * 100;
-            
-            lucroBruto2.innerHTML = lucroBruto.toFixed(2);
-            lucroLiquido2.innerHTML = lucroLiquido.toFixed(2);
-            margemBruta2.innerHTML = margemBruta.toFixed(2);
-            margemLiquida2.innerHTML = margemLiquida.toFixed(2);
-            resultados.style.display = "block";
+                var lucroBruto = receita - custosV;
+                var lucroLiquido = receita - custosV - custosF;
+                var margemBruta = (lucroBruto / receita) * 100;
+                var margemLiquida = (lucroLiquido / receita) * 100;
+        
+                lucroBruto1.innerHTML = lucroBruto.toFixed(2);
+                lucroLiquido1.innerHTML = lucroLiquido.toFixed(2);
+                margemBruta1.innerHTML = margemBruta.toFixed(2);
+                margemLiquida1.innerHTML = margemLiquida.toFixed(2);
+                
+                var receitaAumentada = Number(receita) + (15/100 * receita);
+                lucroBruto = receitaAumentada - custosV;
+                lucroLiquido = receitaAumentada - custosV - custosF;
+                margemBruta = (lucroBruto / receitaAumentada) * 100;
+                margemLiquida = (lucroLiquido / receitaAumentada) * 100;
+                
+                lucroBruto2.innerHTML = lucroBruto.toFixed(2);
+                lucroLiquido2.innerHTML = lucroLiquido.toFixed(2);
+                margemBruta2.innerHTML = margemBruta.toFixed(2);
+                margemLiquida2.innerHTML = margemLiquida.toFixed(2);
+                resultados.style.display = "block";
+            }
         }
     }
 </script>

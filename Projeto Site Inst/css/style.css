@@ -167,6 +167,9 @@ a{
     font-size: 1em;
 }
 
+.calculadora #aviso{
+    color: red;
+}
 
 /* Div banner */
 
@@ -246,7 +249,8 @@ a{
 
 /* Div analise corredor */
 .banner-fundo-analise{
-    background-image: url('https://pa1.narvii.com/6722/1b878892602a8d721aab0a725c46e024bc1a22e7_hq.gif');
+    /* background-image: url('https://pa1.narvii.com/6722/1b878892602a8d721aab0a725c46e024bc1a22e7_hq.gif'); */
+    background: linear-gradient(-45deg, #2c81bf, #134b90);
     background-size: cover;
     min-height: 85vh; /* Míinom de altura */
 }
@@ -285,14 +289,17 @@ a{
     color: #2c81bf;
 }
 
-.banner-fundo-analise h2{
-    margin: 20px auto;
-    padding-bottom: 10px;
-    text-align: center;
+.banner-fundo-analise .navbarDash li .here{
     color: #43a2e7;
-    font-size: 1.7rem;
-    width: 80%;
-    border-bottom: 3px solid #43a2e7;
+}
+
+.banner-fundo-analise .navbarDash{
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.banner-fundo-analise .navbarDash a {
+    color: #2c81bf;
 }
 
 .banner-fundo-analise .box{
