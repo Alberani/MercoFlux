@@ -497,14 +497,27 @@ button {
 
 /* Div projeto */
 .projeto {
-    background-image: url(../images/BG_01.png);
+    background-image: url(../images/BG_01.jpg);
     background-size: cover;
     height: 100vh;
-    color: #000000;
+    color: #ffffff;
     display: flex;
+    justify-content: center;
+}
+.eslogan p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.projeto .eslogan p b {
+.eslogan {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.397);
+    width: 40vw;
+}
+
+.projeto .eslogan p span {
     font-weight: 1000;
 }
 
