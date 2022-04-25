@@ -53,8 +53,9 @@
                     <input type="text" placeholder="Seu login" id="login"> <br> <br>
                     Senha: <br>
                     <input type="text" placeholder="*******" id="senha"> <br> <br>
-                    <button onclick="logar()">Login</button>
-                    <span id="visor"></span>
+                    <button onclick="logar()">Login</button> <br> 
+                    <span style="margin-top: 125px; align-items: center;"><b id="visor" ></b></span>
+                    <b ></b>
                 </div>
 
 
@@ -76,7 +77,7 @@
         if (login.value == "mercoflux@gmail.com" && senha.value == 1234) {
             window.location.href = "Dashboard.html";
         } else {
-            visor.innerHTML = "login ou senha incorreto"
+            visor.innerHTML = '<b style="color: red; font-size: medium;" > login ou senha incorreto </b>'
         }
     }
 </script>
