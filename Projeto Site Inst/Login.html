@@ -49,11 +49,11 @@
             <div class="card log">
                 <div class="login">
 
-                    Login: <br>
-                    <input type="text" placeholder="Seu login" id="login"> <br> <br>
+                    E-mail: <br>
+                    <input type="text" placeholder="Seu e-mail" id="login"> <br> <br>
                     Senha: <br>
-                    <input type="text" placeholder="*******" id="senha"> <br> <br>
-                    <button onclick="logar()">Login</button> <br> 
+                    <input type="password" placeholder="*******" id="senha"> <br> <br>
+                    <button onclick="logar()">Entrar</button> <br> 
                     <span style="margin-top: 125px; align-items: center;"><b id="visor" ></b></span>
                     <b ></b>
                 </div>
@@ -72,14 +72,21 @@
         </div>
     </div>
 </body>
+
 <script>
     function logar() {
-        if (login.value == "mercoflux@gmail.com" && senha.value == 1234) {
+        if(login.value == ""){
+            visor.innerHTML = "O e-mail não pode ser vazio!";
+        }
+        else if(senha.value == ""){
+            visor.innerHTML = "A senha não pode ser vazia!";
+        }
+        else if (login.value == "mercoflux@gmail.com" && senha.value == "1234") {
             window.location.href = "Dashboard.html";
-        } else {
-            visor.innerHTML = '<b style="color: red; font-size: medium;" > login ou senha incorreto </b>'
+        }
+        else{
+            visor.innerHTML = "O e-mail e a senha não correspondem";
         }
     }
 </script>
-
 </html>
