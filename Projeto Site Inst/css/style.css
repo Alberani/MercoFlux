@@ -118,7 +118,7 @@ a{
 
 .boxHome {
     width: 30vw;
-    height: 35vh;
+    /* height: 35vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -542,6 +542,7 @@ button {
 
 .social .container .boxes {
     display: flex;
+    flex-direction: column;
 }
 
 .box {
@@ -549,6 +550,7 @@ button {
     flex-direction: column;
     display: flex;
     align-items: center;
+    margin-bottom: 8px;
 }
 
 #visor{
