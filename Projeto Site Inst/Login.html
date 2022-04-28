@@ -84,6 +84,9 @@
         else if (login.value == "mercoflux@gmail.com" && senha.value == "1234") {
             window.location.href = "Dashboard.html";
         }
+        else if (login.value.search("@")==-1) {
+            visor.innerHTML = "O email não possui @"
+        }
         else{
             visor.innerHTML = "O e-mail e a senha não correspondem";
         }

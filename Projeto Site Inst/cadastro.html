@@ -73,6 +73,9 @@
         else if(senha.value != confirmar.value){
             visor.innerHTML = "A senha e a confirmação de senha devem ser iguais!";
         }
+        else if (email.value.search("@")==-1) {
+            visor.innerHTML = "O email não possui @"
+        }
         else{
             window.location.href = "Login.html";
         }
