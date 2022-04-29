@@ -1,0 +1,560 @@
+body {
+    margin: 0;
+    background-color: #ffffff;
+    font-family: monospace;
+}
+
+/* Padrões */
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h1{
+    color: #43a2e7;
+    margin-top: 20px;
+}
+
+p{
+    font-size: 1.3em;
+}
+
+span{
+    font-size: 1.2em;
+}
+
+input{
+    border: 1px solid #43a2e7;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+button{
+    background: #43a2e7;
+    color: white;
+    border: 1px solid #2c81bf;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+a{
+    text-decoration: none;
+    color: #135b90;
+}
+
+.alerta{
+    color: white;
+    border-radius: 5px;
+    background: #ED182D;
+    margin-top: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+    display: none;
+}
+
+/* Div header */
+
+.header {
+    border-bottom: 3px solid #2c81bf;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header .container{
+    display: flex;
+    justify-content: center;
+}
+
+.header .container img {
+    /* height: 120px; */
+    height: 5vw;
+}
+
+.header .destaque a {
+    color: #43a2e7;
+    font-weight: bolder;
+}
+
+.header .container {
+    justify-content: space-around;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    padding: 0;
+    align-items: center;
+    font-size: 1.3vw;
+}
+
+/* Div home */
+
+.banner {
+    display: flex;
+    background-image: url(../images/BG_01.png);
+    background-size: cover; /* Define o tamanho do background, saiba mais em: https://cssreference.io/property/background-size/ */
+    justify-self: center;
+    height: 100vh;
+}
+
+.banner .card {
+    background-color: #7abff1ec;
+    /* height: 400px; */
+    padding: 10px;
+    width: 400px;
+    display: flex;
+    border-radius: 4%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cardIndex {
+    height: 200px;
+}
+
+.container.home {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boxHome h1{
+    font-size: 4.5vh;
+    margin-top: 1vh;
+}
+
+.boxHome {
+    width: 30vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+
+/* Div calculadora  */
+.calculadora{
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculadora h3{
+    color: #2c81bf;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.calculadora b{
+    color: #135b90;
+}
+
+.calculadora .calculadora-box{
+    width: 45%;
+}
+
+.calculadora .calculadora-box p{
+    margin: 30px 0;
+}
+
+.calculadora .resultado{
+    margin: 30px 0;
+}
+
+.calculadora #resultados{
+    display: none;
+}
+
+.calculadora #resultados p{
+    margin: 5px 0;
+}
+
+.calculadora span{
+    font-size: 1em;
+}
+
+.calculadora #aviso{
+    color: red;
+}
+
+/* Div banner */
+
+.banner .card {
+    padding: 10px;
+    box-sizing: border-box;
+    /* height: 720px; */
+    display: flex;
+}
+
+.banner .container {
+    display: flex;
+    justify-content: right;
+}
+
+.banner .card {
+    color: #135b90;
+    font-family: monospace;
+    /* font-size: 25px; */
+    font-size: 1.1vw;
+}
+
+/* Div footer */
+
+.footer {
+    background-color: #2c81bf;
+    color: #fff;
+    font-family: monospace;
+}
+
+.footer .container{
+    display: flex;
+    justify-content: center;
+    font-size: 0.9vw;
+}
+
+/* Div cadastro */
+
+.cont1 .card{
+    flex-direction: column; 
+    font-size: 25px;   
+}
+
+.banner .cont1{
+    justify-content: center;
+}
+
+
+.cont1 button{
+    height: 50px;
+    width: 150px;
+    font-weight: bolder;
+    font-size: 20px;  
+    font-family: monospace;
+    
+}
+.cont1 input{
+    text-align: center;
+    margin-top: 10px;
+    height: 25px;
+    width: 160px;
+    font-family: monospace;
+}
+
+.login{
+    text-align: center;
+    font-family: monospace;
+}
+.banner .card.log{
+    flex-direction: column;
+    color: #135b90;
+    font-family: monospace;
+    /* font-size: 25px; */
+    /* height: 300px; */
+    padding: 20px;
+    display: flex; 
+}
+
+.banner .card.log a{
+    text-decoration: underline;
+}
+
+.banner .card.log a, .banner .card.log span{
+    font-size: 1.3rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Div analise corredor */
+.banner-fundo-analise{
+    /* background-image: url('https://pa1.narvii.com/6722/1b878892602a8d721aab0a725c46e024bc1a22e7_hq.gif'); */
+    background: linear-gradient(-45deg, #2c81bf, #134b90);
+    background-size: cover;
+    min-height: 85vh; /* Míinom de altura */
+}
+
+.banner-fundo-analise .container{
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0;
+}
+
+.banner-fundo-analise .w50{
+    width: 49%;
+}
+
+.banner-fundo-analise .w50 .imagem{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-fundo-analise .w50 .imagem img{
+    width: 100%;
+}
+
+.banner-fundo-analise .card{
+    height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    background: white;
+    border-radius: 5px;
+    border: 5px solid #43a2e7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #2c81bf;
+}
+
+.banner-fundo-analise .navbarDash li .here{
+    color: #43a2e7;
+}
+
+.banner-fundo-analise .navbarDash{
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.banner-fundo-analise .navbarDash a {
+    color: #2c81bf;
+}
+
+.banner-fundo-analise .box{
+    margin: 5px 0;
+}
+
+.banner-fundo-analise .box span{
+    font-size: 18px;
+}
+
+.banner-fundo-analise input{
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #43a2e7;
+    text-align: center;
+}
+
+.banner-fundo-analise .box p{
+    text-align: center;
+    margin: 5px auto;
+}
+
+.banner-fundo-analise .periodo input{
+    margin: 5px 20px;
+}
+
+.banner-fundo-analise p{
+    text-align: justify; /* Justificar o texto */
+    width: 80%;
+}
+
+.banner-fundo-analise p span{
+    color: #135b90;
+    font-weight: bold;
+}
+
+.banner-fundo-analise button{
+    padding: 10px;
+    width: 50%;
+}
+
+/* Dashboard */
+
+.bannerDash {
+    display: flex;
+    /* background: linear-gradient(-45deg, #610A12, #C71426, #ED182D, #ffffff); */
+    background: linear-gradient(-45deg, #2c81bf, #134b90, #43a2e7, #7abff1ec, #ffffff);
+    animation: gradient 15s ease infinite;
+    background-size: 400%;
+    justify-self: center;
+    height: 100vh;
+    align-items: center;
+    color: #ED182D;
+    flex-direction: column;
+}
+
+/* Animação do BG */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.bannerDash .headerDash {
+   width: 90vw;
+   height: 6vh;
+   margin-top: 3vh;
+   display: flex;
+   align-items: center;
+}
+
+.navbarDash li .here {
+    color: #ED182D;
+    font-weight: bolder;
+}
+
+.navbarDash {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    margin: 0;
+    margin-right: 5vw;
+    padding: 0;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.navbarDash a {
+    color: #610A12;
+}
+
+.bannerDash .cardDash {
+    background-color: white;
+    border-radius: 5px;
+    border: solid 5px #610A12;
+}
+
+.bannerDash .infoDash {
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    width: 30vw;
+    align-items: center;
+    padding-inline: 80px;
+}
+
+.bannerDash .graphDash {
+    height: 40vh;
+    width: 47vw;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.bannerDash .graphDashG {
+    height: 40vh;
+    width: 96vw;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.alignDash {
+    display: flex;
+}
+
+.bannerDash h2{
+    margin: 20px auto;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #ED182D;
+    font-size: 1.9rem;
+    width: 80%;
+    border-bottom: 3px solid #ED182D;
+}
+
+.bannerDash input{
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #ED182D;
+    text-align: center;
+    width: 3vw;
+}
+
+.bannerDash .boxDash {
+    display: flex;
+    align-items: center;
+}
+
+/* tentativa de estilizar o select */
+.headerDash .slctDash {
+    font-family: monospace;
+    position: relative;
+    background-color: transparent;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    padding: 5px;
+    margin-inline: 15px;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    border-bottom: 2px solid #ED182D;
+}
+
+.bannerDash button {
+    width: 50%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #ED182D;
+    border: 1px solid #A1101F;
+}
+
+.bannerDash p span {
+    font-weight: bold;
+    color: #A1101F;
+}
+
+.bannerDash .sepDash p{
+    margin-left: 30px;
+}
+
+.bannerDash .boxDash span {
+    font-size: 1.2rem;
+}
+
+/* Div projeto */
+.projeto {
+    background-image: url(../images/BG_01.png);
+    background-size: cover;
+    height: 100vh;
+    color: #000000;
+    display: flex;
+}
+
+.projeto .eslogan p b {
+    font-weight: 1000;
+}
+
+.projeto .eslogan p {
+    width: 10%;
+    justify-items: center;
+}
+
+.projeto .eslogan {
+    justify-items: center;
+    font-size: 30px;
+}
+
+.social {
+    background-color: white;
+    display: flex;
+}
+
+.box img {
+    width: 150px;
+}
+
+.social .container .boxes {
+    display: flex;
+}
+
+.box {
+    margin-top: 50px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SIMULADOR - Mercoflux</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <img src="images/LogoF.png">
+                <ul class="navbar">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="Projeto.html">PROJETO</a></li>
+                    <li class="destaque"><a href="simulador.html">SIMULADOR</a></li>
+                    <li><a href="cadastro.html">CADASTRO</a></li>
+                    <li><a href="login.html">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container calculadora-explicacao">
+                <h1>Por que você deveria usar a nossa solução em seu mercado?</h1>
+                <p>Nossa ideia é coletar informações do fluxo dos corredores do mercado com a ajuda de sensores de proximidade. Desse modo, é possível avaliar por quanto tempo o cliente fica em cada corredor, quais são os corredores mais movimentados e analisar os impactos de mudanças. Isso faz com que seja possível remanejar os produtos de acordo com esses dados para obter mais lucros, conseguindo sempre adquirir informações de maneira rápida e fácil.</p>
+                <p>Com a calculadora abaixo você saberá os seguintes itens do seu mercado: lucro bruto, lucro líquido, margem bruta e margem líquida. Assim, é possível fazer um comparativo de qual é o seu lucro atual com o lucro que você obterá organizando as gôndolas, uma vez que é possível aumentar as vendas em até 20% com a estruturação dos produtos, e com o lucro que você obterá com displays/stands bem alocados, uma vez que eles representam cerca de <b>80%</b> das compras imupulsivas.</p>
+        </div>
+        <div class="container">
+            <div class="calculadora">
+                <div class="calculadora-box">
+                    <h1>Calcule os lucros do seu mercado</h1>
+                
+                    <span>Receita total:</span>
+                    <input type="text" id="receitaTotal" placeholder="0.00"><br><br>
+        
+                    <span>Custos variáveis:</span>
+                    <input type="text" id="custosVariaveis" placeholder="0.00"><br><br>
+        
+                    <span>Custos fixos:</span>
+                    <input type="text" id="custosFixos" placeholder="0.00"><br><br>
+                    
+                    <button onclick="calcular()">Calcular lucros</button><br><br>
+
+                    <div id="aviso"></div>
+        
+                    <div id="resultados">
+                        <div class="resultado">
+                            <h3>Seus lucros agora</h3>
+                            <p><b>Lucro bruto</b> = R$<span id="lucroBruto1">0.00</span></´p>
+                            <p><b>Lucro líquido</b> = R$<span id="lucroLiquido1">0.00</span></´p>
+                            <p><b>Margem bruta</b> = <span id="margemBruta1">0.00</span>%</´p>
+                            <p><b>Margem líquida</b> = <span id="margemLiquida1">0.00</span>%</´p>
+                        </div>
+                        <div class="resultado">
+                            <h3>Seus lucros com a nossa solução! (15% a mais de vendas)</h3>
+                            <p><b>Lucro bruto</b> = R$<span id="lucroBruto2">0.00</span></p>
+                            <p><b>Lucro líquido</b> = R$<span id="lucroLiquido2">0.00</span></p>
+                            <p><b>Margem bruta</b> = <span id="margemBruta2">0.00</span>%</p>
+                            <p><b>Margem líquida</b> = <span id="margemLiquida2">0.00</span>%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="calculadora-box">
+                    <h1>Informações úteis</h1>
+                    <p><b>Custos fixos: </b>são aqueles que ocorrem independentemente da produção, ou seja, não importa se o supermercado vai vender muito ou pouco, eles não mudam.<br>Exemplos: custos com aluguel, internet, salário de funcionários.</p>
+                    <p><b>Custos variáveis: </b>são aqueles que estão diretamente ligados com a produção ou venda de algum produto. <br>Exemplos: valor pago ao fornecedor e os tributos.</p>
+                    <p><b>Lucro bruto: </b>é o valor que uma empresa obtém depois de deduzir os custos variáveis, ou seja, aqueles que associados à fabricação e venda de seus produtos ou então ao fornecimento de seus serviços.</p>
+                    <p><b>Lucro líquido: </b>representa o lucro restante depois que todo o custo e as despesas foram deduzidos da receita total em um determinado período.</p>
+                    <p><b>Margem bruta: </b>é a rentabilidade do seu negócio, ou seja, qual a porcentagem de lucro que você ganha com cada venda.</p>
+                    <p><b>Margem líquida: </b>é o lucro líquido que a empresa faz para cada real em receita.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <p>Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    function calcular(){
+        if(receitaTotal.value == "" || custosVariaveis.value == "" || custosFixos.value == ""){
+            aviso.innerHTML = "Preencha todos os valores!";
+            resultados.style.display = "none";
+        }
+        else{
+            var receita = Number(receitaTotal.value);
+            var custosV = Number(custosVariaveis.value);
+            var custosF = Number(custosFixos.value);
+            
+            if(receita < 0 || custosV < 0 || custosF < 0){
+                aviso.innerHTML = "Nenhum valor pode ser negativo";
+                resultados.style.display = "none";
+            }
+            else if(receita == 0){
+                aviso.innerHTML = "A receita não pode ser igual a zero";
+                resultados.style.display = "none";
+            }
+            else{
+                aviso.innerHTML = "";
+    
+                var lucroBruto = receita - custosV;
+                var lucroLiquido = receita - custosV - custosF;
+                var margemBruta = (lucroBruto / receita) * 100;
+                var margemLiquida = (lucroLiquido / receita) * 100;
+        
+                lucroBruto1.innerHTML = lucroBruto.toFixed(2);
+                lucroLiquido1.innerHTML = lucroLiquido.toFixed(2);
+                margemBruta1.innerHTML = margemBruta.toFixed(2);
+                margemLiquida1.innerHTML = margemLiquida.toFixed(2);
+                
+                var receitaAumentada = Number(receita) + (15/100 * receita);
+                lucroBruto = receitaAumentada - custosV;
+                lucroLiquido = receitaAumentada - custosV - custosF;
+                margemBruta = (lucroBruto / receitaAumentada) * 100;
+                margemLiquida = (lucroLiquido / receitaAumentada) * 100;
+                
+                lucroBruto2.innerHTML = lucroBruto.toFixed(2);
+                lucroLiquido2.innerHTML = lucroLiquido.toFixed(2);
+                margemBruta2.innerHTML = margemBruta.toFixed(2);
+                margemLiquida2.innerHTML = margemLiquida.toFixed(2);
+                resultados.style.display = "block";
+            }
+        }
+    }
+</script>

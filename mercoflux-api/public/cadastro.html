@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME - Mercoflux</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="images/LogoF.png">
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">
+                        HOME
+                    </a>
+                </li>
+                <li>
+                    <a href="Projeto.html">
+                        PROJETO
+                    </a>
+                </li>
+                <li>
+                    <a href="simulador.html">
+                        SIMULADOR
+                    </a>
+                </li>
+                <li  class="destaque">
+                    <a href="cadastro.html">CADASTRO
+
+                    </a>
+                </li>
+                <li>
+                    <a href="Login.html">
+                        LOGIN
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> <!--Div Header-->
+
+
+    <div class="banner">
+        <div class="container cont1">
+            <div class="card" id="parte1">
+                Entre com o seu nome: <br>
+                <input type="text" placeholder="Entre com seu nome" id="nome"><br>
+
+                Entre com o seu e-mail: <br>
+                <input type="text" placeholder="Entre com seu e-mail" id="email"><br>
+
+                Entre com seu CPF: <br>
+                <input type="text" placeholder="111.111.111-11" id="cpf"> <br>
+
+                Entre com sua senha: <br>
+                <input type="password" placeholder="********" id="senha"><br>
+
+                Confirme a sua senha: <br>
+                <input type="password" placeholder="********" id="confirmar"> <br>
+
+                <button onclick="proximo()">Próximo</button>
+                <br>
+                <span class="alerta" id="alerta1"></span>
+                <br>
+            </div>
+            <div class="card" style="display: none;" id="parte2">
+            <!-- <div class="card" id="parte2"> -->
+                <center>
+                    Entre com o nome do mercado: <br>
+                    <input type="text" placeholder="Nome do mercado" id="nome_mercado"><br>
+
+                    Entre o CNPJ do mercado: <br>
+                    <input type="text" placeholder="Entre com seu CNPJ" id="cnpj"> <br>
+
+                    Entre com o CEP do mercado: <br>
+                    <input type="text" placeholder="44444-444" id="cep"><br>
+
+                    Insira o estado: <br>
+                    <select id="estado">
+                    <option value="0">--Escolha o Estado--</option>
+                    <option value="1">SP</option>
+                    <option value="2">RJ</option>
+                    <option value="3">ES</option>
+                    <option value="4">MG</option>
+                    <option value="5">PR</option>
+                    <option value="6">GO</option>
+                    <option value="7">PR</option>
+                    <option value="8">SC</option>
+                    <option value="9">ES</option>
+                    <option value="10">DF</option>
+                    </select> <br>
+
+                    Insira a cidade: <br>
+                    <input type="text" placeholder="São Paulo" id="cidade"> <br>
+
+                    Insira o logradouro: <br>
+                    <input type="text" placeholder="Rua Augusta" id="logradouro"> <br>
+
+                    Insira o numero(referente ao endereço): <br>
+                    <input type="text" placeholder="235" id="numero"> <br>
+
+                    Complemento: <br>
+                    <input type="text" placeholder="3° andar" id="complemento"><br>
+
+                    <button onclick="cadastrar()" style="margin-top: 20px;">Cadastrar</button>
+
+                    <br>
+                    <span class="alerta" id="alerta2"></span>
+                    <br>
+                </center> 
+            </div>
+        </div>
+    </div> <!--Div Banner-->
+
+    <div class="footer">
+        <div class="container">
+            <p>Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    var nomeVar;
+    var emailVar;
+    var cpfVar;
+    var senhaVar;
+    var confirmarVar;
+    function proximo(){
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        nomeVar = nome.value;
+        emailVar = email.value;
+        cpfVar = cpf.value;
+        senhaVar = senha.value;
+        confirmarVar = confirmar.value;
+
+        if(nomeVar == "" || emailVar == "" || cpfVar == "" || senhaVar == "" || confirmarVar == ""){
+            alertar(alerta1, "Preencha todos os campos para prosseguir!");
+            return false;
+        }
+        else{
+            removerAlerta(alerta1);
+        }
+        
+        if(emailVar.indexOf("@") == -1){
+            alertar(alerta1, "Ops, e-mail inválido! Verifique e tente novamente.");
+            return false;
+        }
+        else{
+            removerAlerta(alerta1);
+        }
+        
+        if(senhaVar != confirmarVar){
+            alertar(alerta1, "As senhas inseridas devem ser iguais para prosseguir!");
+            return false;
+        }
+        else{
+            removerAlerta(alerta1);
+        }
+
+        parte1.style.display = "none";
+        parte2.style.display = "block";
+    }
+
+    function cadastrar(){
+        var nomeMercadoVar = nome_mercado.value;
+        var cnpjVar = cnpj.value;
+        var cepVar = cep.value;
+        var estadoVar = estado.value;
+        var cidadeVar = cidade.value;
+        var logradouroVar = logradouro.value;
+        var numeroVar = numero.value;
+        var complementoVar = complemento.value;
+
+        if(nomeMercadoVar == "" || cnpjVar == "" || cepVar == "" || estadoVar == "" || cidadeVar == "" || logradouroVar == "" || numeroVar == "" || complementoVar == ""){
+            alertar(alerta2, "Preencha todos os campos para prosseguir!");
+            return false;
+        }
+        else{
+            removerAlerta(alerta2);
+        }
+        
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                cpfServer: cpfVar,
+                senhaServer: senhaVar,
+                nomeMercadoServer: nomeMercadoVar,
+                cnpjServer: cnpjVar,
+                cepServer: cepVar,
+                estadoServer: estadoVar,
+                cidadeServer: cidadeVar,
+                logradouroServer: logradouroVar,
+                numeroServer: numeroVar,
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta){
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok){
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta){
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function alertar(id_alerta, mensagem){
+        id_alerta.style.display = "block";
+        id_alerta.innerHTML = mensagem;
+    }
+
+    function removerAlerta(id_alerta){
+        id_alerta.style.display = "none";
+    }
+</script>
