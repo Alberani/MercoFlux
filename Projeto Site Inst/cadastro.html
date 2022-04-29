@@ -44,18 +44,76 @@
 
     <div class="banner">
         <div class="container cont1">
-            <div class="card">
+            
+            
+            
+            <div class="card" id="div">
+                Entre com o seu nome: <br>
+               <input type="text" placeholder="Entre com seu nome" id="nome"><br>
                Entre com o seu e-mail: <br>
                <input type="text" placeholder="Entre com seu e-mail" id="email"><br>
-               Entre com seu CNPJ: <br>
-               <input type="text" placeholder="Entre com seu CNPJ" id="cnpj"> <br>
+               Entre com seu CPF: <br>
+               <input type="text" placeholder="111.111.111-11" id="cpf"> <br>
                Entre com sua senha: <br>
-               <input type="password" placeholder="********" id="senha"><br>
+               <input type="password" placeholder="********" id="senhaa"><br>
                Confirme a sua senha: <br>
                <input type="password" placeholder="********" id="confirmar"> <br>
-               <button onclick="verificar()">Cadastrar</button>
+
+
+              
+               <button onclick="verificar()">Próximo</button>
+               <br>
                 <span id="visor"></span>
+                <br>
+                
             </div>
+
+            <div class="card" style="display: none;" id="div_dois">
+                <center>
+                    <br><br>
+                Entre com o Nome do mercado: <br>
+               <input type="text" placeholder="Nome do mercado" id="nome_mercado"><br>
+
+               Entre com seu CNPJ: <br>
+               <input type="text" placeholder="Entre com seu CNPJ" id="cnpj"> <br>
+
+               Entre com seu CEP: <br>
+               <input type="text" placeholder="44444-444" id="cep"><br>
+
+               Insira seu Estado: <br>
+               <select name="Estado" id="estado">
+                   <option value="0">--Escolha o Estado--</option>
+                   <option value="1">SP</option>
+                   <option value="2">RJ</option>
+                   <option value="3">ES</option>
+                   <option value="4">MG</option>
+                   <option value="5">PR</option>
+                   <option value="6">GO</option>
+                   <option value="7">PR</option>
+                   <option value="8">SC</option>
+                   <option value="9">ES</option>
+                   <option value="10">DF</option>
+               </select> <br>
+
+               Insira sua cidade: <br>
+               <input type="text" placeholder="São Paulo" id="cidade"> <br>
+
+               Insira seu logradouro: <br>
+               <input type="text" placeholder="Rua Augusta" id="log"> <br>
+
+               Insira seu numero(referente a seu endereço): <br>
+               <input type="text" placeholder="235" id="numero"> <br>
+
+               Complemento: <br>
+               <input type="text" placeholder="3° andar" id="complemento"> <br>
+
+               <br><br>
+               <button onclick="final()">Cadastrar</button>
+            </center>
+               
+                
+                </div>
+
         </div>
     </div> <!--Div Banner-->
 
@@ -66,19 +124,30 @@
     </div>
 </body>
 <script>
+   
     function verificar() {
-        if(email.value == "" || cnpj.value == "" || senha.value == "" || confirmar.value == ""){
-            visor.innerHTML = "Todos os campos devem estar preenchidos!";
+        if (nome.value == 'sptech' && email.value == "mercoflux@gmail.com" && cpf.value == '222.222.222-22' && senhaa.value == 1234 && confirmar.value == 1234) {
+            window.location.href = "Login.html";
+        } else {
+
+           visor.innerHTML = '<br> <b style="color: red;">cadastro incorreto</b>'
+
         }
-        else if(senha.value != confirmar.value){
-            visor.innerHTML = "A senha e a confirmação de senha devem ser iguais!";
+        if (nome.value == '' || email.value == "" || cpf.value == '' || senhaa.value == '' || confirmar.value == '') {
+            alert('cadastro incompleto')
+            
         }
-        else if (email.value.search("@")==-1) {
-            visor.innerHTML = "O email não possui @"
-        }
-        else{
+        div.style.display = ('none')
+        div_dois.style.display = ('block')
+       
+    }
+    function final(params) {
+        if (nome_mercado.value == '' || cnpj.value == '' || cep.value == '' || estado.value == 0 || cidade.value == '' || log.value == '' || numero.value == '' || complemento.value == '') {
+            visor.innerHTML = "cadastro incorreto" 
+        } else {
             window.location.href = "Login.html";
         }
+        
     }
 </script>
 </html>

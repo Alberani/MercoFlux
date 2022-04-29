@@ -35,7 +35,6 @@ button{
     border: 1px solid #2c81bf;
     border-radius: 5px;
     padding: 5px 10px;
-    cursor: pointer;
 }
 
 a{
@@ -88,7 +87,7 @@ a{
     background-image: url(../images/BG_01.png);
     background-size: cover; /* Define o tamanho do background, saiba mais em: https://cssreference.io/property/background-size/ */
     justify-self: center;
-    height: 100vh;
+    height: 150vh;
 }
 
 .banner .card {
@@ -119,7 +118,7 @@ a{
 
 .boxHome {
     width: 30vw;
-    /* height: 35vh; */
+   /* height: 35vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,7 +174,7 @@ a{
 /* Div banner */
 
 .banner .card {
-    height: 550px;
+    height: 140vh;
     display: flex;
 }
 
@@ -254,6 +253,10 @@ a{
     height: 340px;
     display: flex; 
     
+}
+
+button {
+    cursor: pointer;
 }
 
 /* Div analise corredor */
@@ -505,10 +508,11 @@ a{
     background-image: url(../images/BG_01.png);
     background-size: cover;
     height: 100vh;
-    color: #ffffff;
+    color: white;
     display: flex;
     justify-content: center;
 }
+
 .eslogan p {
     display: flex;
     justify-content: center;
@@ -518,7 +522,7 @@ a{
 .eslogan {
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.397);
+    background-color: rgba(0,0,0,0.397);
     width: 40vw;
 }
 
@@ -528,7 +532,7 @@ a{
 
 .projeto .eslogan p {
     width: 10%;
-    justify-items: center;
+    justify-content: center;
 }
 
 .projeto .eslogan {
@@ -558,7 +562,7 @@ a{
     margin-bottom: 8px;
 }
 
-#visor{
+#visor {
     color: red;
     font-size: medium;
 }
