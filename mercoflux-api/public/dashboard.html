@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DASHBOARD - Mercoflux</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body id="dashboard">
+        <div class="header">
+            <div class="container">
+                <img src="images/LogoF.png">
+                <ul class="navbar">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="projeto.html">PROJETO</a></li>
+                    <li><a href="simulador.html">SIMULADOR</a></li>
+                    <li><a href="analise-corredor.html">ANÁLISE DE CORREDOR</a></li>
+                    <li class="destaque"><a href="dashboard.html">DASHBOARD</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard">
+            <div class="dashboard-container">
+                <h1>Dashboard - Mercado Carrefour Anchieta</h1>
+            </div>
+            <div class="dashboard-container kpis">
+                <div class="caixa">
+                    <p>Quantidade de corredores</p>
+                    <span id="totalCorredores">11</span>
+                </div>
+                <div class="caixa">
+                    <p>Corredor mais popular</p>
+                    <span id="totalCorredores">05</span>
+                </div>
+                <div class="caixa">
+                    <p>Corredor menos popular</p>
+                    <span id="totalCorredores">08</span>
+                </div>
+                <div class="caixa">
+                    <p>Tempo médio em cada corredor</p>
+                    <span id="totalCorredores">5min 32s</span>
+                </div>
+                <div class="caixa">
+                    <p>Fluxo de pessoas na semana</p>
+                    <span id="totalCorredores">Bom</span>
+                </div>
+            </div>
+            <div class="graficos">
+                <!-- Gráfico do dia atual atualizando em tempo real com alertas! -->
+                <!-- Aqui aparece todos os corredores -->
+                <div class="dashboard-container grafico">
+                    <div class="dashboard-header">
+                        <div class="titulo">
+                            <p>Fluxo hoje</p>
+                            <div class="parametros">
+                                <div class="caixa">
+                                    <div class="cor" style="background: #6FA8DC"></div>
+                                    <p>Baixo</p>
+                                </div>
+                                <div class="caixa">
+                                    <div class="cor" style="background: #83EF83"></div>
+                                    <p>Médio</p>
+                                </div>
+                                <div class="caixa">
+                                    <div class="cor" style="background: #FFD966"></div>
+                                    <p>Bom</p>
+                                </div>
+                                <div class="caixa">
+                                    <div class="cor" style="background: #E06666"></div>
+                                    <p>Alto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="graficoDiaAtual"></canvas>
+                </div>
+                <!-- Gráfico da quantidade de pessoas/tempo aproximado que cada cliente passa no corredor, podendo comparar dois, máximo 7 dias-->
+                <div class="container-flex">
+                    <div class="dashboard-container grafico w50">
+                        <div class="dashboard-header">
+                            <div class="titulo">
+                                <p>Quantidade de pessoas</p>
+                                <div class="caixa">
+                                    <button id="selecionado" onclick="mostrarQtdPessoas()">Q</button>
+                                    <button id="btnTempoPessoas" onclick="mostrarTempo()">T</button>
+                                </div>
+                            </div>
+                            <div class="parametros">
+                                <div class="caixa">
+                                    <p>Início:</p>
+                                    <input type="date" id="inicio" value="2022-03-22">
+                                </div>
+                                <div class="caixa">
+                                    <p>Fim:</p>
+                                    <input type="date" id="fim" value="2022-03-28">
+                                </div>
+                                <div class="caixa">
+                                    <p>Corredores:</p>
+                                    <input type="text" id="corredor1Tempo" placeholder="04">
+                                    <span>|</span>
+                                    <input type="text" id="corredor2Tempo" placeholder="09">
+                                </div>
+                            </div>
+                        </div>
+                        <canvas id="graficoQuantidade"></canvas>
+                        <canvas id="graficoTempo" style="display: none;"></canvas>
+                    </div>
+
+                    <div class="dashboard-container grafico w50">
+                        <div class="dashboard-header">
+                            <div class="titulo">
+                                <p>Mapa de calor</p>
+                            </div>
+                            <div style="width: 100%; height: 300px; display: flex; align-items: center; justify-content: center;">
+                                <p style="font-size: 2rem;">Em manutenção...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="alinhar">
+                <div class="conteudo">
+                    <div class="informacoes">
+                        <h2>Institucional</h2>
+                        <ul>
+                            <li><a href="projeto.html" class="footera">Projeto</a></li>
+                            <li><a href="simulador.html" class="footera">Simulador finaceiro</a></li>
+                        </ul>
+                    </div>
+                    <div class="contato">
+                        <h2>Contato</h2>
+                        <ul>
+                            <li>mercoflux@gmail.com</li>
+                            <li>3972-3548</li>
+                            <li>2521-7316</li>
+                        </ul>
+                    </div>
+                    <div class="conta">
+                        <h2>Conta</h2>
+                        <ul>
+                            <li><a href="login.html" class="footera">Login</a></li>
+                            <li><a href="cadastro.html" class="footera">Cadastro</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <p>Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    // Dia atual
+    const corredores = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+
+    const dataDiaAtual = {
+        labels: corredores,
+        datasets:
+        [
+            {
+                backgroundColor: ["#FFD966", "#6FA8DC", "#83EF83", "#83EF83", "#6FA8DC", "#E06666", "#83EF83", "#83EF83", "#83EF83", "#E06666", "#6FA8DC", "#83EF83", "#83EF83", "#83EF83", "#83EF83", "#E06666", "#83EF83", "#6FA8DC", "#E06666", "#83EF83"],
+                data: [62, 8, 33, 43, 8, 100, 59, 25, 34, 88, 11, 39, 54, 56, 49, 98, 42, 7, 97, 55],
+            }
+        ]
+    };
+
+    const configDiaAtual = {
+        type: "bar",
+        data: dataDiaAtual,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    };
+    
+    const contextoDiaAtual = document.getElementById("graficoDiaAtual").getContext("2d");
+
+    contextoDiaAtual.canvas.height = 40;
+
+    const diaAtual = new Chart(contextoDiaAtual, configDiaAtual);
+
+    // Quantidade de pessoas x Dias
+    const dias = ["22/03", "23/03", "24/03", "25/03", "26/03", "27/03", "28/03"];
+
+    const dataQtdPessoas = {
+        labels: dias,
+        datasets: [
+            {
+                label: "Quantidade no corredor 04",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [30, 338, 308, 486, 353, 298, 385]
+            },
+            {
+                label: "Quantidade no corredor 09",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [432, 458, 157, 3, 5, 387, 498]
+            }
+        ]
+    };
+    
+    const configQtdPessoas = {
+        type: "line",
+        data: dataQtdPessoas,
+        option: {}
+    };
+
+    // Horas x Dias
+    const dataTempoPessoas = {
+        labels: dias,
+        datasets: [
+            {
+                label: "Horas no corredor 04",
+                backgroundColor: "blue",
+                borderColor: "blue",
+                data: [30, 10, 1, 5, 8, 3, 34]
+            },
+            {
+                label: "Horas no corredor 09",
+                backgroundColor: "red",
+                borderColor: "red",
+                data: [11, 13, 24, 1, 6.4, 12, 5.3]
+            }
+        ]
+    };
+
+    const configTempoPessoas = {
+        type: "line",
+        data: dataTempoPessoas,
+        option: {}
+    };
+
+    const contextoQtdPessoas = document.getElementById("graficoQuantidade").getContext("2d");
+    const contextoTempoPessoas = document.getElementById("graficoTempo").getContext("2d");
+
+    contextoQtdPessoas.canvas.height = 80;
+    contextoTempoPessoas.canvas.height = 80;
+
+    const qtdPessoas = new Chart(contextoQtdPessoas, configQtdPessoas);
+    const tempoPessoas = new Chart(contextoTempoPessoas, configTempoPessoas);
+    
+    function mostrarQtdPessoas(){
+        graficoTempo.style.display = "none";
+        graficoQuantidade.style.display = "block";
+
+        selecionado.setAttribute("id", "btnTempoPessoas");
+        btnQtdPessoas.setAttribute("id", "selecionado");
+    }
+    
+    function mostrarTempo(){
+        graficoTempo.style.display = "block";
+        graficoQuantidade.style.display = "none";
+        
+        selecionado.setAttribute("id", "btnQtdPessoas");
+        btnTempoPessoas.setAttribute("id", "selecionado");
+    }
+</script>

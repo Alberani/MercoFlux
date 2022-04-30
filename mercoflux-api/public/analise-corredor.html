@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME - Mercoflux</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <img src="images/LogoF.png">
+            <ul class="navbar">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="projeto.html">PROJETO</a></li>
+                <li><a href="simulador.html">SIMULADOR</a></li>
+                <li class="destaque"><a href="analise-corredor.html">ANÁLISE DE CORREDOR</a></li>
+                <li><a href="dashboard.html">DASHBOARD</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner-fundo-analise">
+        <div class="container">
+            <div class="w50">
+                <div class="card">
+                    <ul class="navbarDash">
+                        <li><a href="Dashboard.html">Dashboard</a></li>
+                        <li><a>|</a></li>
+                        <li><a href="analise-corredor.html" class="here">Análise de Corredor</a></li>
+                    </ul>
+                    <div class="box">
+                        <span>Escolha um corredor:</span>
+                        <input type="text" id="inpCorredor" placeholder="10">
+                    </div>
+                    <div class="box">
+                        <p>Escolha um período:</p>
+                        <div class="periodo">
+                            <input type="text" id="dataInicio" placeholder="07/03/2022">
+                            <input type="text" id="dataFim" placeholder="09/03/2022">
+                        </div>
+                    </div>
+                    <p>Um total de <span id="totalClientes">1963</span> clientes passaram pelo corredor <span id="corredor">10</span> neste período, isso equivale a <span id="porcentagemClientes">13%</span> a mais que a média de movimentação dos demais corredores.</p>
+                    <p>Ao todo os clientes permaneceram por aproximadamente <span id="tempo">17h 18min e 53s</span> no corredor, isso equivale a <span id="porcentagemTempo">6%</span> a menos que a média de movimentação dos demais corredores.</p>
+                    <button>Imprimir</button>
+                </div>
+            </div>
+            <div class="w50">
+                <div class="imagem">
+                    <img src="images/mercado-layout.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="alinhar">
+            <div class="conteudo">
+                <div class="informacoes">
+                    <h2>Institucional</h2>
+                    <ul>
+                        <li><a href="projeto.html" class="footera">Projeto</a></li>
+                        <li><a href="simulador.html" class="footera">Simulador finaceiro</a></li>
+                    </ul>
+                </div>
+                <div class="contato">
+                    <h2>Contato</h2>
+                    <ul>
+                        <li>mercoflux@gmail.com</li>
+                        <li>3972-3548</li>
+                        <li>2521-7316</li>
+                    </ul>
+                </div>
+                <div class="conta">
+                    <h2>Conta</h2>
+                    <ul>
+                        <li><a href="login.html" class="footera">Login</a></li>
+                        <li><a href="cadastro.html" class="footera">Cadastro</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO</p>
+        </div>
+    </div>
+</body>
+</html>

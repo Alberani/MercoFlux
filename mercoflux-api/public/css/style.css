@@ -23,7 +23,7 @@ span{
     font-size: 1.2em;
 }
 
-input{
+input, select{
     border: 1px solid #43a2e7;
     border-radius: 5px;
     padding: 5px;
@@ -40,6 +40,12 @@ button{
 a{
     text-decoration: none;
     color: #135b90;
+    transition-duration: 0.3s;
+}
+
+a:hover{
+    color: #43a2e7;
+    transition-duration: 0.3s;
 }
 
 .alerta{
@@ -98,7 +104,7 @@ a{
     background-image: url(../images/BG_01.png);
     background-size: cover; /* Define o tamanho do background, saiba mais em: https://cssreference.io/property/background-size/ */
     justify-self: center;
-    height: 100vh;
+    height: 127vh;
 }
 
 .banner .card {
@@ -130,7 +136,7 @@ a{
 
 .boxHome {
     width: 30vw;
-    height: 35vh;
+    height: 55vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,6 +216,41 @@ a{
     background-color: #2c81bf;
     color: #fff;
     font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 300px;
+}
+
+
+.footer ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.footer li {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.footera {
+    color: white;
+}
+
+.alinhar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+}
+
+.conteudo {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    width: 100%;
 }
 
 .footer .container{
@@ -366,167 +407,27 @@ button {
     width: 50%;
 }
 
-/* Dashboard */
-
-.bannerDash {
-    display: flex;
-    /* background: linear-gradient(-45deg, #610A12, #C71426, #ED182D, #ffffff); */
-    background: linear-gradient(-45deg, #2c81bf, #134b90, #43a2e7, #7abff1ec, #ffffff);
-    animation: gradient 15s ease infinite;
-    background-size: 400%;
-    justify-self: center;
-    height: 100vh;
-    align-items: center;
-    color: #ED182D;
-    flex-direction: column;
-}
-
-/* Animação do BG */
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-.bannerDash .headerDash {
-   width: 90vw;
-   height: 6vh;
-   margin-top: 3vh;
-   display: flex;
-   align-items: center;
-}
-
-.navbarDash li .here {
-    color: #ED182D;
-    font-weight: bolder;
-}
-
-.navbarDash {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    width: 30vw;
-    margin: 0;
-    margin-right: 5vw;
-    padding: 0;
-    align-items: center;
-    font-size: 1.5rem;
-}
-.navbarDash a {
-    color: #610A12;
-}
-
-.bannerDash .cardDash {
-    background-color: white;
-    border-radius: 5px;
-    border: solid 5px #610A12;
-}
-
-.bannerDash .infoDash {
-    display: flex;
-    flex-direction: column;
-    height: 45vh;
-    width: 30vw;
-    align-items: center;
-    padding-inline: 80px;
-}
-
-.bannerDash .graphDash {
-    height: 40vh;
-    width: 47vw;
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
-.bannerDash .graphDashG {
-    height: 40vh;
-    width: 96vw;
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
-.alignDash {
-    display: flex;
-}
-
-.bannerDash h2{
-    margin: 20px auto;
-    padding-bottom: 10px;
-    text-align: center;
-    color: #ED182D;
-    font-size: 1.9rem;
-    width: 80%;
-    border-bottom: 3px solid #ED182D;
-}
-
-.bannerDash input{
-    border: none;
-    border-radius: 0;
-    border-bottom: 2px solid #ED182D;
-    text-align: center;
-    width: 3vw;
-}
-
-.bannerDash .boxDash {
-    display: flex;
-    align-items: center;
-}
-
-/* tentativa de estilizar o select */
-.headerDash .slctDash {
-    font-family: monospace;
-    position: relative;
-    background-color: transparent;
-    appearance: none;
-    cursor: pointer;
-    border: none;
-    text-align: center;
-    padding: 5px;
-    margin-inline: 15px;
-    width: fit-content;
-    height: fit-content;
-    font-size: 1rem;
-    border-bottom: 2px solid #ED182D;
-}
-
-.bannerDash button {
-    width: 50%;
-    padding: 15px;
-    margin-top: 20px;
-    background-color: #ED182D;
-    border: 1px solid #A1101F;
-}
-
-.bannerDash p span {
-    font-weight: bold;
-    color: #A1101F;
-}
-
-.bannerDash .sepDash p{
-    margin-left: 30px;
-}
-
-.bannerDash .boxDash span {
-    font-size: 1.2rem;
-}
-
 /* Div projeto */
 .projeto {
     background-image: url(../images/BG_01.png);
     background-size: cover;
     height: 100vh;
-    color: #000000;
+    color: white;
     display: flex;
+    justify-content: center;
 }
 
-.projeto .eslogan p b {
-    font-weight: 1000;
+.eslogan p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eslogan {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.397);
+    width: 40vw;
 }
 
 .projeto .eslogan p {
@@ -550,11 +451,209 @@ button {
 
 .social .container .boxes {
     display: flex;
+    flex-direction: column;
 }
 
 .box {
-    margin-top: 50px;
+    margin-top: 20px;
     flex-direction: column;
     display: flex;
     align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Dashboard */
+.navbarDash li .here {
+    color: #43a2e7;
+    font-weight: bolder;
+}
+
+.navbarDash {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    margin: 0;
+    margin-right: 5vw;
+    padding: 0;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.banner-fundo-analise .navbarDash{
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.banner-fundo-analise .navbarDash a {
+    color: #2c81bf;
+}
+
+body#dashboard h1{
+    color: #2c81bf;
+    margin: 0;
+}
+
+body#dashboard input{
+    border: none;
+    border-bottom: 2px solid #135b90;
+    transition-duration: 0.3s;
+}
+
+body#dashboard input:focus{
+    outline: none;
+    border-bottom: 2px solid #43a2e7;
+    transition-duration: 0.3s;
+}
+
+body#dashboard input[type="date"]::-webkit-inner-spin-button,
+body#dashboard input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+/* Dashboard */
+body#dashboard{
+    background: #eee;
+    font-size: 1.3rem;
+}
+
+/* Animação do BG */
+@keyframes gradient {
+	0% {
+        background-position: 0% 50%;
+	}
+	50% {
+        background-position: 100% 50%;
+	}
+	100% {
+        background-position: 0% 50%;
+	}
+}
+
+.dashboard p{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dashboard button{
+    padding: 0;
+}
+
+.dashboard input{
+    border-radius: 0;
+}
+
+.dashboard .dashboard-container{
+    margin: 20px;
+    border-radius: 7px;
+}
+
+.dashboard .dashboard-container.kpis{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard .dashboard-container.kpis .caixa{
+    background: white;
+    border-radius: 7px;
+    width: 250px;
+    padding: 10px;
+}
+
+.dashboard .dashboard-container.kpis .caixa p{
+    font-size: 1rem;
+}
+
+.dashboard .dashboard-container.kpis .caixa span{
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+    margin: 20px;
+}
+
+.dashboard .dashboard-container.grafico{
+    background: white;
+    padding: 20px 10px;
+}
+
+.dashboard .container-flex{
+    display: flex;
+}
+
+.dashboard .dashboard-container.w50{
+    width: 48%;
+}
+
+.dashboard .dashboard-container .dashboard-header{
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+
+.dashboard .dashboard-container .dashboard-header .titulo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard .dashboard-container .dashboard-header .titulo p{
+    font-size: 1.5rem;
+}
+
+.dashboard .dashboard-container .dashboard-header .parametros{
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.dashboard .dashboard-container .dashboard-header .parametros .caixa{
+    display: flex;
+    margin: 10px 0;
+    margin-right: 50px;
+}
+
+.dashboard .dashboard-container .dashboard-header input{
+    margin: 0 5px;
+    text-align: center;
+}
+
+.dashboard .dashboard-container .dashboard-header input[type="text"]{
+    width: 70px;
+}
+
+.dashboard .dashboard-container .dashboard-header span{
+    color: #135b90;
+    margin: 0 10px;
+}
+
+.dashboard .dashboard-container .dashboard-header button{
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border-radius: 7px;
+    border: 2px solid #135b90;
+    background: white;
+    color: #135b90;
+    font-weight: bold;
+}
+
+.dashboard .dashboard-container .dashboard-header button#selecionado{
+    background: #43a2e7;
+    color: white;
+}
+
+.dashboard .dashboard-container .dashboard-header .parametros .cor{
+    width: 50px;
+    height: 25px;
+}
+
+.dashboard .dashboard-container .dashboard-header .parametros p{
+    color: black;
+    font-size: 1.3rem;
+    margin-left: 7px;
+}
+
+#dashboard .footer{
+    font-size: 1rem;
 }

@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="Projeto.html">
+                        <a href="projeto.html">
                             PROJETO
                         </a>
                     </li>
@@ -34,7 +34,7 @@
                         </a>
                     </li>
                     <li class="destaque">
-                        <a href="">
+                        <a href="login.html">
                             LOGIN
                         </a>
                     </li>
@@ -48,25 +48,46 @@
                 <div class="card log">
                     <div class="login">
                         E-mail: <br>
-                        <input type="text" placeholder="Seu e-mail" id="login"> <br> <br>
+                        <input type="text" placeholder="Seu e-mail" id="email"> <br> <br>
                         Senha: <br>
                         <input type="password" placeholder="*******" id="senha"> <br> <br>
-                        <button onclick="logar()">Entrar</button> <br> 
+                        <button onclick="entrar()">Entrar</button> <br> 
                         <span class="possui">Não possui login?</spans> <br>
                         <a href="cadastro.html" class="fazer">Fazer cadastro</a> <br>
-                        <span style="margin-top: 125px; align-items: center;"><b id="visor" ></b></span>
+                        <span class="alerta" id="msg_alerta"></span>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
     </div>
     <!--Div Banner-->
 
     <div class="footer">
-        <div class="container">
+        <div class="alinhar">
+            <div class="conteudo">
+                <div class="informacoes">
+                    <h2>Institucional</h2>
+                    <ul>
+                        <li><a href="projeto.html" class="footera">Projeto</a></li>
+                        <li><a href="simulador.html" class="footera">Simulador finaceiro</a></li>
+                    </ul>
+                </div>
+                <div class="contato">
+                    <h2>Contato</h2>
+                    <ul>
+                        <li>mercoflux@gmail.com</li>
+                        <li>3972-3548</li>
+                        <li>2521-7316</li>
+                    </ul>
+                </div>
+                <div class="conta">
+                    <h2>Conta</h2>
+                    <ul>
+                        <li><a href="login.html" class="footera">Login</a></li>
+                        <li><a href="cadastro.html" class="footera">Cadastro</a></li>
+                    </ul>
+                </div>
+            </div>
             <p>Todos os resultados técnicos e criativos são resultado do esforço do Grupo 7&copy; de CCO</p>
         </div>
     </div>
@@ -75,84 +96,69 @@
 <script>
 
 
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+    function entrar(){
+        var emailVar = email.value;
+        var senhaVar = senha.value;
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
-            finalizarAguardar();
-            return false;
+        if(emailVar == "" || senhaVar == ""){
+            alertar("Preencha todos os campos para prosseguir!");
         }
-        else {
-            setInterval(sumirMensagem, 5000)
+        else if(emailVar.indexOf("@") == -1){
+            alertar("Ops, e-mail inválido! Verifique e tente novamente.");
         }
+        else if(senhaVar.length < 6){
+            alertar("E-mail e/ou senha inválido(s)!")
+        }
+        else{
 
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+    
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta){
+                console.log("ESTOU NO THEN DO entrar()!")
+    
+                if (resposta.ok){
+                    console.log(resposta);
+    
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+    
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+    
+                        window.location = "dashboard.html";
+                    });
+                }
+                else{
+                    console.log("Houve um erro ao tentar realizar o login!");
+    
+                    resposta.text().then(texto => {
+                        alertar(texto);
+                        console.error(texto);
+                    });
+                }
+            }).catch(function (erro){
+                console.log(erro);
             })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+        }
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+    function alertar(mensagem){
+        msg_alerta.style.display = "block";
+        msg_alerta.innerHTML = mensagem;
     }
-
 </script>

@@ -24,7 +24,7 @@ CREATE TABLE Representante(
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(30) NOT NULL,
-    cpf CHAR(10) NOT NULL,
+    cpf CHAR(11) NOT NULL,
     fkMercado INT,
     FOREIGN KEY (fkMercado) REFERENCES Mercado(idMercado)
 );
