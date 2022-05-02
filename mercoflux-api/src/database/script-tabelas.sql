@@ -3,11 +3,11 @@
 -- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
 
 /* para workbench - local - desenvolvimento */
-CREATE DATABASE Mercoflux;
+CREATE DATABASE mercoflux;
 
-USE Mercoflux;
+USE mercoflux;
 
-CREATE TABLE Mercado(
+CREATE TABLE mercado(
 	idMercado INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     cnpj CHAR(14) NOT NULL,
@@ -19,29 +19,29 @@ CREATE TABLE Mercado(
     complemento VARCHAR(50)
 );
 
-CREATE TABLE Representante(
+CREATE TABLE representante(
 	idRepresentante INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(30) NOT NULL,
     cpf CHAR(11) NOT NULL,
     fkMercado INT,
-    FOREIGN KEY (fkMercado) REFERENCES Mercado(idMercado)
+    FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
 );
 
-CREATE TABLE Sensor(
+CREATE TABLE sensor(
 	idSensor INT PRIMARY KEY AUTO_INCREMENT,
     localizacao VARCHAR(4),
     produto VARCHAR(30),
     fkMercado INT,
-    FOREIGN KEY (fkMercado) REFERENCES Mercado(idMercado)
+    FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
 );
 
-CREATE TABLE Registro(
+CREATE TABLE registro(
 	idRegistro INT PRIMARY KEY AUTO_INCREMENT,
     momento DATETIME NOT NULL,
     fkSensor INT,
-    FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor)
+    FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
 /* para sql server - remoto - produção */

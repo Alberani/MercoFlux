@@ -24,12 +24,12 @@ function cadastrar(nome, email, cpf, senha, nomeMercado, cnpj, cep, estado, cida
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var inserirMercado = `INSERT INTO Mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento) VALUES ('${nomeMercado}', '${cnpj}', '${cep}', '${estado}', '${cidade}', '${logradouro}', '${numero}', '${complemento}');`;
+    var inserirMercado = `INSERT INTO mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento) VALUES ('${nomeMercado}', '${cnpj}', '${cep}', '${estado}', '${cidade}', '${logradouro}', '${numero}', '${complemento}');`;
 
     database.executar(inserirMercado);
     
     // Mudar depois o valor inserido do fkMercado
-    var inserirRepresentante = `INSERT INTO Representante (nome, email, senha, cpf, fkMercado) VALUES ('${nome}', '${email}', '${senha}', '${cpf}', 1);`;
+    var inserirRepresentante = `INSERT INTO representante (nome, email, senha, cpf, fkMercado) VALUES ('${nome}', '${email}', '${senha}', '${cpf}', 1);`;
     
     console.log("Inserindo os dados de cadastro no MySQL");
     
