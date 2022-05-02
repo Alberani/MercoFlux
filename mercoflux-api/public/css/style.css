@@ -24,7 +24,7 @@ span{
 }
 
 input, select{
-    border: 1px solid #43a2e7;
+    border: 2px solid #43a2e7;
     border-radius: 5px;
     padding: 5px;
 }
@@ -205,8 +205,9 @@ a:hover{
 }
 
 .banner .card {
-    color: #135b90;
+    background-color: rgba(0,0,0,0.650);
     font-family: monospace;
+    color: white;
     /* font-size: 25px; */
     font-size: 1.1vw;
 }
@@ -294,7 +295,7 @@ a:hover{
 }
 .banner .card.log{
     flex-direction: column;
-    color: #135b90;
+    color: white;
     font-family: monospace;
     /* font-size: 25px; */
     /* height: 300px; */
@@ -308,6 +309,7 @@ a:hover{
 
 .banner .card.log a, .banner .card.log span{
     font-size: 1.3rem;
+    color: white
 }
 
 button {
@@ -427,7 +429,7 @@ button {
 .eslogan {
     display: flex;
     justify-content: center;
-    background-color: rgba(0,0,0,0.397);
+    background-color: rgba(0,0,0,0.650);
     width: 40vw;
 }
 
