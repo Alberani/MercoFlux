@@ -100,11 +100,12 @@ a:hover{
 /* Div home */
 
 .banner {
+    padding: 10px;
     display: flex;
     background-image: url(../images/BG_01.png);
     background-size: cover; /* Define o tamanho do background, saiba mais em: https://cssreference.io/property/background-size/ */
     justify-self: center;
-    height: 127vh;
+    min-height: 100vh;
 }
 
 .banner .card {
@@ -136,7 +137,7 @@ a:hover{
 
 .boxHome {
     width: 30vw;
-    height: 55vh;
+    /* height: 55vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -560,6 +561,7 @@ body#dashboard{
     border-radius: 7px;
     width: 250px;
     padding: 10px;
+    margin: 10px;
 }
 
 .dashboard .dashboard-container.kpis .caixa p{
