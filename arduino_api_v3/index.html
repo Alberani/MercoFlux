@@ -7,34 +7,48 @@
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <style>
+        body{
+            font-family: monospace;
+        }
+
+        h1{
+            color: #2c81bf;
+            margin-left: 15px;
+        }
+
         canvas {
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
         }
+
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 
 <body>
-    <div>
-        <h1>Sensor DHT 11 - Umidade</h1>
-        <section style="width:100%">
+    <div class="container">
+        <section style="width:49%">
+            <h1>Sensor DHT 11 - Umidade</h1>
             <canvas id="dht11Umidade"></canvas>
         </section>
-        <h1>Sensor DHT 11 - Temperatura</h1>
-        <section style="width: 100%;">
+        <section style="width: 49%;">
+            <h1>Sensor DHT 11 - Temperatura</h1>
             <canvas id="dht11Temperatura"></canvas>
         </section>
-        <h1>Sensor Luminosidade</h1>
-        <section style="width: 100%;">
+        <section style="width: 49%;">
+            <h1>Sensor Luminosidade</h1>
             <canvas id="luminosidade"></canvas>
         </section>
-        <h1>Sensor LM 35 - Temperatura</h1>
-        <section style="width: 100%;">
+        <section style="width: 49%;">
+            <h1>Sensor LM 35 - Temperatura</h1>
             <canvas id="lm35Temperatura"></canvas>
         </section>
-        <h1>Sensor Chave</h1>
-        <section style="width: 100%;">
+        <section style="width: 90%; margin: 0 auto;">
+            <h1>Sensor Chave</h1>
             <canvas id="chave"></canvas>
         </section>
     </div>
@@ -52,8 +66,8 @@
                     datasets: [{
                         label: 'Umidade',
                         type: 'line',
-                        borderColor: ['#45b3e7'],
-                        backgroundColor: ['#89cff0']
+                        borderColor: ['#2c81bf'],
+                        backgroundColor: ['#7abff1ec']
                     }]
                 },
                 options: {
@@ -92,8 +106,8 @@
                     datasets: [{
                         label: "Temperatura",
                         type: 'line',
-                        borderColor: ['#ff3232'],
-                        backgroundColor: ['#ff7f7f']
+                        borderColor: ['#2c81bf'],
+                        backgroundColor: ['#7abff1ec']
                     }]
                 },
                 options: {
@@ -132,8 +146,8 @@
                     datasets: [{
                         label: 'Luminosidade',
                         type: 'line',
-                        borderColor: ['#ffd902'],
-                        backgroundColor: ['#ffe135']
+                        borderColor: ['#2c81bf'],
+                        backgroundColor: ['#7abff1ec']
                     }]
                 },
                 options: {
@@ -167,13 +181,13 @@
         var lm35Temperatura = new Chart(
             contextoLm35Temperatura,
             {
-                type: 'line',
+                type: 'bar',
                 data: {
                     datasets: [{
                         label: 'Temperatura',
-                        type: 'line',
-                        borderColor: ['#ffd902'],
-                        backgroundColor: ['#ffe135']
+                        type: 'bar',
+                        borderColor: '#2c81bf',
+                        backgroundColor: '#7abff1ec'
                     }]
                 },
                 options: {
@@ -212,8 +226,8 @@
                     datasets: [{
                         label: 'Chave',
                         type: 'line',
-                        borderColor: ['#ffd902'],
-                        backgroundColor: ['#ffe135']
+                        borderColor: ['#2c81bf'],
+                        backgroundColor: ['#7abff1ec']
                     }]
                 },
                 options: {
