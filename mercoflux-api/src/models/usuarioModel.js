@@ -19,14 +19,14 @@ function entrar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(nome, email, cpf, senha, nomeMercado, cnpj, cep, estado, cidade, logradouro, numero, complemento) {
+async function cadastrar(nome, email, cpf, senha, nomeMercado, cnpj, cep, estado, cidade, logradouro, numero, complemento) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, cpf, senha, nomeMercado, cnpj, cep, estado, cidade, logradouro, numero, complemento);
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var inserirMercado = `INSERT INTO mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento) VALUES ('${nomeMercado}', '${cnpj}', '${cep}', '${estado}', '${cidade}', '${logradouro}', '${numero}', '${complemento}');`;
 
-    database.executar(inserirMercado);
+    await database.executar(inserirMercado);
     
     // Mudar depois o valor inserido do fkMercado
     var inserirRepresentante = `INSERT INTO representante (nome, email, senha, cpf, fkMercado) VALUES ('${nome}', '${email}', '${senha}', '${cpf}', 1);`;

@@ -342,7 +342,7 @@ button {
 }
 
 .banner-fundo-analise .w50 .imagem img{
-    width: 100%;
+    width: 70%;
 }
 
 .banner-fundo-analise .card{
@@ -656,6 +656,15 @@ body#dashboard{
     color: black;
     font-size: 1.3rem;
     margin-left: 7px;
+}
+
+#mapaDeCalor{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#mapaDeCalor img{
+    width: 100%;
 }
 
 #dashboard .footer{

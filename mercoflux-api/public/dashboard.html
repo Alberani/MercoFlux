@@ -11,7 +11,9 @@
     <body id="dashboard">
         <div class="header">
             <div class="container">
-                <img src="images/LogoF.png">
+                <a href="index.html">
+                    <img src="images/LogoF.png">
+                </a>
                 <ul class="navbar">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="projeto.html">PROJETO</a></li>
@@ -32,11 +34,11 @@
                 </div>
                 <div class="caixa">
                     <p>Corredor mais popular</p>
-                    <span id="totalCorredores">06</span>
+                    <span id="totalCorredores">13</span>
                 </div>
                 <div class="caixa">
                     <p>Corredor menos popular</p>
-                    <span id="totalCorredores">18</span>
+                    <span id="totalCorredores">12</span>
                 </div>
                 <div class="caixa">
                     <p>Tempo médio em cada corredor</p>
@@ -60,11 +62,11 @@
                                     <p>Baixo</p>
                                 </div>
                                 <div class="caixa">
-                                    <div class="cor" style="background: #83EF83"></div>
+                                    <div class="cor" style="background: #FFD966"></div>
                                     <p>Médio</p>
                                 </div>
                                 <div class="caixa">
-                                    <div class="cor" style="background: #FFD966"></div>
+                                    <div class="cor" style="background: #83EF83"></div>
                                     <p>Bom</p>
                                 </div>
                                 <div class="caixa">
@@ -113,9 +115,12 @@
                             <div class="titulo">
                                 <p>Mapa de calor</p>
                             </div>
-                            <div style="width: 100%; height: 300px; display: flex; align-items: center; justify-content: center;">
-                                <p style="font-size: 2rem;">Em manutenção...</p>
+                            <div id="mapaDeCalor">
+                                <img src="images/mapa-de-calor.jpeg">
                             </div>
+                            <!-- <div style="width: 100%; height: 300px; display: flex; align-items: center; justify-content: center;">
+                                <p style="font-size: 2rem;">Em manutenção...</p>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -155,15 +160,15 @@
 
 <script>
     // Dia atual
-    const corredores = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+    const corredores = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "A", "B"];
 
     const dataDiaAtual = {
         labels: corredores,
         datasets:
         [
             {
-                backgroundColor: ["#FFD966", "#6FA8DC", "#83EF83", "#83EF83", "#6FA8DC", "#E06666", "#83EF83", "#83EF83", "#83EF83", "#E06666", "#6FA8DC", "#83EF83", "#83EF83", "#83EF83", "#83EF83", "#E06666", "#83EF83", "#6FA8DC", "#E06666", "#83EF83"],
-                data: [62, 8, 33, 43, 8, 100, 59, 25, 34, 88, 11, 39, 54, 56, 49, 98, 42, 7, 97, 55],
+                backgroundColor: ["#83EF83", "#83EF83", "#6FA8DC", "#FFD966", "#E06666", "#83EF83", "#83EF83", "#6FA8DC", "#83EF83", "#FFD966", "#6FA8DC", "#6FA8DC", "#E06666", "#83EF83", "#83EF83", "#FFD966", "#E06666", "#83EF83", "#E06666", "#FFD966"],
+                data: [59, 87, 18, 32, 111, 99, 95, 15, 93, 37, 15, 2, 141, 89, 69, 30, 130, 96, 134, 38],
             }
         ]
     };

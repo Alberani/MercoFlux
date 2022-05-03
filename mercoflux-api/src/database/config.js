@@ -23,7 +23,7 @@ var mySqlConfig = {
     user: "aluno",
     database: "mercoflux",
     password: "sptech",
-    port: 3306,                       // Minha porta do MySQL é 3307
+    port: 3306,
 };
 
 function executar(instrucao) {
