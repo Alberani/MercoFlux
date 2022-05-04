@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOME - Mercoflux</title>
+        <title>CADASTRO - Mercoflux</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -103,7 +103,7 @@
                         Complemento: <br>
                         <input type="text" placeholder="3° andar" id="complemento"><br>
 
-                        <button onclick="cadastrar()" style="margin-top: 20px;">Cadastrar</button>
+                        <button id="btn_cadastrar" onclick="cadastrar()" style="margin-top: 20px;">Cadastrar</button>
 
                         <br>
                         <span class="alerta" id="alerta2"></span>
@@ -239,6 +239,8 @@
             alertar(alerta2, "O campo logradouro está muito grande! (Máximo 5 caracteres)");
         }
         else{
+            btn_cadastrar.disabled = true;            
+
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrar", {
                 method: "POST",

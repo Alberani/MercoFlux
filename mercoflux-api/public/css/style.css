@@ -568,6 +568,7 @@ body#dashboard{
 
 .dashboard .dashboard-container.kpis .caixa p{
     font-size: 1rem;
+    height: 25%;
 }
 
 .dashboard .dashboard-container.kpis .caixa span{

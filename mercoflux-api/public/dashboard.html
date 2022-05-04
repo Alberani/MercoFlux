@@ -83,7 +83,7 @@
                     <div class="dashboard-container grafico w50">
                         <div class="dashboard-header">
                             <div class="titulo">
-                                <p>Quantidade de pessoas</p>
+                                <p id="tituloGrafico">Quantidade de pessoas por corredor</p>
                                 <div class="caixa">
                                     <button id="selecionado" onclick="mostrarQtdPessoas()">Q</button>
                                     <button id="btnTempoPessoas" onclick="mostrarTempo()">T</button>
@@ -256,6 +256,8 @@
         graficoTempo.style.display = "none";
         graficoQuantidade.style.display = "block";
 
+        tituloGrafico.innerHTML = "Quantidade de pessoas por corredor";
+        
         selecionado.setAttribute("id", "btnTempoPessoas");
         btnQtdPessoas.setAttribute("id", "selecionado");
     }
@@ -264,6 +266,8 @@
         graficoTempo.style.display = "block";
         graficoQuantidade.style.display = "none";
         
+        tituloGrafico.innerHTML = "Tempo por corredor";
+
         selecionado.setAttribute("id", "btnQtdPessoas");
         btnTempoPessoas.setAttribute("id", "selecionado");
     }
