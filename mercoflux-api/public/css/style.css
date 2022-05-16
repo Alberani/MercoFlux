@@ -659,13 +659,13 @@ body#dashboard{
     margin-left: 7px;
 }
 
-#mapaDeCalor{
-    width: 50%;
-    margin: 0 auto;
-}
-
-#mapaDeCalor img{
+.heatmap{
     width: 100%;
+    height: 400px;
+    background-image: url(../images/mapa-de-calor.jpeg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #dashboard .footer{

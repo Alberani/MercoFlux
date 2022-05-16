@@ -7,6 +7,7 @@
         <title>DASHBOARD - Mercoflux</title>
         <link rel="stylesheet" href="css/style.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/heatmap.js"></script>
     </head>
     <body id="dashboard">
         <div class="header">
@@ -83,7 +84,7 @@
                     <div class="dashboard-container grafico w50">
                         <div class="dashboard-header">
                             <div class="titulo">
-                                <p id="tituloGrafico">Quantidade de pessoas por corredor</p>
+                                <p id="tituloGrafico">Fluxo de pessoas por corredor</p>
                                 <div class="caixa">
                                     <button id="selecionado" onclick="mostrarQtdPessoas()">Q</button>
                                     <button id="btnTempoPessoas" onclick="mostrarTempo()">T</button>
@@ -115,12 +116,9 @@
                             <div class="titulo">
                                 <p>Mapa de calor</p>
                             </div>
-                            <div id="mapaDeCalor">
-                                <img src="images/mapa-de-calor.jpeg">
+                            <div class="heatmap">
+
                             </div>
-                            <!-- <div style="width: 100%; height: 300px; display: flex; align-items: center; justify-content: center;">
-                                <p style="font-size: 2rem;">Em manutenção...</p>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -198,13 +196,13 @@
         labels: dias,
         datasets: [
             {
-                label: "Quantidade no corredor 04",
+                label: "Fluxo no corredor 04",
                 backgroundColor: "blue",
                 borderColor: "blue",
                 data: [30, 338, 308, 486, 353, 298, 385]
             },
             {
-                label: "Quantidade no corredor 09",
+                label: "Fluxo no corredor 09",
                 backgroundColor: "red",
                 borderColor: "red",
                 data: [432, 458, 157, 3, 5, 387, 498]
@@ -256,7 +254,7 @@
         graficoTempo.style.display = "none";
         graficoQuantidade.style.display = "block";
 
-        tituloGrafico.innerHTML = "Quantidade de pessoas por corredor";
+        tituloGrafico.innerHTML = "Fluxo de pessoas por corredor";
         
         selecionado.setAttribute("id", "btnTempoPessoas");
         btnQtdPessoas.setAttribute("id", "selecionado");
@@ -271,4 +269,34 @@
         selecionado.setAttribute("id", "btnQtdPessoas");
         btnTempoPessoas.setAttribute("id", "selecionado");
     }
+
+    // Mapa de calor
+    var heatmapInstance = h337.create({
+        container: document.querySelector('.heatmap')
+    });
+
+    // now generate some random data
+    var points = [];
+    var max = 80;
+
+    points = [
+        {
+            x: 150,
+            y: 50,
+            value: 50
+        },
+        {
+            x: 180,
+            y: 50,
+            value: 50
+        },
+    ]
+
+    // heatmap data format
+    var data = {
+        max: max,
+        data: points
+    };
+
+    heatmapInstance.setData(data);
 </script>
