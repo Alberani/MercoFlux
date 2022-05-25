@@ -96,8 +96,6 @@
 </body>
 
 <script>
-
-
     function entrar(){
         var emailVar = email.value;
         var senhaVar = senha.value;
@@ -138,6 +136,8 @@
     
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.NOME_MERCADO = json.mercado;
+                        sessionStorage.ID_MERCADO = json.idMercado;
                         sessionStorage.ID_USUARIO = json.id;
     
                         window.location = "dashboard.html";

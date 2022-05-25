@@ -26,28 +26,28 @@
         </div>
         <div class="dashboard">
             <div class="dashboard-container">
-                <h1>Dashboard - Mercado Carrefour Anchieta</h1>
+                <h1 id="nomeMercado">Dashboard - Mercado </h1>
             </div>
             <div class="dashboard-container kpis">
                 <div class="caixa">
                     <p>Quantidade de corredores</p>
-                    <span id="totalCorredores">20</span>
+                    <span id="kpiTotalCorredores">20</span>
                 </div>
                 <div class="caixa">
                     <p>Corredor mais popular</p>
-                    <span id="totalCorredores">13</span>
+                    <span id="kpiMaisPopular">13</span>
                 </div>
                 <div class="caixa">
                     <p>Corredor menos popular</p>
-                    <span id="totalCorredores">12</span>
+                    <span id="kpiMenosPopular">12</span>
                 </div>
                 <div class="caixa">
                     <p>Tempo médio em cada corredor</p>
-                    <span id="totalCorredores">5min 32s</span>
+                    <span id="kpiTempo">5min 32s</span>
                 </div>
                 <div class="caixa">
                     <p>Fluxo de pessoas na semana</p>
-                    <span id="totalCorredores">Bom</span>
+                    <span id="kpiFluxo">Bom</span>
                 </div>
             </div>
             <div class="graficos">
@@ -299,4 +299,36 @@
     };
 
     heatmapInstance.setData(data);
+</script>
+
+<script>
+    // Pegando informações do banco de dados
+    window.onload = () => {
+        nomeMercado.innerHTML += sessionStorage.NOME_MERCADO;
+
+        obterDados();
+        obterQtdCorredores();
+    };
+
+    function obterDados(){
+        fetch("registros/listar").then(function(res){
+            if(res.ok){
+                res.json().then(function(resposta){
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                });
+            }
+        });
+    }
+
+    function obterQtdCorredores(){
+        fetch("registros/quantidadeCorredores").then(function(res){
+            if(res.ok){
+                res.json().then(function(resposta){
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    kpiTotalCorredores.innerHTML = resposta[0].quantidade;
+                });
+            }
+        });
+    }
 </script>
