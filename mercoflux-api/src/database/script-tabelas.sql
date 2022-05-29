@@ -25,6 +25,7 @@ CREATE TABLE representante(
     nome VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     senha VARCHAR(30) NOT NULL,
+    administradorPrincipal BOOLEAN,
     cpf CHAR(11) NOT NULL,
     fkMercado INT,
     FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
@@ -32,7 +33,7 @@ CREATE TABLE representante(
 
 CREATE TABLE corredor(
 	idCorredor INT PRIMARY KEY AUTO_INCREMENT,
-    nomeCorredor CHAR(02),
+    nomeCorredor CHAR(2),
     produto VARCHAR(30),
     fkMercado INT,
     FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)

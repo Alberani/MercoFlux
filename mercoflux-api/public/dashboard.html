@@ -19,8 +19,8 @@
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="projeto.html">PROJETO</a></li>
                     <li><a href="simulador.html">SIMULADOR</a></li>
-                    <li><a href="analise-corredor.html">ANÁLISE DE CORREDOR</a></li>
                     <li class="destaque"><a href="dashboard.html">DASHBOARD</a></li>
+                    <li><a href="perfil.html">MEU PERFIL</a></li>
                 </ul>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="dashboard-container kpis">
                 <div class="caixa">
                     <p>Quantidade de corredores</p>
-                    <span id="kpiTotalCorredores">20</span>
+                    <span id="kpiTotalCorredores">0</span>
                 </div>
                 <div class="caixa">
                     <p>Corredor mais popular</p>
@@ -40,10 +40,6 @@
                 <div class="caixa">
                     <p>Corredor menos popular</p>
                     <span id="kpiMenosPopular">12</span>
-                </div>
-                <div class="caixa">
-                    <p>Tempo médio em cada corredor</p>
-                    <span id="kpiTempo">5min 32s</span>
                 </div>
                 <div class="caixa">
                     <p>Fluxo de pessoas na semana</p>
@@ -86,8 +82,12 @@
                             <div class="titulo">
                                 <p id="tituloGrafico">Fluxo de pessoas por corredor</p>
                                 <div class="caixa">
-                                    <button id="selecionado" onclick="mostrarQtdPessoas()">Q</button>
-                                    <button id="btnTempoPessoas" onclick="mostrarTempo()">T</button>
+                                    <span style="color: black; font-size: 1.3rem;">Mostrar por:</span>
+                                    <select id="tempoPessoasCorredor">
+                                        <option value="dia">Dia</option>
+                                        <option value="semana">Semana</option>
+                                        <option value="mes">Mês</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="parametros">
@@ -108,18 +108,44 @@
                             </div>
                         </div>
                         <canvas id="graficoQuantidade"></canvas>
-                        <canvas id="graficoTempo" style="display: none;"></canvas>
                     </div>
 
                     <div class="dashboard-container grafico w50">
                         <div class="dashboard-header">
                             <div class="titulo">
-                                <p>Mapa de calor</p>
+                                <p>Histórico de mudanças</p>
                             </div>
-                            <div class="heatmap">
-
-                            </div>
+                            <table>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Localização</th>
+                                    <th>Mudança</th>
+                                </tr>
+                                <tr>
+                                    <td>24/03/2004</td>
+                                    <td>Corredor 1</td>
+                                    <td>Foi colocado uma barraca de amostra de suco del valle.</td>
+                                </tr>
+                                <tr>
+                                    <td>24/03/2004</td>
+                                    <td>Corredor 1</td>
+                                    <td>Foi colocado uma barraca de amostra de suco del valle.</td>
+                                </tr>
+                                <tr>
+                                    <td>24/03/2004</td>
+                                    <td>Corredor 1</td>
+                                    <td>Foi colocado uma barraca de amostra de suco del valle.</td>
+                                </tr>
+                            </table>
                         </div>
+                    </div>
+                </div>
+                <div class="dashboard-container grafico">
+                    <div class="dashboard-header">
+                        <div class="titulo">
+                            <p>Mapa de calor</p>
+                        </div>
+                        <div class="heatmap"></div>
                     </div>
                 </div>
             </div>
@@ -157,38 +183,6 @@
 </html>
 
 <script>
-    // Dia atual
-    const corredores = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "A", "B"];
-
-    const dataDiaAtual = {
-        labels: corredores,
-        datasets:
-        [
-            {
-                backgroundColor: ["#83EF83", "#83EF83", "#6FA8DC", "#FFD966", "#E06666", "#83EF83", "#83EF83", "#6FA8DC", "#83EF83", "#FFD966", "#6FA8DC", "#6FA8DC", "#E06666", "#83EF83", "#83EF83", "#FFD966", "#E06666", "#83EF83", "#E06666", "#FFD966"],
-                data: [59, 87, 18, 32, 111, 99, 95, 15, 93, 37, 15, 2, 141, 89, 69, 30, 130, 96, 134, 38],
-            }
-        ]
-    };
-
-    const configDiaAtual = {
-        type: "bar",
-        data: dataDiaAtual,
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    };
-    
-    const contextoDiaAtual = document.getElementById("graficoDiaAtual").getContext("2d");
-
-    contextoDiaAtual.canvas.height = 40;
-
-    const diaAtual = new Chart(contextoDiaAtual, configDiaAtual);
-
     // Quantidade de pessoas x Dias
     const dias = ["22/03", "23/03", "24/03", "25/03", "26/03", "27/03", "28/03"];
 
@@ -216,39 +210,11 @@
         option: {}
     };
 
-    // Horas x Dias
-    const dataTempoPessoas = {
-        labels: dias,
-        datasets: [
-            {
-                label: "Horas no corredor 04",
-                backgroundColor: "blue",
-                borderColor: "blue",
-                data: [30, 10, 1, 5, 8, 3, 34]
-            },
-            {
-                label: "Horas no corredor 09",
-                backgroundColor: "red",
-                borderColor: "red",
-                data: [11, 13, 24, 1, 6.4, 12, 5.3]
-            }
-        ]
-    };
-
-    const configTempoPessoas = {
-        type: "line",
-        data: dataTempoPessoas,
-        option: {}
-    };
-
     const contextoQtdPessoas = document.getElementById("graficoQuantidade").getContext("2d");
-    const contextoTempoPessoas = document.getElementById("graficoTempo").getContext("2d");
 
     contextoQtdPessoas.canvas.height = 80;
-    contextoTempoPessoas.canvas.height = 80;
 
     const qtdPessoas = new Chart(contextoQtdPessoas, configQtdPessoas);
-    const tempoPessoas = new Chart(contextoTempoPessoas, configTempoPessoas);
     
     function mostrarQtdPessoas(){
         graficoTempo.style.display = "none";
@@ -258,16 +224,6 @@
         
         selecionado.setAttribute("id", "btnTempoPessoas");
         btnQtdPessoas.setAttribute("id", "selecionado");
-    }
-    
-    function mostrarTempo(){
-        graficoTempo.style.display = "block";
-        graficoQuantidade.style.display = "none";
-        
-        tituloGrafico.innerHTML = "Tempo por corredor";
-
-        selecionado.setAttribute("id", "btnQtdPessoas");
-        btnTempoPessoas.setAttribute("id", "selecionado");
     }
 
     // Mapa de calor
@@ -301,34 +257,4 @@
     heatmapInstance.setData(data);
 </script>
 
-<script>
-    // Pegando informações do banco de dados
-    window.onload = () => {
-        nomeMercado.innerHTML += sessionStorage.NOME_MERCADO;
-
-        obterDados();
-        obterQtdCorredores();
-    };
-
-    function obterDados(){
-        fetch("registros/listar").then(function(res){
-            if(res.ok){
-                res.json().then(function(resposta){
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                });
-            }
-        });
-    }
-
-    function obterQtdCorredores(){
-        fetch("registros/quantidadeCorredores").then(function(res){
-            if(res.ok){
-                res.json().then(function(resposta){
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                    kpiTotalCorredores.innerHTML = resposta[0].quantidade;
-                });
-            }
-        });
-    }
-</script>
+<script src="js/dashboard.js"></script>
