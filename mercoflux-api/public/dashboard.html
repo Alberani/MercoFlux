@@ -25,6 +25,12 @@
             </div>
         </div>
         <div class="dashboard">
+            <div id="alertaDash" onclick="fecharModal()">
+                <div class="alerta-box">
+                    <p id="avisoMensagem">Aviso aqui</p>
+                    <button onclick="fecharModal()">Ok</button>
+                </div>
+            </div>
             <div class="dashboard-container">
                 <h1 id="nomeMercado">Dashboard - Mercado </h1>
             </div>
@@ -34,16 +40,16 @@
                     <span id="kpiTotalCorredores">0</span>
                 </div>
                 <div class="caixa">
-                    <p>Corredor mais popular</p>
-                    <span id="kpiMaisPopular">13</span>
+                    <p>Corredor mais popular da semana</p>
+                    <span id="kpiMaisPopular">0</span>
                 </div>
                 <div class="caixa">
-                    <p>Corredor menos popular</p>
-                    <span id="kpiMenosPopular">12</span>
+                    <p>Corredor menos popular da semana</p>
+                    <span id="kpiMenosPopular">0</span>
                 </div>
                 <div class="caixa">
                     <p>Fluxo de pessoas na semana</p>
-                    <span id="kpiFluxo">Bom</span>
+                    <span id="kpiFluxo"></span>
                 </div>
             </div>
             <div class="graficos">
@@ -52,7 +58,10 @@
                 <div class="dashboard-container grafico">
                     <div class="dashboard-header">
                         <div class="titulo">
-                            <p>Fluxo hoje</p>
+                            <div class="box-titulos">
+                                <p>Fluxo hoje</p>
+                                <p class="subtitulo">Quantidade de passagens</p>
+                            </div>
                             <div class="parametros">
                                 <div class="caixa">
                                     <div class="cor" style="background: #6FA8DC"></div>
@@ -83,59 +92,62 @@
                                 <p id="tituloGrafico">Fluxo de pessoas por corredor</p>
                                 <div class="caixa">
                                     <span style="color: black; font-size: 1.3rem;">Mostrar por:</span>
-                                    <select id="tempoPessoasCorredor">
+                                    <select id="mostrarPor" onchange="mudarFluxoPeriodo()">
                                         <option value="dia">Dia</option>
-                                        <option value="semana">Semana</option>
                                         <option value="mes">Mês</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="parametros">
-                                <div class="caixa">
+                            <div class="parametros" id="parametrosDia">
+                                <div class="caixa" id="parametrosPeriodoInicio">
                                     <p>Início:</p>
-                                    <input type="date" id="inicio" value="2022-03-22">
+                                    <input type="date" id="inicio" value="2022-05-25" onfocusout="obterPassagensPeriodo()">
                                 </div>
-                                <div class="caixa">
+                                <div class="caixa" id="parametrosPeriodoFim">
                                     <p>Fim:</p>
-                                    <input type="date" id="fim" value="2022-03-28">
+                                    <input type="date" id="fim" value="2022-05-29" onfocusout="obterPassagensPeriodo()">
                                 </div>
                                 <div class="caixa">
                                     <p>Corredores:</p>
-                                    <input type="text" id="corredor1Tempo" placeholder="04">
+                                    <input type="text" id="corredor1Fluxo" value="01" placeholder="01" onfocusout="obterPassagensPeriodo()">
                                     <span>|</span>
-                                    <input type="text" id="corredor2Tempo" placeholder="09">
+                                    <input type="text" id="corredor2Fluxo" value="02" placeholder="02" onfocusout="obterPassagensPeriodo()">
+                                </div>
+                            </div>
+                            <div class="parametros" id="parametrosMes" style="display: none;">
+                                <div class="caixa">
+                                    <p>Corredores:</p>
+                                    <input type="text" id="corredor1FluxoMes" value="01" placeholder="01"onfocusout="obterPassagensPeriodoMes()">
+                                    <span>|</span>
+                                    <input type="text" id="corredor2FluxoMes" value="02" placeholder="02" onfocusout="obterPassagensPeriodoMes()">
                                 </div>
                             </div>
                         </div>
-                        <canvas id="graficoQuantidade"></canvas>
+                        <canvas id="graficoPeriodoDia"></canvas>
+                        <canvas id="graficoPeriodoMes" style="display: none;"></canvas>
                     </div>
 
                     <div class="dashboard-container grafico w50">
                         <div class="dashboard-header">
                             <div class="titulo">
                                 <p>Histórico de mudanças</p>
+                                <a href="perfil#mudancas">+</a>
                             </div>
                             <table>
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Localização</th>
-                                    <th>Mudança</th>
-                                </tr>
-                                <tr>
-                                    <td>24/03/2004</td>
-                                    <td>Corredor 1</td>
-                                    <td>Foi colocado uma barraca de amostra de suco del valle.</td>
-                                </tr>
-                                <tr>
-                                    <td>24/03/2004</td>
-                                    <td>Corredor 1</td>
-                                    <td>Foi colocado uma barraca de amostra de suco del valle.</td>
-                                </tr>
-                                <tr>
-                                    <td>24/03/2004</td>
-                                    <td>Corredor 1</td>
-                                    <td>Foi colocado uma barraca de amostra de suco del valle.</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Localização</th>
+                                        <th>Mudança</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabelaMudancas">
+                                    <!-- <tr>
+                                        <td>24/03/2004</td>
+                                        <td>Corredor 1</td>
+                                        <td>Foi colocado uma barraca de amostra de suco del valle.</td>
+                                    </tr> -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -184,77 +196,77 @@
 
 <script>
     // Quantidade de pessoas x Dias
-    const dias = ["22/03", "23/03", "24/03", "25/03", "26/03", "27/03", "28/03"];
+    // const dias = ["23/03", "24/03"];
 
-    const dataQtdPessoas = {
-        labels: dias,
-        datasets: [
-            {
-                label: "Fluxo no corredor 04",
-                backgroundColor: "blue",
-                borderColor: "blue",
-                data: [30, 338, 308, 486, 353, 298, 385]
-            },
-            {
-                label: "Fluxo no corredor 09",
-                backgroundColor: "red",
-                borderColor: "red",
-                data: [432, 458, 157, 3, 5, 387, 498]
-            }
-        ]
-    };
+    // const dataQtdPessoas = {
+    //     labels: dias,
+    //     datasets: [
+    //         {
+    //             label: "Fluxo no corredor 04",
+    //             backgroundColor: "blue",
+    //             borderColor: "blue",
+    //             data: [30, 338, 308, 486, 353, 298, 385]
+    //         },
+    //         {
+    //             label: "Fluxo no corredor 09",
+    //             backgroundColor: "red",
+    //             borderColor: "red",
+    //             data: [432, 458, 157, 3, 5, 387, 498]
+    //         }
+    //     ]
+    // };
     
-    const configQtdPessoas = {
-        type: "line",
-        data: dataQtdPessoas,
-        option: {}
-    };
+    // const configQtdPessoas = {
+    //     type: "line",
+    //     data: dataQtdPessoas,
+    //     option: {}
+    // };
 
-    const contextoQtdPessoas = document.getElementById("graficoQuantidade").getContext("2d");
+    // const contextoQtdPessoas = document.getElementById("graficoQuantidade").getContext("2d");
 
-    contextoQtdPessoas.canvas.height = 80;
+    // contextoQtdPessoas.canvas.height = 80;
 
-    const qtdPessoas = new Chart(contextoQtdPessoas, configQtdPessoas);
+    // const qtdPessoas = new Chart(contextoQtdPessoas, configQtdPessoas);
     
-    function mostrarQtdPessoas(){
-        graficoTempo.style.display = "none";
-        graficoQuantidade.style.display = "block";
+    // function mostrarQtdPessoas(){
+    //     graficoTempo.style.display = "none";
+    //     graficoQuantidade.style.display = "block";
 
-        tituloGrafico.innerHTML = "Fluxo de pessoas por corredor";
+    //     tituloGrafico.innerHTML = "Fluxo de pessoas por corredor";
         
-        selecionado.setAttribute("id", "btnTempoPessoas");
-        btnQtdPessoas.setAttribute("id", "selecionado");
-    }
+    //     selecionado.setAttribute("id", "btnTempoPessoas");
+    //     btnQtdPessoas.setAttribute("id", "selecionado");
+    // }
 
-    // Mapa de calor
-    var heatmapInstance = h337.create({
-        container: document.querySelector('.heatmap')
-    });
+    // // Mapa de calor
+    // var heatmapInstance = h337.create({
+    //     container: document.querySelector('.heatmap')
+    // });
 
-    // now generate some random data
-    var points = [];
-    var max = 80;
+    // // now generate some random data
+    // var points = [];
+    // var max = 80;
 
-    points = [
-        {
-            x: 150,
-            y: 50,
-            value: 50
-        },
-        {
-            x: 180,
-            y: 50,
-            value: 50
-        },
-    ]
+    // points = [
+    //     {
+    //         x: 150,
+    //         y: 50,
+    //         value: 50
+    //     },
+    //     {
+    //         x: 180,
+    //         y: 50,
+    //         value: 50
+    //     },
+    // ]
 
-    // heatmap data format
-    var data = {
-        max: max,
-        data: points
-    };
+    // // heatmap data format
+    // var data = {
+    //     max: max,
+    //     data: points
+    // };
 
-    heatmapInstance.setData(data);
+    // heatmapInstance.setData(data);
 </script>
-
+<script src="js/moment.js"></script>
 <script src="js/dashboard.js"></script>

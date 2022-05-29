@@ -540,10 +540,6 @@ body#dashboard{
     box-sizing: border-box;
 }
 
-.dashboard button{
-    padding: 0;
-}
-
 .dashboard input{
     border-radius: 0;
 }
@@ -659,6 +655,40 @@ body#dashboard{
     margin-left: 7px;
 }
 
+.dashboard .dashboard-container .dashboard-header .titulo .box-titulos .subtitulo{
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+.dashboard .dashboard-container table{
+    background: #43a2e7;
+    font-size: 1.2rem;
+}
+
+.dashboard .dashboard-container table th{
+    color: white;
+    padding: 5px;
+}
+
+
+.dashboard .dashboard-container table td{
+    text-align: center;
+    border: 1px solid #43a2e7;
+    background: white;
+    padding: 5px 10px;
+}
+
+.dashboard .dashboard-container .dashboard-header .titulo a{
+    border: 1px solid #134b90;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
 .heatmap{
     width: 100%;
     height: 400px;
@@ -670,4 +700,38 @@ body#dashboard{
 
 #dashboard .footer{
     font-size: 1rem;
+}
+
+#alertaDash{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+#alertaDash .alerta-box{
+    width: 500px;
+    padding: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#alertaDash .alerta-box p{
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-align: center;
+}
+
+#alertaDash .alerta-box button{
+    padding: 5px 15px;
 }

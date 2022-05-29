@@ -53,6 +53,15 @@ CREATE TABLE registro(
     FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
 
+CREATE TABLE mudanca(
+    idMudanca INT PRIMARY KEY AUTO_INCREMENT,
+    dataMudanca DATE,
+    localizacao VARCHAR(30),
+    descricao VARCHAR(80),
+    fkMercado INT,
+    FOREIGN KEY (fkMercado) REFERENCES Mercado(idMercado)
+);
+
 INSERT INTO mercado VALUES (NULL, 'Extra', '12345678901234', '04180150', 'SP', 'São Paulo', 'Rua Maria Teresa Gaudino', 255, 'Apto 122');
 
 INSERT INTO representante VALUES (NULL, 'Agda Taniguchi', 'agda.taniguchi@extra.com', '123456', '38999392805', 1);

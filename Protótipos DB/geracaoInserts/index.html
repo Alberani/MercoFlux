@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mercoflux - Geração de dados para simulação</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#mercado">mercado</a></li>
+                    <li><a href="#representante">representante</a></li>
+                    <li><a href="#corredor">corredor</a></li>
+                    <li><a href="#sensor">sensor</a></li>
+                    <li><a href="#registro">registro</a></li>
+                    <li><a href="#mudanca">mudanca</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Geração de dados para simulação</h1>
+        <section id="registros">
+            <h1>Gerar registros</h1>
+            <div class="botoes">
+                <button onclick="criarRegistros()">Gerar registros</button>
+                <button onclick="copiarRegistros(registrosGerados)">Copiar registros</button>
+            </div>
+            <div class="campo-insert" id="registrosGerados"></div>
+        </section>
+    </body>
+</html>
+<script src="geracaoDeDados.js"></script>
+<script>
+    function criarRegistros(){
+        const registros = gerarRegistros(500);
+        registrosGerados.innerHTML = "";
+        
+        for (let contador = 0; contador < registros.length; contador++) {
+            let r = registros[contador];
+            registrosGerados.innerHTML += `INSERT INTO registro (momento, fkSensor) VALUES ('${r.momento}', ${r.fkSensor});<br>`;
+        }
+    }
+
+    function copiarRegistros(campo){
+        navigator.clipboard.writeText(campo.innerText);
+    }
+</script>

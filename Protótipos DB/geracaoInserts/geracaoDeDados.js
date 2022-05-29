@@ -198,19 +198,26 @@ function gerarNumeroAleatorio(min, max){
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function gerarRegistros(){
+function gerarRegistros(quantidade){
     let registros = [];
-    for (let numero_registro = 0; numero_registro < 200; numero_registro++) {
-        let dia = gerarNumeroAleatorio(28, 30);
-        let mes = gerarNumeroAleatorio(1, 13);
-        let ano = gerarNumeroAleatorio(2020, 2023);
+    for (let numero_registro = 0; numero_registro < quantidade; numero_registro++) {
+        let ano = gerarNumeroAleatorio(2022, 2023);
+        let mes = gerarNumeroAleatorio(1, 2);
+        let dia;
+        if(mes == 2){
+            dia = gerarNumeroAleatorio(10, 29);
+        }
+        else{
+            dia = gerarNumeroAleatorio(10, 30);
+        }
+
         let hora = gerarNumeroAleatorio(6, 21);
         let minuto = gerarNumeroAleatorio(0, 60);
         let segundo = gerarNumeroAleatorio(0, 60);
         let fkSensor = gerarNumeroAleatorio(1, sensores.length + 1);
 
         registros.push({
-            momento: `${2022}-${05}-${dia} ${hora}:${minuto}:${segundo}`,
+            momento: `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`,
             fkSensor: fkSensor
         });
     }
@@ -236,4 +243,3 @@ function imprimirTudo(){
 }
 
 // imprimirTudo();
-imprimirRegistros();
