@@ -43,6 +43,10 @@ a{
     transition-duration: 0.3s;
 }
 
+.portal {
+    color:#ffffff;
+}
+
 a:hover{
     color: #43a2e7;
     transition-duration: 0.3s;
@@ -663,6 +667,7 @@ body#dashboard{
 .dashboard .dashboard-container table{
     background: #43a2e7;
     font-size: 1.2rem;
+    width: 100%;
 }
 
 .dashboard .dashboard-container table th{
@@ -735,3 +740,69 @@ body#dashboard{
 #alertaDash .alerta-box button{
     padding: 5px 15px;
 }
+.menu-lateral {
+    width: 30%;
+    margin: 0; padding: 0;
+    height: 100vh;
+    margin-right: 150px;
+    position: sticky;
+    top: 40px;
+    }
+.menu-lateral ul li {
+		margin: 0; padding: 0px;
+		border-bottom: 1px solid #CCC;
+		text-align: left;
+		list-style-type: none;
+		}
+.menu-lateral a:hover {
+            background: #E5F0FF;
+            color: #039;
+            }
+.informações {
+    background-color: white;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-between;
+    border-radius: 5%;
+    margin-top:30px;
+    margin-bottom: 20px;
+}
+
+.perfil {
+    display: flex;
+ 
+}
+
+.title {
+    color: #43a2e7;
+    justify-content: center;
+    font-size: 30px;
+    border-bottom: blue solid 2px;
+    text-align: center;
+    
+}
+.tabelas{
+    width: 50%;
+}
+
+
+
+.btum{
+    width: 30%;
+    margin-left: 250px;
+    margin-top: 20px;
+}
+.q{
+    margin-top: 20px;
+}
+.foto{
+    border-radius: 50%;
+  
+    width: 50%;
+    height: 30%;
+    margin-left: 80px;
+    margin-top: 1px;
+ }

@@ -25,20 +25,111 @@
             </div>
         </div>
         <div class="perfil">
+           
             <div class="menu-lateral">
+                <img class="foto" src="https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar-300x300.png" alt="">
                 <ul>
+                    
                     <li><h3>Usuários</h3></li>
-                    <li><a href="dados-pessoais">Dados pessoais</a></li>
-                    <li><a href="adicionar-usuarios">Adicionar usuários</a></li>
-                    <li><a href="remover-usuarios">Remover usuários</a></li>
+                    <li><a href="#Dados_p">Dados pessoais</a></li>
+                    <li><a href="#ADDUSER">Adicionar usuários</a></li>
+                    <li><a href="#DELUSER">Remover usuários</a></li>
                     <li><h3>Mercado</h3></li>
-                    <li><a href="dados-mercado">Dados do mercado</a></li>
+                    <li><a href="#Dados_M">Dados do mercado</a></li>
                     <li><h3>Mudanças</h3></li>
-                    <li><a href="historico-mudancas">Histórico de mudanças</a></li>
-                    <li><a href="adicionar-mudanca">Adicionar mudança</a></li>
+                    <li><a href="#MUD">Histórico de mudanças</a></li>
+                    <li><a href="#ADDMUD">Adicionar mudança</a></li>
                 </ul>
             </div>
+
+            <div class="tabelas">
+                <div class="informações" id="Dados_P">
+
+                    <span 
+                        class="title">Dados Pessoais</span> 
+        
+                        <span>Nome:</span>
+                        <input type="text" class="micelanious" placeholder="Atualizar nome">   
+                        
+                        <span>E-Mail:</span>
+                        <input type="text" class="micelanious" placeholder="Atualizar E-Mail">
+        
+                        <span>Senha:</span>
+                        <input type="text" class="micelanious" placeholder="Atualizar Senha">
+
+                        
+                        <span>CPF:</span>
+                        <input type="text" class="micelanious" placeholder="Atualizar CPF">
+
+                        <button class="btum" onclick="btum_one()">Atualizar Dados</button>
+                    
+                    </div>
+                    <div class="informações" id="Dados_M">
+
+                        <span 
+                            class="title">Dados do Mercado</span> 
+            
+                            <span class="q">Nome do Mercado:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar Nome do Mercado">  
+                            
+                            <span>Estado:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar Estado">
+            
+                            <span>CEP:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar CEP">
+                            
+                            <span>CNPJ:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar CNPJ">
+                            
+                            <span>Cidade:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar Cidade">
+
+                            <span>Logradouro:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar Logradouro">
+
+                            <span>Numero:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar Numero">
+
+                            <span>Complemento:</span>
+                            <input type="text" class="micelanious1" placeholder="Atualizar Complemento">
+            
+                            <button class="btum">Atualizar Dados</button>
+                        </div>
+
+                       
+                    <div class="informações" id="ADDMUD">
+                        <span class="title">Adicionar Mudança</span>
+                        Data: 
+                        <input type="text" placeholder="Adicionar Data" id="data">
+
+                        Mudança:
+                        <input type="text" placeholder="Adicionar Mudança" id="Mudanca">
+                        
+                        Localização: 
+                        <input type="text" placeholder="Adicionar Localização" id="localiza">
+                        
+
+                        <button class="btum">Adicionar Mudança</button>
+                    
+                    
+                    </div>
+                    <div class="informações" id="MUD">
+                        <table>
+                            <thead>
+                                <tr class="title">
+                                    <th>Data</th>
+                                    <th>Localização</th>
+                                    <th>Mudança</th>
+                                </tr>
+                            </thead>
+                            
+                        </table>
+                    </div>
+            </div>
+            
+                
         </div>
+        
         <div class="footer">
             <div class="alinhar">
                 <div class="conteudo">
@@ -52,8 +143,8 @@
                     <div class="contato">
                         <h2>Contato</h2>
                         <ul>
-                            <li>mercoflux@gmail.com</li>
-                            <li>3972-3548</li>
+                            <li>help@mercoflux.on.spiceworks.com</li>
+                            <li><a href="https://mercoflux.on.spiceworks.com/portal" class="portal">Portal</a></li>
                             <li>2521-7316</li>
                         </ul>
                     </div>
@@ -70,3 +161,10 @@
         </div>
     </body>
 </html>
+<script>
+    function btum_one(params) {
+        micelanious.style.display = ('block');
+
+        
+    }
+</script>
