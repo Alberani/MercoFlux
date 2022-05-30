@@ -11,18 +11,39 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="#mercado">mercado</a></li>
-                    <li><a href="#representante">representante</a></li>
-                    <li><a href="#corredor">corredor</a></li>
-                    <li><a href="#sensor">sensor</a></li>
-                    <li><a href="#registro">registro</a></li>
-                    <li><a href="#mudanca">mudanca</a></li>
+                    <li><a href="#registros">registros</a></li>
                 </ul>
             </nav>
         </header>
         <h1>Geração de dados para simulação</h1>
         <section id="registros">
             <h1>Gerar registros</h1>
+            <div class="campos">
+                <div class="box-campo">
+                    <div class="w50">
+                        <label for="data-inicio">Data inicial:</label>
+                        <input type="date" id="data-inicio">
+                    </div>
+                    <div class="w50">
+                        <label for="data-final">Data final:</label>
+                        <input type="date" id="data-final">
+                    </div>
+                </div>
+                <div class="box-campo">
+                    <div class="w50">
+                        <label for="sensor-inicial">Sensor inicial:</label>
+                        <input type="text" id="sensor-inicial" value="1">
+                    </div>
+                    <div class="w50">
+                        <label for="sensor-inicial">Sensor final:</label>
+                        <input type="text" id="sensor-final">
+                    </div>
+                </div>
+                <div class="box-campo">
+                    <label for="quantidade">Quantidade de registros:</label>
+                    <input type="number" id="quantidadeRegistros" value="500">
+                </div>
+            </div>
             <div class="botoes">
                 <button onclick="criarRegistros()">Gerar registros</button>
                 <button onclick="copiarRegistros(registrosGerados)">Copiar registros</button>
@@ -31,10 +52,25 @@
         </section>
     </body>
 </html>
+<script src="moment.js"></script>
 <script src="geracaoDeDados.js"></script>
 <script>
+    window.onload = () => {
+        document.getElementById("data-inicio").value = moment().subtract(1, 'months').format("YYYY-MM-DD");
+        document.getElementById("data-final").value = moment().format("YYYY-MM-DD");
+        document.getElementById("sensor-final").value = sensores.length;
+    }
+
     function criarRegistros(){
-        const registros = gerarRegistros(500);
+        var dados = {
+            dataInicio: document.getElementById("data-inicio").value,
+            dataFim: document.getElementById("data-final").value,
+            sensorInicio: Number(document.getElementById("sensor-inicial").value),
+            sensorFim: Number(document.getElementById("sensor-final").value),
+            quantidade: document.getElementById("quantidadeRegistros").value
+        }
+
+        const registros = gerarRegistros(dados);
         registrosGerados.innerHTML = "";
         
         for (let contador = 0; contador < registros.length; contador++) {

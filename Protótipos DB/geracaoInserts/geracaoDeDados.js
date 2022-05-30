@@ -198,26 +198,29 @@ function gerarNumeroAleatorio(min, max){
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function gerarRegistros(quantidade){
-    let registros = [];
-    for (let numero_registro = 0; numero_registro < quantidade; numero_registro++) {
-        let ano = gerarNumeroAleatorio(2022, 2023);
-        let mes = gerarNumeroAleatorio(1, 2);
-        let dia;
-        if(mes == 2){
-            dia = gerarNumeroAleatorio(10, 29);
-        }
-        else{
-            dia = gerarNumeroAleatorio(10, 30);
-        }
+function momentRandom(end = moment(), start) {
+    const endTime = +moment(end);
+    const randomNumber = (to, from = 0) =>
+      Math.floor(Math.random() * (to - from) + from);
+  
+    if (start) {
+      const startTime = +moment(start);
+      if (startTime > endTime) {
+        throw new Error('End date is before start date!');
+      }
+      return moment(randomNumber(endTime, startTime));
+    }
+    return moment(randomNumber(endTime));
+  }
 
-        let hora = gerarNumeroAleatorio(6, 21);
-        let minuto = gerarNumeroAleatorio(0, 60);
-        let segundo = gerarNumeroAleatorio(0, 60);
-        let fkSensor = gerarNumeroAleatorio(1, sensores.length + 1);
+function gerarRegistros(dados){
+    let registros = [];
+    for (let numero_registro = 0; numero_registro < dados.quantidade; numero_registro++) {
+        let data = moment(momentRandom(dados.dataFim, dados.dataInicio)._d).format('YYYY-MM-DD HH:mm:ss');
+        let fkSensor = gerarNumeroAleatorio(dados.sensorInicio, dados.sensorFim + 1);
 
         registros.push({
-            momento: `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`,
+            momento: `${moment().format(data, "YYYY-MM-DD HH:mm:ss")}`,
             fkSensor: fkSensor
         });
     }
@@ -239,7 +242,4 @@ function imprimirTudo(){
     imprimirRepresentantes();
     imprimirCorredor();
     imprimirSensores();
-    imprimirRegistros();
 }
-
-// imprimirTudo();

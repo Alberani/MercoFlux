@@ -195,78 +195,35 @@
 </html>
 
 <script>
-    // Quantidade de pessoas x Dias
-    // const dias = ["23/03", "24/03"];
+    // Mapa de calor
+    var heatmapInstance = h337.create({
+        container: document.querySelector('.heatmap')
+    });
 
-    // const dataQtdPessoas = {
-    //     labels: dias,
-    //     datasets: [
-    //         {
-    //             label: "Fluxo no corredor 04",
-    //             backgroundColor: "blue",
-    //             borderColor: "blue",
-    //             data: [30, 338, 308, 486, 353, 298, 385]
-    //         },
-    //         {
-    //             label: "Fluxo no corredor 09",
-    //             backgroundColor: "red",
-    //             borderColor: "red",
-    //             data: [432, 458, 157, 3, 5, 387, 498]
-    //         }
-    //     ]
-    // };
-    
-    // const configQtdPessoas = {
-    //     type: "line",
-    //     data: dataQtdPessoas,
-    //     option: {}
-    // };
+    // now generate some random data
+    var points = [];
+    var max = 80;
 
-    // const contextoQtdPessoas = document.getElementById("graficoQuantidade").getContext("2d");
+    points = [
+        {
+            x: 150,
+            y: 50,
+            value: 50
+        },
+        {
+            x: 180,
+            y: 50,
+            value: 50
+        },
+    ]
 
-    // contextoQtdPessoas.canvas.height = 80;
+    // heatmap data format
+    var data = {
+        max: max,
+        data: points
+    };
 
-    // const qtdPessoas = new Chart(contextoQtdPessoas, configQtdPessoas);
-    
-    // function mostrarQtdPessoas(){
-    //     graficoTempo.style.display = "none";
-    //     graficoQuantidade.style.display = "block";
-
-    //     tituloGrafico.innerHTML = "Fluxo de pessoas por corredor";
-        
-    //     selecionado.setAttribute("id", "btnTempoPessoas");
-    //     btnQtdPessoas.setAttribute("id", "selecionado");
-    // }
-
-    // // Mapa de calor
-    // var heatmapInstance = h337.create({
-    //     container: document.querySelector('.heatmap')
-    // });
-
-    // // now generate some random data
-    // var points = [];
-    // var max = 80;
-
-    // points = [
-    //     {
-    //         x: 150,
-    //         y: 50,
-    //         value: 50
-    //     },
-    //     {
-    //         x: 180,
-    //         y: 50,
-    //         value: 50
-    //     },
-    // ]
-
-    // // heatmap data format
-    // var data = {
-    //     max: max,
-    //     data: points
-    // };
-
-    // heatmapInstance.setData(data);
+    heatmapInstance.setData(data);
 </script>
 <script src="js/moment.js"></script>
 <script src="js/dashboard.js"></script>
