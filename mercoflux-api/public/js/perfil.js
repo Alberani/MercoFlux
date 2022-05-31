@@ -39,9 +39,16 @@ function listarUsuarios(){
                 for (let contador = 0; contador < resposta.length; contador++) {
                     tableUsuarios.innerHTML += `<tr>
                         <td>${resposta[contador].nome}</td>
-                        <td>${resposta[contador].email}</td>
-                        <td><button onclick="removerUsuario(${resposta[contador].idRepresentante})">Remover usuário</button></td>
-                    </tr>`;
+                        <td>${resposta[contador].email}</td>`;
+
+                    if (resposta[contador].administradorPrincial == 1) {
+                        tableUsuarios.innerHTML += `<td><button><a href=#Dados_P>Alterar usuário</button></td>`;
+                    }
+                    else {
+                        tableUsuarios.innerHTML += `<td><button onclick="removerUsuario(${resposta[contador].idRepresentante})">Remover usuário</button></td>`;
+                    }
+
+                    tableUsuarios.innerHTML += `</tr>`;
                 }
                 
             })

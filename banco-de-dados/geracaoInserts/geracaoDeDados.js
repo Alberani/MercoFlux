@@ -237,7 +237,70 @@ function imprimirRegistros(){
     }
 }
 
-function imprimirTudo(){
+function imprimirCriacao() {
+    console.log(`
+        CREATE DATABASE mercoflux;
+
+        USE mercoflux;
+
+        CREATE TABLE mercado(
+            idMercado INT PRIMARY KEY AUTO_INCREMENT,
+            nome VARCHAR(50) NOT NULL,
+            cnpj CHAR(14) NOT NULL,
+            cep CHAR(8) NOT NULL,
+            estado CHAR(2),
+            cidade VARCHAR(50) NOT NULL,
+            logradouro VARCHAR(50) NOT NULL,
+            numero INT NOT NULL,
+            complemento VARCHAR(50)
+        );
+
+        CREATE TABLE representante(
+            idRepresentante INT PRIMARY KEY AUTO_INCREMENT,
+            nome VARCHAR(50) NOT NULL,
+            email VARCHAR(50) NOT NULL,
+            senha VARCHAR(30) NOT NULL,
+            administradorPrincipal BOOLEAN,
+            cpf CHAR(11) NOT NULL,
+            fkMercado INT,
+            FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
+        );
+
+        CREATE TABLE corredor(
+            idCorredor INT PRIMARY KEY AUTO_INCREMENT,
+            nomeCorredor CHAR(2),
+            produto VARCHAR(30),
+            fkMercado INT,
+            FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
+        );
+
+        CREATE TABLE sensor(
+            idSensor INT PRIMARY KEY AUTO_INCREMENT,
+            localizacao CHAR(2), -- E1, E2, I1, I2
+            fkCorredor INT,
+            FOREIGN KEY (fkCorredor) REFERENCES corredor(idCorredor)
+        );
+
+        CREATE TABLE registro(
+            idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+            momento DATETIME NOT NULL,
+            fkSensor INT,
+            FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
+        );
+
+        CREATE TABLE mudanca(
+            idMudanca INT PRIMARY KEY AUTO_INCREMENT,
+            dataMudanca DATE,
+            localizacao VARCHAR(30),
+            descricao VARCHAR(80),
+            fkMercado INT,
+            FOREIGN KEY (fkMercado) REFERENCES Mercado(idMercado)
+        );
+    `);
+}
+
+function imprimirTudo() {
+    imprimirCriacao();
     imprimirMercados();
     imprimirRepresentantes();
     imprimirCorredor();

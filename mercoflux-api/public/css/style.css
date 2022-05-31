@@ -668,19 +668,19 @@ body#dashboard{
     margin-top: 10px;
 }
 
-.dashboard .dashboard-container table{
+table{
     background: #43a2e7;
     font-size: 1.2rem;
     width: 100%;
 }
 
-.dashboard .dashboard-container table th{
+table th{
     color: white;
     padding: 5px;
 }
 
 
-.dashboard .dashboard-container table td{
+table td{
     text-align: center;
     border: 1px solid #43a2e7;
     background: white;
@@ -794,4 +794,7 @@ body#dashboard{
 }
 .q{
     margin-top: 20px;
+}
+.listar-dados{
+    height: fit-content;
 }
