@@ -27,13 +27,11 @@
         <div class="perfil">
            
             <div class="menu-lateral">
-                <img class="foto" src="https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar-300x300.png" alt="">
                 <ul>
-                    
                     <li><h3>Usuários</h3></li>
-                    <li><a href="#Dados_p">Dados pessoais</a></li>
+                    <li><a href="#Dados_P">Dados pessoais</a></li>
                     <li><a href="#ADDUSER">Adicionar usuários</a></li>
-                    <li><a href="#DELUSER">Remover usuários</a></li>
+                    <li><a href="#LISTARUSER">Listar usuários</a></li>
                     <li><h3>Mercado</h3></li>
                     <li><a href="#Dados_M">Dados do mercado</a></li>
                     <li><h3>Mudanças</h3></li>
@@ -44,92 +42,97 @@
 
             <div class="tabelas">
                 <div class="informações" id="Dados_P">
-
-                    <span 
-                        class="title">Dados Pessoais</span> 
-        
-                        <span>Nome:</span>
-                        <input type="text" class="micelanious" placeholder="Atualizar nome">   
-                        
-                        <span>E-Mail:</span>
-                        <input type="text" class="micelanious" placeholder="Atualizar E-Mail">
-        
-                        <span>Senha:</span>
-                        <input type="text" class="micelanious" placeholder="Atualizar Senha">
-
-                        
-                        <span>CPF:</span>
-                        <input type="text" class="micelanious" placeholder="Atualizar CPF">
-
-                        <button class="btum" onclick="btum_one()">Atualizar Dados</button>
+                    <span class="title">Dados Pessoais</span> 
+                    <span>Nome:</span>
+                    <input type="text" id="nomeUsuarioAdministrador" class="micelanious" placeholder="Atualizar nome">   
                     
-                    </div>
-                    <div class="informações" id="Dados_M">
+                    <span>E-Mail:</span>
+                    <input type="email" id="emailUsuarioAdministrador" class="micelanious" placeholder="Atualizar E-Mail">
+    
+                    <span>Senha:</span>
+                    <input type="password" id="senhaUsuarioAdministrador" class="micelanious" placeholder="Atualizar Senha">
 
-                        <span 
-                            class="title">Dados do Mercado</span> 
-            
-                            <span class="q">Nome do Mercado:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar Nome do Mercado">  
-                            
-                            <span>Estado:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar Estado">
-            
-                            <span>CEP:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar CEP">
-                            
-                            <span>CNPJ:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar CNPJ">
-                            
-                            <span>Cidade:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar Cidade">
+                    <span>CPF:</span>
+                    <input type="text" id="cpfUsuarioAdministrador" class="micelanious" placeholder="Atualizar CPF">
 
-                            <span>Logradouro:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar Logradouro">
-
-                            <span>Numero:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar Numero">
-
-                            <span>Complemento:</span>
-                            <input type="text" class="micelanious1" placeholder="Atualizar Complemento">
-            
-                            <button class="btum">Atualizar Dados</button>
-                        </div>
-
-                       
-                    <div class="informações" id="ADDMUD">
-                        <span class="title">Adicionar Mudança</span>
-                        Data: 
-                        <input type="text" placeholder="Adicionar Data" id="data">
-
-                        Mudança:
-                        <input type="text" placeholder="Adicionar Mudança" id="Mudanca">
-                        
-                        Localização: 
-                        <input type="text" placeholder="Adicionar Localização" id="localiza">
-                        
-
-                        <button class="btum">Adicionar Mudança</button>
+                    <button class="btum" onclick="atualizarUsuario()">Atualizar Dados | Usuário</button>
+                </div>
+                <div class="informações" id="ADDUSER">
+                    <span class="title">Adicionar usuários no mercado</span> 
+                    <span>Nome:</span>
+                    <input type="text" id="nomeUsuarioNovo" class="micelanious" placeholder="Atualizar nome">   
                     
+                    <span>E-Mail:</span>
+                    <input type="text" id="emailUsuarioNovo" class="micelanious" placeholder="Atualizar E-Mail">
+    
+                    <span>Senha:</span>
+                    <input type="text" id="senhaUsuarioNovo" class="micelanious" placeholder="Atualizar Senha">
+
+                    <span>CPF:</span>
+                    <input type="text" id="cpfUsuarioNovo" class="micelanious" placeholder="Atualizar CPF">
+
+                    <button class="btum" onclick="adicionarUsuario()">Adicionar usuário</button>
+                </div>
+                <div class="informações" id="LISTARUSER">
+                    <span class="title">Lista de usuários do mercado</span>
+                    <table id="tableUsuarios"></table>
+                </div>
+                <div class="informações" id="Dados_M">
+                    <span class="title">Dados do Mercado</span> 
+            
+                    <span class="q">Nome do Mercado:</span>
+                    <input type="text" id="nomeMercado" class="micelanious1" placeholder="Atualizar Nome do Mercado">  
                     
-                    </div>
-                    <div class="informações" id="MUD">
-                        <table>
-                            <thead>
-                                <tr class="title">
-                                    <th>Data</th>
-                                    <th>Localização</th>
-                                    <th>Mudança</th>
-                                </tr>
-                            </thead>
-                            
-                        </table>
-                    </div>
+                    <span>CNPJ:</span>
+                    <input type="text" id="cnpjMercado" class="micelanious1" placeholder="Atualizar CNPJ">
+
+                    <span>CEP:</span>
+                    <input type="text" id="cepMercado" class="micelanious1" placeholder="Atualizar CEP">
+                    
+                    <span>Estado:</span>
+                    <input type="text" id="estadoMercado" class="micelanious1" placeholder="Atualizar Estado">
+                    
+                    <span>Cidade:</span>
+                    <input type="text" id="cidadeMercado" class="micelanious1" placeholder="Atualizar Cidade">
+
+                    <span>Logradouro:</span>
+                    <input type="text" id="logradouroMercado" class="micelanious1" placeholder="Atualizar Logradouro">
+
+                    <span>Numero:</span>
+                    <input type="text" id="numeroMercado" class="micelanious1" placeholder="Atualizar Numero">
+
+                    <span>Complemento:</span>
+                    <input type="text" id="complementoMercado" class="micelanious1" placeholder="Atualizar Complemento">
+    
+                    <button class="btum" onclick="atualizarMercado()">Atualizar Dados | Mercado</button>
+                </div>
+                <div class="informações" id="MUD">
+                    <table>
+                        <thead>
+                            <tr class="title">
+                                <th>Data</th>
+                                <th>Localização</th>
+                                <th>Mudança</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="informações" id="ADDMUD">
+                    <span class="title">Adicionar Mudança</span>
+                    
+                    Data: 
+                    <input type="text" id="dataMudanca" placeholder="Adicionar Data">
+
+                    Mudança:
+                    <input type="text" id="descricaoMudanca" placeholder="Adicionar Mudança">
+                    
+                    Localização: 
+                    <input type="text" id="localizacaoMudanca" placeholder="Adicionar Localização">
+                    
+                    <button class="btum" onclick="adicionarMudanca()">Adicionar Mudança</button>
+                </div>
             </div>
-            
-                
         </div>
-        
         <div class="footer">
             <div class="alinhar">
                 <div class="conteudo">
@@ -161,10 +164,4 @@
         </div>
     </body>
 </html>
-<script>
-    function btum_one(params) {
-        micelanious.style.display = ('block');
-
-        
-    }
-</script>
+<script src="js/perfil.js"></script>

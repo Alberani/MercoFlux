@@ -4,6 +4,10 @@ body {
     font-family: monospace;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 /* Padrões */
 .container {
     width: 80%;
@@ -747,17 +751,17 @@ body#dashboard{
     margin-right: 150px;
     position: sticky;
     top: 40px;
-    }
+}
 .menu-lateral ul li {
 		margin: 0; padding: 0px;
 		border-bottom: 1px solid #CCC;
 		text-align: left;
 		list-style-type: none;
-		}
+}
 .menu-lateral a:hover {
             background: #E5F0FF;
             color: #039;
-            }
+}
 .informações {
     background-color: white;
     width: 100%;
@@ -770,26 +774,19 @@ body#dashboard{
     margin-top:30px;
     margin-bottom: 20px;
 }
-
 .perfil {
     display: flex;
- 
 }
-
 .title {
     color: #43a2e7;
     justify-content: center;
     font-size: 30px;
     border-bottom: blue solid 2px;
     text-align: center;
-    
 }
 .tabelas{
     width: 50%;
 }
-
-
-
 .btum{
     width: 30%;
     margin-left: 250px;
@@ -798,11 +795,3 @@ body#dashboard{
 .q{
     margin-top: 20px;
 }
-.foto{
-    border-radius: 50%;
-  
-    width: 50%;
-    height: 30%;
-    margin-left: 80px;
-    margin-top: 1px;
- }

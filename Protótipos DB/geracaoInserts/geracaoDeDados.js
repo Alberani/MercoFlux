@@ -243,3 +243,5 @@ function imprimirTudo(){
     imprimirCorredor();
     imprimirSensores();
 }
+
+imprimirTudo();

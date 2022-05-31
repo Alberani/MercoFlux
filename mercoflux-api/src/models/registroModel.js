@@ -8,7 +8,12 @@ function obterCorredores(idMercado){
 }
 
 function obterPassagensUltimaSemana(idMercado){
-    const comando = `SELECT nomeCorredor, COUNT(*) AS 'qtdPassagens' FROM registro INNER JOIN sensor ON idSensor = fkSensor INNER JOIN corredor ON fkCorredor = idCorredor INNER JOIN mercado ON fkMercado = idMercado WHERE fkMercado = ${idMercado} AND DATE(momento) BETWEEN (CURRENT_DATE - INTERVAL 7 DAY) AND CURRENT_DATE GROUP BY idCorredor`;
+    const comando = `SELECT nomeCorredor, COUNT(*) AS 'qtdPassagens' FROM registro
+        INNER JOIN sensor ON idSensor = fkSensor
+        INNER JOIN corredor ON fkCorredor = idCorredor
+        INNER JOIN mercado ON fkMercado = idMercado
+        WHERE fkMercado = ${idMercado} AND DATE(momento) BETWEEN (CURRENT_DATE - INTERVAL 7 DAY) AND CURRENT_DATE
+        GROUP BY idCorredor`;
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);
     return database.executar(comando);
@@ -29,7 +34,11 @@ function obterMediaSemanas(idMercado){
 }
 
 function obterPassagensHoje(idMercado){
-    const comando = `SELECT nomeCorredor, COUNT(*) AS 'passagens' FROM registro INNER JOIN sensor ON idSensor = fkSensor INNER JOIN corredor ON fkCorredor = idCorredor INNER JOIN mercado ON fkMercado = idMercado WHERE fkMercado = ${idMercado} AND DATE(momento) = CURRENT_DATE GROUP BY idCorredor`;
+    const comando = `SELECT nomeCorredor, COUNT(idRegistro) AS 'passagens' FROM corredor
+        JOIN sensor ON idCorredor = fkCorredor
+        LEFT JOIN registro ON idSensor = fkSensor AND DATE(momento) = CURRENT_DATE
+        JOIN mercado ON idMercado = fkMercado AND idMercado = ${idMercado}
+        GROUP BY idCorredor`;
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);
     return database.executar(comando);
@@ -43,14 +52,25 @@ function obterMudancas(idMercado, limite){
 }
 
 function obterPassagensPeriodo(idMercado, corredor1, corredor2, dataInicio, dataFim){
-    const comando = `SELECT nomeCorredor, DATE(momento) AS 'data', COUNT(*) AS 'passagens' FROM registro INNER JOIN sensor ON idSensor = fkSensor INNER JOIN corredor ON fkCorredor = idCorredor INNER JOIN mercado ON fkMercado = idMercado WHERE fkMercado = ${idMercado} AND (nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}') AND DATE(momento) BETWEEN '${dataInicio}' AND '${dataFim}' GROUP BY idCorredor, DATE(momento) ORDER BY DATE(momento)`;
+    const comando = `SELECT nomeCorredor, DATE(momento) AS 'data', COUNT(idRegistro) AS 'passagens' FROM corredor
+        JOIN sensor ON idCorredor = fkCorredor
+        LEFT JOIN registro ON idSensor = fkSensor AND DATE(momento) BETWEEN '${dataInicio}' AND '${dataFim}'
+        JOIN mercado ON idMercado = fkMercado AND idMercado = ${idMercado}
+        WHERE nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}'
+        GROUP BY idCorredor, DATE(momento)
+        ORDER BY DATE(momento)`;
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);
     return database.executar(comando);
 }
 
 function obterPassagensPeriodoMes(idMercado, corredor1, corredor2){
-    const comando = `SELECT MONTH(momento) AS 'mes', nomeCorredor, COUNT(*) AS 'passagens'  FROM registro INNER JOIN sensor ON idSensor = fkSensor INNER JOIN corredor ON fkCorredor = idCorredor INNER JOIN mercado ON fkMercado = idMercado WHERE fkMercado = ${idMercado} AND (nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}') AND DATE(momento) BETWEEN (CURRENT_DATE - INTERVAL 1 YEAR) AND (CURRENT_DATE) GROUP BY idCorredor, MONTH(momento) ORDER BY mes`;
+    const comando = `SELECT MONTH(momento) AS 'mes', nomeCorredor, COUNT(*) AS 'passagens'  FROM registro
+        INNER JOIN sensor ON idSensor = fkSensor
+        INNER JOIN corredor ON fkCorredor = idCorredor
+        INNER JOIN mercado ON fkMercado = idMercado WHERE fkMercado = ${idMercado} AND (nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}') AND DATE(momento) BETWEEN (CURRENT_DATE - INTERVAL 1 YEAR) AND (CURRENT_DATE)
+        GROUP BY idCorredor, MONTH(momento)
+        ORDER BY mes`;
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);
     return database.executar(comando);

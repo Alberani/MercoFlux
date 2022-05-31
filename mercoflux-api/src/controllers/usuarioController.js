@@ -135,9 +135,42 @@ function cadastrar(req, res){
     }
 }
 
+function pegarDadosPessoais(req, res){
+    const idUsuario = req.query.idUsuario;
+    usuarioModel.pegarDadosPessoais(idUsuario)
+    .then((resultado) => {
+        if(resultado.length == 0){
+            res.status(403).send("Dados pessoais não encontrados!");
+        }
+        else{
+            res.json(resultado[0]);
+        }
+    })
+    .catch((erro) => {
+        console.log(erro);
+        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function listarUsuarios(req, res){
+    const idMercado = req.query.idMercado;
+    usuarioModel.listarUsuarios(idMercado)
+    .then((resultado) => {
+        if(resultado.length == 0){
+            res.status(403).send("ERRO: nenhum usuário encontrado!");
+        }
+        else{
+            res.json(resultado);
+        }
+    })
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    pegarDadosPessoais,
+    listarUsuarios,
 }

@@ -1,5 +1,5 @@
-// Tempo de atualização - 1 minuto
-const tempoAtualizacao = 1 *60 * 1000;
+// Tempo de atualização - 15 segundos (para demonstração)
+const tempoAtualizacao = 15 * 1000;
 
 // Pegando informações do banco de dados
 window.onload = () => {
@@ -152,6 +152,7 @@ function plotarGraficoHoje(resposta){
 
     for(let cont = 0; cont < resposta.length; cont++){
         let quantidade = resposta[cont].passagens;
+        
         dados.datasets[0].data.push(quantidade);
 
         if(quantidade < (1 / 4 * totalPassagensHoje)){

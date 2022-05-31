@@ -57,7 +57,7 @@
 <script>
     window.onload = () => {
         document.getElementById("data-inicio").value = moment().subtract(1, 'months').format("YYYY-MM-DD");
-        document.getElementById("data-final").value = moment().format("YYYY-MM-DD");
+        document.getElementById("data-final").value = moment().add(1, 'days').format("YYYY-MM-DD");
         document.getElementById("sensor-final").value = sensores.length;
     }
 

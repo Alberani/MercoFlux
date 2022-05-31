@@ -12,7 +12,7 @@ function listar() {
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT idRepresentante, r.nome, r.email, idMercado, m.nome AS 'mercado' FROM representante r
+        SELECT idRepresentante, r.nome, r.email, idMercado, m.nome AS 'mercado', administradorPrincipal FROM representante r
         INNER JOIN mercado m ON fkMercado = idMercado WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -37,10 +37,26 @@ async function cadastrar(nome, email, cpf, senha, nomeMercado, cnpj, cep, estado
     return database.executar(inserirRepresentante);
 }
 
+function pegarDadosPessoais(idUsuario){
+    const comando = `SELECT * FROM representante
+        WHERE idRepresentante = ${idUsuario}`;
+
+    return database.executar(comando);
+}
+
+function listarUsuarios(idMercado){
+    const comando = `SELECT * FROM representante
+        WHERE fkMercado = ${idMercado}`;
+
+    return database.executar(comando);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    pegarDadosPessoais,
+    listarUsuarios,
 };
 
 // testar amanhã no pc da escola, após testar testar novamente em casa, caso aconteça algo de diferente verificar quais componentes necessito instalar.
