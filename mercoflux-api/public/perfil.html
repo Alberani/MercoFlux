@@ -42,7 +42,7 @@
 
             <div class="tabelas">
                 <div class="informações" id="Dados_P">
-                    <span class="title">Dados Pessoais</span> 
+                    <span class="title">Dados Pessoais</span>
                     <span>Nome:</span>
                     <input type="text" id="nomeUsuarioAdministrador" class="micelanious" placeholder="Atualizar nome">   
                     
@@ -75,12 +75,15 @@
                 </div>
                 <div class="informações listar-dados" id="LISTARUSER">
                     <span class="title">Lista de usuários do mercado</span>
-                    <table id="tableUsuarios">
-                        <tr>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>Remover usuário</th>
-                        </tr>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableUsuarios">
+                        </tbody>
                     </table>
                 </div>
                 <div class="informações" id="Dados_M">
@@ -112,7 +115,8 @@
     
                     <button class="btum" onclick="atualizarMercado()">Atualizar Dados | Mercado</button>
                 </div>
-                <div class="informações" id="MUD">
+                <div class="informações listar-dados" id="MUD">
+                    <span class="title">Mudanças do mercado</span>
                     <table>
                         <thead>
                             <tr class="title">
@@ -121,6 +125,7 @@
                                 <th>Mudança</th>
                             </tr>
                         </thead>
+                        <tbody id="tabelaMudancas"></tbody>
                     </table>
                 </div>
                 <div class="informações" id="ADDMUD">
