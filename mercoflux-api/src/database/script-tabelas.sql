@@ -115,26 +115,99 @@ SELECT idRepresentante, r.nome, r.email, idMercado, m.nome AS 'mercado' FROM rep
 INNER JOIN mercado m ON fkMercado = idMercado;
 
 /* para sql server - remoto - produção */
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+CREATE TABLE mercado(
+    idMercado INT PRIMARY KEY IDENTITY(1, 1),
+    nome VARCHAR(50) NOT NULL,
+    cnpj CHAR(14) NOT NULL,
+    cep CHAR(8) NOT NULL,
+    estado CHAR(2),
+    cidade VARCHAR(50) NOT NULL,
+    logradouro VARCHAR(50) NOT NULL,
+    numero INT NOT NULL,
+    complemento VARCHAR(50)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-); 
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
+CREATE TABLE representante(
+    idRepresentante INT PRIMARY KEY IDENTITY(1, 1),
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    senha VARCHAR(30) NOT NULL,
+    administradorPrincipal BIT,
+    cpf CHAR(11) NOT NULL,
+    fkMercado INT,
+    FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
 );
 
+CREATE TABLE corredor(
+    idCorredor INT PRIMARY KEY IDENTITY(1, 1),
+    nomeCorredor CHAR(2),
+    produto VARCHAR(30),
+    fkMercado INT,
+    FOREIGN KEY (fkMercado) REFERENCES mercado(idMercado)
+);
 
+CREATE TABLE sensor(
+    idSensor INT PRIMARY KEY IDENTITY(1, 1),
+    localizacao CHAR(2), -- E1, E2, I1, I2
+    fkCorredor INT,
+    FOREIGN KEY (fkCorredor) REFERENCES corredor(idCorredor)
+);
+
+CREATE TABLE registro(
+    idRegistro INT PRIMARY KEY IDENTITY(1, 1),
+    momento DATETIME NOT NULL,
+    fkSensor INT,
+    FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
+);
+
+CREATE TABLE mudanca(
+    idMudanca INT PRIMARY KEY IDENTITY(1, 1),
+    dataMudanca DATE,
+    localizacao VARCHAR(30),
+    descricao VARCHAR(80),
+    fkMercado INT,
+    FOREIGN KEY (fkMercado) REFERENCES Mercado(idMercado)
+);
+
+-- Mercados
+INSERT INTO mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento) VALUES
+        ('Extra Liberdade', '12345678901234', '04196521', 'SP', 'São Paulo', 'Rua A', 12 , '2º andar');   
+INSERT INTO mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento) VALUES
+        ('Carrefour Anchieta', '12345678904321', '04196531', 'SP', 'São Paulo', 'Rua B', 34 , '1º andar');
+
+-- Representantes
+INSERT INTO representante (nome, email, senha, administradorPrincipal, cpf, fkMercado) VALUES
+        ('João Alberto', 'joao.alberto85@extra.com', 'fluflu21', 1, '12345678901', 1);
+INSERT INTO representante (nome, email, senha, administradorPrincipal, cpf, fkMercado) VALUES
+        ('Felipe Cardoso', 'felipe.cardoso@extra.com', 'fefe9932', 0, '12345678911', 1);
+INSERT INTO representante (nome, email, senha, administradorPrincipal, cpf, fkMercado) VALUES
+        ('Fernanda Figma', 'fernanda.figma@carrefour', 'amojogar92', 1, '12345678988', 2);
+
+-- Corredores
+INSERT INTO corredor (nomeCorredor, produto, fkMercado) VALUES ('01', 'Sabão em pó', 1);
+INSERT INTO corredor (nomeCorredor, produto, fkMercado) VALUES ('02', 'Carvão', 1);
+INSERT INTO corredor (nomeCorredor, produto, fkMercado) VALUES ('03', 'Flor', 1);
+INSERT INTO corredor (nomeCorredor, produto, fkMercado) VALUES ('01', 'Arroz', 2);
+INSERT INTO corredor (nomeCorredor, produto, fkMercado) VALUES ('02', 'Flor', 2);
+
+-- Sensores
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E1', 1);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E2', 1);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I1', 1);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I2', 1);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E1', 2);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E2', 2);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I1', 2);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I2', 2);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E1', 3);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E2', 3);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I1', 3);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I2', 3);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E1', 4);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E2', 4);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I1', 4);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I2', 4);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E1', 5);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('E2', 5);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I1', 5);
+INSERT INTO sensor (localizacao, fkCorredor) VALUES ('I2', 5);

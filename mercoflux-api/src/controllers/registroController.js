@@ -12,8 +12,8 @@ function obterCorredores(req, res){
         }
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -30,8 +30,8 @@ function obterPassagensUltimaSemana(req, res){
         }
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -48,8 +48,8 @@ function obterMediaSemanas(req, res){
         }
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -58,11 +58,12 @@ function obterPassagensHoje(req, res){
     const idMercado = req.query.idMercado;
     registroModel.obterPassagensHoje(idMercado)
     .then((resultado) => {
+        console.log(resultado);
         res.json(resultado);
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -75,8 +76,8 @@ function obterMudancas(req, res){
         res.json(resultado);
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -92,8 +93,8 @@ function obterPassagensPeriodo(req, res){
         res.json(resultado);
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -107,8 +108,8 @@ function obterPassagensPeriodoMes(req, res){
         res.json(resultado);
     })
     .catch((erro) => {
-        console.log(erro);
-        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        // console.log(erro);
+        // console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
         res.status(500).json(erro.sqlMessage);
     });
 }

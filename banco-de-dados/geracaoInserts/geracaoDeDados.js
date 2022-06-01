@@ -1,3 +1,5 @@
+const ambiente = 1;
+
 const mercados = [
     {
         nome: 'Extra Liberdade',
@@ -299,12 +301,14 @@ function imprimirCriacao() {
     `);
 }
 
+imprimirCriacao();
+
 function imprimirTudo() {
-    imprimirCriacao();
+    // imprimirCriacao();
     imprimirMercados();
     imprimirRepresentantes();
     imprimirCorredor();
     imprimirSensores();
 }
 
-imprimirTudo();
+// imprimirTudo();
