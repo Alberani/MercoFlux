@@ -78,6 +78,8 @@ function obterPassagensUltimaSemana(){
 
                 kpiMaisPopular.innerHTML = corredorMaisPopular;
                 kpiMenosPopular.innerHTML = corredorMenosPopular;
+
+                console.log(maxPassagens);
             });
         }
         else{

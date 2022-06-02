@@ -133,8 +133,8 @@ function obterPassagensPeriodoMes(idMercado, corredor1, corredor2){
         comando = `SELECT MONTH(momento) AS 'mes', nomeCorredor, COUNT(*) AS 'passagens'  FROM registro
         INNER JOIN sensor ON idSensor = fkSensor AND momento <= GETDATE() AND momento >= DATEADD(YEAR, -1, GETDATE())
         INNER JOIN corredor ON fkCorredor = idCorredor
-        INNER JOIN mercado ON fkMercado = idMercado AND idMercado = 1
-        WHERE nomeCorredor = '01' OR nomeCorredor = '02'
+        INNER JOIN mercado ON fkMercado = idMercado AND idMercado = ${idMercado}
+        WHERE nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}'
         GROUP BY nomeCorredor, MONTH(momento)
         ORDER BY mes;`;
     }

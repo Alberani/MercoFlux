@@ -37,13 +37,29 @@ function entrar(email, senha) {
 // }
 
 function cadastrarMercado(nome, cnpj, cep, estado, cidade, logradouro, numero, complemento){
-    const comando = `INSERT INTO mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento) VALUES ('${nome}', '${cnpj}', '${cep}', '${estado}', '${cidade}', '${logradouro}', '${numero}', '${complemento}')`;
+    const comando = `INSERT INTO mercado (nome, cnpj, cep, estado, cidade, logradouro, numero, complemento)
+    OUTPUT Inserted.idMercado
+    VALUES ('${nome}', '${cnpj}', '${cep}', '${estado}', '${cidade}', '${logradouro}', '${numero}', '${complemento}')`;
+
+    return database.executar(comando);
+}
+
+function cadastrarUsuario(nome, email, senha, cpf, fkMercado){
+    const comando = `INSERT INTO representante (nome, email, senha, administradorPrincipal, cpf, fkMercado)
+    VALUES ('${nome}', '${email}', '${senha}', 1, '${cpf}', ${fkMercado})`;
 
     return database.executar(comando);
 }
 
 function adicionarUsuario(nome, email, senha, cpf, fkMercado){
-    const comando = `INSERT INTO representante (nome, email, senha, administradorPrincipal, cpf, fkMercado) VALUES ('${nome}', '${email}', '${senha}', 0, '${cpf}', ${fkMercado})`;
+    const comando = `INSERT INTO representante (nome, email, senha, administradorPrincipal, cpf, fkMercado)
+    VALUES ('${nome}', '${email}', '${senha}', 0, '${cpf}', ${fkMercado})`;
+
+    return database.executar(comando);
+}
+
+function atualizarUsuario(nome, email, senha, cpf, idRepresentante){
+    const comando = `UPDATE representante SET nome = '${nome}', email = '${email}', senha = '${senha}', cpf = '${cpf}' WHERE idRepresentante = ${idRepresentante}`;
 
     return database.executar(comando);
 }
@@ -72,7 +88,9 @@ function listarUsuarios(idMercado){
 module.exports = {
     entrar,
     cadastrarMercado,
+    cadastrarUsuario,
     adicionarUsuario,
+    atualizarUsuario,
     listar,
     pegarDadosPessoais,
     pegarDadosMercado,

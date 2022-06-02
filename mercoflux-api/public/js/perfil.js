@@ -99,7 +99,7 @@ function listarMudancas(){
 
                 for (let contador = 0; contador < resposta.length; contador++) {
                     mudanca = resposta[contador];
-                    tabelaMudancas.innerHTML += `<tr><td>${moment(mudanca.dataMudanca).format('DD/MM/YYYY')}</td><td>${mudanca.localizacao}</td><td>${mudanca.descricao}</td></tr>`;
+                    tabelaMudancas.innerHTML += `<tr><td>${moment(mudanca.dataMudanca).add(1, 'day').format('DD/MM/YYYY')}</td><td>${mudanca.localizacao}</td><td>${mudanca.descricao}</td></tr>`;
                 }
             });
         }
@@ -162,19 +162,78 @@ function adicionarUsuario(){
         })
         .then(function (resposta){
             if(resposta.ok){
-                resposta.json().then(json => {
-                    console.log(json);
-                    alertar(alertaNovoUsuario, "Cadastro realizado com sucesso!");
-                    window.location = "perfil.html#LISTARUSER";
-                });
+                alertar(alertaNovoUsuario, "Cadastro realizado com sucesso!");
+                window.location = "perfil.html#LISTARUSER";
+                document.location.reload(true);
             }
             else{
                 console.log("Houve um erro ao tentar realizar o cadastro de um novo usuário!");
     
-                resposta.text().then((texto) => {
-                    console.error(texto);
-                    alertar(alertaNovoUsuario, texto);
-                });
+                alertar(alertaNovoUsuario, "Houve um erro ao tentar realizar o cadastro de um novo usuário!");
+            }
+        })
+        .catch(function (erro){
+            console.log(erro);
+        });
+    }
+}
+
+function atualizarUsuario(){
+    let nome = nomeUsuarioAdministrador.value;
+    let email = emailUsuarioAdministrador.value;
+    let senha = senhaUsuarioAdministrador.value;
+    let cpf = cpfUsuarioAdministrador.value;
+
+    if(nome == "" || email == "" || senha == "" || cpf == ""){
+        alertar(alertaUsuarioAdm, "Todos os campos devem estar preenchidos!");
+    }
+    else if(nome.length < 5){
+        alertar(alertaUsuarioAdm, "O campo nome está muito pequeno! (Mínimo 5 caracteres)");
+    }
+    else if(nome.length > 50){
+        alertar(alertaUsuarioAdm, "O campo nome está muito grande! (Máximo 50 caracteres)");
+    }
+    else if(email.length < 3){
+        alertar(alertaUsuarioAdm, "O campo e-mail está muito pequeno! (Mínimo 3 caracteres)");
+    }
+    else if(email.length > 50){
+        alertar(alertaUsuarioAdm, "O campo e-mail está muito grande! (Máximo 50 caracteres)");
+    }
+    else if(senha.length < 4){
+        alertar(alertaUsuarioAdm, "O campo senha está muito pequeno! (Mínimo 4 caracteres)");
+    }
+    else if(senha.length > 30){
+        alertar(alertaUsuarioAdm, "O campo senha está muito grande! (Máximo 30 caracteres)");
+    }
+    else if(cpf.length != 11){
+        alertar(alertaUsuarioAdm, "O campo CPF deve conter 11 números!");
+    }
+    else if(email.indexOf("@") == -1){
+        alertar(alertaUsuarioAdm, "Ops, e-mail inválido! Verifique e tente novamente.");
+    }
+    else{
+        fetch("/usuarios/atualizarUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                nome: nome,
+                email: email,
+                senha: senha,
+                cpf: cpf,
+                idUsuario: sessionStorage.ID_USUARIO,
+            })
+        })
+        .then(function (resposta){
+            if(resposta.ok){
+                alertar(alertaUsuarioAdm, "Usuário atualizado com sucesso!");
+                window.location.reload();
+            }
+            else{
+                console.log("Houve um erro ao tentar realizar a atualização do usuário!");
+    
+                alertar(alertaUsuarioAdm, "Houve um erro ao tentar realizar a atualização do usuário!");
             }
         })
         .catch(function (erro){

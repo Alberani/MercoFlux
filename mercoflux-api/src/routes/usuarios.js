@@ -33,6 +33,10 @@ router.post("/adicionarUsuario", function (req, res) {
     usuarioController.adicionarUsuario(req, res);
 });
 
+router.post("/atualizarUsuario", function (req, res) {
+    usuarioController.atualizarUsuario(req, res);
+});
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });

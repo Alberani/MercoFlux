@@ -119,16 +119,15 @@ function cadastrar(req, res){
         usuarioModel.cadastrarMercado(nomeMercado, cnpj, cep, estado, cidade, logradouro, numero, complemento)
         .then(
             function (resultado){
-                console.log(resultado);
-                // usuarioModel.cadastrarUsuario(nome, email, cpf, senha)
-                // .then((resultado2) => {
-                //     // res.json(resultado);
-                // })
-                // .catch((erro) => {
-                //     console.log(erro);
-                //     console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
-                //     res.status(500).json(erro.sqlMessage);
-                // })
+                usuarioModel.cadastrarUsuario(nome, email, senha, cpf, resultado[0].idMercado)
+                .then((resultado2) => {
+                    res.json(resultado2);
+                })
+                .catch((erro) => {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                })
             }
         ).catch(
             function (erro){
@@ -164,6 +163,41 @@ function adicionarUsuario(req, res){
     }
     else{
         usuarioModel.adicionarUsuario(nome, email, senha, cpf, fkMercado)
+        .then((resultado) => {
+            res.json(resultado);
+        })
+        .catch((erro) => {
+            console.log(erro);
+            console.log(`Houve um erro ao adicionar o usuário! Erro: ${erro.sqlMessage}`);
+            res.status(500).json(erro.sqlMessage);
+        });
+    }
+}
+
+function atualizarUsuario(req, res){
+    const nome = req.body.nome;
+    const email = req.body.email;
+    const senha = req.body.senha;
+    const cpf = req.body.cpf;
+    const idUsuario = req.body.idUsuario;
+
+    if(nome == undefined){
+        res.status(400).send("O nome está undefined!");
+    }
+    else if(email == undefined){
+        res.status(400).send("O e-mail está undefined!");
+    }
+    else if(senha == undefined){
+        res.status(400).send("A senha está undefined!");
+    }
+    else if(cpf == undefined){
+        res.status(400).send("O CPF está undefined!");
+    }
+    else if(idUsuario == undefined){
+        res.status(400).send("O ID do usuário está undefined!");
+    }
+    else{
+        usuarioModel.atualizarUsuario(nome, email, senha, cpf, idUsuario)
         .then((resultado) => {
             res.json(resultado);
         })
@@ -228,6 +262,7 @@ module.exports = {
     entrar,
     cadastrar,
     adicionarUsuario,
+    atualizarUsuario,
     listar,
     testar,
     pegarDadosPessoais,
