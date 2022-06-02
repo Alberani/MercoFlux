@@ -274,7 +274,7 @@ function obterMudancas(){
 
 function obterPassagensPeriodo(){
     let data_inicio = inicio.value;
-    const data_fim = fim.value;
+    const data_fim = moment(fim.value).add(1, 'day').format('YYYY-MM-DD');
 
     if(data_inicio == ""){
         abrirModal("A data do início do período é inválida!");
@@ -298,6 +298,7 @@ function obterPassagensPeriodo(){
     fetch(`registros/obterPassagensPeriodo?idMercado=${sessionStorage.ID_MERCADO}&corredor1=${corredor1}&corredor2=${corredor2}&inicio=${data_inicio}&fim=${data_fim}`).then(function(res){
         if(res.ok){
             res.json().then(function(resposta){
+                console.log(resposta);
                 plotarGraficoPeriodoDia(resposta, corredor1, corredor2);
             });
         }
@@ -338,7 +339,7 @@ function plotarGraficoPeriodoDia(resposta, corredor1, corredor2){
     };
 
     for(let cont = 0; cont < resposta.length; cont++){
-        let data = moment(resposta[cont].data).format('DD/MM/YYYY');
+        let data = moment(resposta[cont].data).add(1, 'day').format('DD/MM/YYYY');
         if(periodo.indexOf(data) == -1){
             periodo.push(data);
         }

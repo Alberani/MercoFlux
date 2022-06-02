@@ -60,18 +60,20 @@
                 <div class="informações" id="ADDUSER">
                     <span class="title">Adicionar usuários no mercado</span> 
                     <span>Nome:</span>
-                    <input type="text" id="nomeUsuarioNovo" class="micelanious" placeholder="Atualizar nome">   
+                    <input type="text" id="nomeUsuarioNovo" class="micelanious" placeholder="Insira o nome">   
                     
                     <span>E-Mail:</span>
-                    <input type="text" id="emailUsuarioNovo" class="micelanious" placeholder="Atualizar E-Mail">
+                    <input type="text" id="emailUsuarioNovo" class="micelanious" placeholder="Insira o e-Mail">
     
                     <span>Senha:</span>
-                    <input type="text" id="senhaUsuarioNovo" class="micelanious" placeholder="Atualizar Senha">
+                    <input type="password" id="senhaUsuarioNovo" class="micelanious" placeholder="Insira a senha">
 
                     <span>CPF:</span>
-                    <input type="text" id="cpfUsuarioNovo" class="micelanious" placeholder="Atualizar CPF">
+                    <input type="number" id="cpfUsuarioNovo" class="micelanious" placeholder="Insira o CPF (somente números)">
 
                     <button class="btum" onclick="adicionarUsuario()">Adicionar usuário</button>
+
+                    <div class="alerta" id="alertaNovoUsuario"></div>
                 </div>
                 <div class="informações listar-dados" id="LISTARUSER">
                     <span class="title">Lista de usuários do mercado</span>
@@ -175,4 +177,5 @@
         </div>
     </body>
 </html>
+<script src="js/moment.js"></script>
 <script src="js/perfil.js"></script>

@@ -116,22 +116,62 @@ function cadastrar(req, res){
         res.status(400).send("Seu complemento está undefined!");
     }
     else{
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, cpf, senha, nomeMercado, cnpj, cep, estado, cidade, logradouro, numero, complemento)
-            .then(
-                function (resultado){
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro){
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        usuarioModel.cadastrarMercado(nomeMercado, cnpj, cep, estado, cidade, logradouro, numero, complemento)
+        .then(
+            function (resultado){
+                console.log(resultado);
+                // usuarioModel.cadastrarUsuario(nome, email, cpf, senha)
+                // .then((resultado2) => {
+                //     // res.json(resultado);
+                // })
+                // .catch((erro) => {
+                //     console.log(erro);
+                //     console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+                //     res.status(500).json(erro.sqlMessage);
+                // })
+            }
+        ).catch(
+            function (erro){
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
+function adicionarUsuario(req, res){
+    const nome = req.body.nome;
+    const email = req.body.email;
+    const senha = req.body.senha;
+    const cpf = req.body.cpf;
+    const fkMercado = req.body.fkMercado;
+
+    if(nome == undefined){
+        res.status(400).send("O nome está undefined!");
+    }
+    else if(email == undefined){
+        res.status(400).send("O e-mail está undefined!");
+    }
+    else if(senha == undefined){
+        res.status(400).send("A senha está undefined!");
+    }
+    else if(cpf == undefined){
+        res.status(400).send("O CPF está undefined!");
+    }
+    else if(fkMercado == undefined){
+        res.status(400).send("A fkMercado está undefined!");
+    }
+    else{
+        usuarioModel.adicionarUsuario(nome, email, senha, cpf, fkMercado)
+        .then((resultado) => {
+            res.json(resultado);
+        })
+        .catch((erro) => {
+            console.log(erro);
+            console.log(`Houve um erro ao adicionar o usuário! Erro: ${erro.sqlMessage}`);
+            res.status(500).json(erro.sqlMessage);
+        });
     }
 }
 
@@ -141,6 +181,24 @@ function pegarDadosPessoais(req, res){
     .then((resultado) => {
         if(resultado.length == 0){
             res.status(403).send("Dados pessoais não encontrados!");
+        }
+        else{
+            res.json(resultado[0]);
+        }
+    })
+    .catch((erro) => {
+        console.log(erro);
+        console.log(`Houve um erro ao listar os dados! Erro: ${erro.sqlMessage}`);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function pegarDadosMercado(req, res){
+    const idMercado = req.query.idMercado;
+    usuarioModel.pegarDadosMercado(idMercado)
+    .then((resultado) => {
+        if(resultado.length == 0){
+            res.status(403).send("Dados do mercado não encontrados!");
         }
         else{
             res.json(resultado[0]);
@@ -169,8 +227,10 @@ function listarUsuarios(req, res){
 module.exports = {
     entrar,
     cadastrar,
+    adicionarUsuario,
     listar,
     testar,
     pegarDadosPessoais,
+    pegarDadosMercado,
     listarUsuarios,
 }

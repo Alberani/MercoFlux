@@ -15,13 +15,22 @@ router.get("/pegarDadosPessoais", function(req, res){
     usuarioController.pegarDadosPessoais(req, res);
 });
 
+router.get("/pegarDadosMercado", function(req, res){
+    usuarioController.pegarDadosMercado(req, res);
+});
+
 router.get("/listarUsuarios", function(req, res){
     usuarioController.listarUsuarios(req, res);
-})
+});
+
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
+});
+
+router.post("/adicionarUsuario", function (req, res) {
+    usuarioController.adicionarUsuario(req, res);
 });
 
 router.post("/autenticar", function (req, res) {
