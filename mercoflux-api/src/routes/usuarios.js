@@ -23,6 +23,10 @@ router.get("/listarUsuarios", function(req, res){
     usuarioController.listarUsuarios(req, res);
 });
 
+router.get("/removerUsuario", function(req, res){
+    usuarioController.removerUsuario(req, res);
+});
+
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
@@ -39,6 +43,10 @@ router.post("/atualizarUsuario", function (req, res) {
 
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
+});
+
+router.post("/adicionarMudanca", function(req, res){
+    usuarioController.adicionarMudanca(req, res);
 });
 
 module.exports = router;

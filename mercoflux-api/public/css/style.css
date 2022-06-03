@@ -747,7 +747,7 @@ table td{
 .menu-lateral {
     width: 30%;
     margin: 0; padding: 0;
-    height: 100vh;
+    height: 500px;
     margin-right: 150px;
     position: sticky;
     top: 40px;
@@ -789,12 +789,31 @@ table td{
 }
 .btum{
     width: 30%;
-    margin-left: 250px;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 .q{
     margin-top: 20px;
 }
 .listar-dados{
     height: fit-content;
+}
+
+#loading{
+    width: 50px;
+    height: 50px;
+    margin: 5px auto;
+    display: none;
+    border-radius: 50%;
+    border: 5px solid #43a2e7;
+    border-right-color: #134b90;
+    animation: loading 1s infinite linear;
+}
+
+@keyframes loading{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }

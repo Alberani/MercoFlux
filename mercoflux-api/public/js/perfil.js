@@ -3,6 +3,8 @@ window.onload = () => {
     listarUsuarios();
     preencherDadosMercado();
     listarMudancas();
+
+    dataMudanca.value = moment().format("YYYY-MM-DD");
 }
 
 function preencherDadosPessoais(){
@@ -162,9 +164,7 @@ function adicionarUsuario(){
         })
         .then(function (resposta){
             if(resposta.ok){
-                alertar(alertaNovoUsuario, "Cadastro realizado com sucesso!");
-                window.location = "perfil.html#LISTARUSER";
-                document.location.reload(true);
+                alertar(alertaNovoUsuario, "Cadastro realizado com sucesso! Recarregue a página, caso queira ver as alterações!");
             }
             else{
                 console.log("Houve um erro ao tentar realizar o cadastro de um novo usuário!");
@@ -227,13 +227,72 @@ function atualizarUsuario(){
         })
         .then(function (resposta){
             if(resposta.ok){
-                alertar(alertaUsuarioAdm, "Usuário atualizado com sucesso!");
-                window.location.reload();
+                alertar(alertaUsuarioAdm, "Usuário atualizado com sucesso! Recarregue a página, caso queira ver as alterações!");
             }
             else{
                 console.log("Houve um erro ao tentar realizar a atualização do usuário!");
     
                 alertar(alertaUsuarioAdm, "Houve um erro ao tentar realizar a atualização do usuário!");
+            }
+        })
+        .catch(function (erro){
+            console.log(erro);
+        });
+    }
+}
+
+function removerUsuario(idUsuario){
+    fetch(`usuarios/removerUsuario?idUsuario=${idUsuario}`).then(function(res){
+        if(res.ok){
+            alertar(alertaListaUsuarios, "Usuário removido com sucesso! Recarregue a página, caso queira ver as alterações!");
+        }
+        else{
+            console.error(`Nenhum dado encontrado ou erro na API`);
+        }
+    })
+    .catch((erro) => {
+        console.error(`Erro na obtenção dos dados - Remover usuário: ${erro.message}`);
+    });
+}
+
+function adicionarMudanca(){
+    let data = dataMudanca.value;
+    let localizacao = localizacaoMudanca.value;
+    let descricao = descricaoMudanca.value;
+    let fkMercado = sessionStorage.ID_MERCADO;
+
+    if(data == "" || localizacao == "" || descricao == ""){
+        alertar(alertaMudanca, "Todos os campos devem estar preenchidos!");
+    }
+    else if(descricao.length > 80){
+        alertar(alertaMudanca, `A descrição está muito grande! (${descricao.length}/80)`);
+    }
+    else if(localizacao.length > 30){
+        alertar(alertaMudanca, `A localização está muito grande! (${localizacao.length}/30)`);
+    }
+    else{
+        fetch("/usuarios/adicionarMudanca", {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                data: data,
+                localizacao: localizacao,
+                descricao: descricao,
+                fkMercado: fkMercado
+            })
+        })
+        .then(function (resposta){
+            console.log("resposta:");
+            console.log(resposta);
+            if(resposta.ok){
+                alertar(alertaMudanca, "Mudança adicionada com sucesso! Recarregue a página, caso queira ver as alterações!");
+            }
+            else{
+                console.log("Houve um erro ao tentar adicionar uma mudança!");
+    
+                alertar(alertaMudanca, "Houve um erro ao tentar adicionar uma mudança!");
             }
         })
         .catch(function (erro){
@@ -251,5 +310,5 @@ function alertar(idAlerta, mensagem){
 
     tempoAlerta = setTimeout(() => {
         idAlerta.style.display = "none";
-    }, 5000);
+    }, 7000);
 }

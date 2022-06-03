@@ -256,6 +256,55 @@ function listarUsuarios(req, res){
             res.json(resultado);
         }
     })
+    .catch((erro) => {
+        console.log(erro);
+        console.log(`Houve um erro ao listar os usuários! Erro: ${erro.sqlMessage}`);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function removerUsuario(req, res){
+    const idUsuario = req.query.idUsuario;
+    usuarioModel.removerUsuario(idUsuario)
+    .then((resultado) => {
+        res.json(resultado);
+    })
+    .catch((erro) => {
+        console.log(erro);
+        console.log(`Houve um erro ao remover o usuário! Erro: ${erro.sqlMessage}`);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function adicionarMudanca(req, res){
+    const data = req.body.data;
+    const localizacao = req.body.localizacao;
+    const descricao = req.body.descricao;
+    const fkMercado = req.body.fkMercado;
+
+    if(data == undefined){
+        res.status(400).send("A data está undefined!");
+    }
+    else if(localizacao == undefined){
+        res.status(400).send("A localização está undefined!");
+    }
+    else if(descricao == undefined){
+        res.status(400).send("A descrição está undefined!");
+    }
+    else if(fkMercado == undefined){
+        res.status(400).send("A FK Mercado está undefined!");
+    }
+    else{
+        usuarioModel.adicionarMudanca(data, localizacao, descricao, fkMercado)
+        .then((resultado) => {
+            res.json(resultado);
+        })
+        .catch((erro) => {
+            console.log(erro);
+            console.log(`Houve um erro ao adicionar a mudança! Erro: ${erro.sqlMessage}`);
+            res.status(500).json(erro.sqlMessage);
+        });
+    }
 }
 
 module.exports = {
@@ -268,4 +317,6 @@ module.exports = {
     pegarDadosPessoais,
     pegarDadosMercado,
     listarUsuarios,
+    removerUsuario,
+    adicionarMudanca,
 }

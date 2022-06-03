@@ -56,6 +56,7 @@
                         <button onclick="entrar()">Entrar</button> <br> 
                         <span class="possui">Não possui login?</spans> <br>
                         <a href="cadastro.html" class="fazer">Fazer cadastro</a> <br>
+                        <div id="loading"></div>
                         <span class="alerta" id="msg_alerta"></span>
                     </div>
                 </div>
@@ -111,9 +112,9 @@
             alertar("E-mail e/ou senha inválido(s)!")
         }
         else{
-
             console.log("FORM LOGIN: ", emailVar);
             console.log("FORM SENHA: ", senhaVar);
+            loading.style.display = "block";
     
             fetch("/usuarios/autenticar", {
                 method: "POST",
@@ -125,6 +126,7 @@
                     senhaServer: senhaVar
                 })
             }).then(function (resposta){
+                loading.style.display = "none";
                 console.log("ESTOU NO THEN DO entrar()!")
     
                 if (resposta.ok){
@@ -133,7 +135,7 @@
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-    
+                
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.NOME_MERCADO = json.mercado;

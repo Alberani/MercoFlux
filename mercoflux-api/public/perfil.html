@@ -36,6 +36,8 @@
                     <li><h3>Mudanças</h3></li>
                     <li><a href="#MUD">Histórico de mudanças</a></li>
                     <li><a href="#ADDMUD">Adicionar mudança</a></li>
+                    <li><h3>Suporte</h3></li>
+                    <li><a href="https://mercoflux.on.spiceworks.com/portal">Acessar nosso portal</a></li>
                 </ul>
             </div>
 
@@ -88,35 +90,34 @@
                         <tbody id="tableUsuarios">
                         </tbody>
                     </table>
+                    <div class="alerta" id="alertaListaUsuarios"></div>
                 </div>
                 <div class="informações" id="Dados_M">
                     <span class="title">Dados do Mercado</span> 
             
                     <span class="q">Nome do Mercado:</span>
-                    <input type="text" id="nomeMercado" class="micelanious1" placeholder="Atualizar Nome do Mercado">  
+                    <input type="text" id="nomeMercado" class="micelanious1" disabled>
                     
                     <span>CNPJ:</span>
-                    <input type="text" id="cnpjMercado" class="micelanious1" placeholder="Atualizar CNPJ">
+                    <input type="text" id="cnpjMercado" class="micelanious1" disabled>
 
                     <span>CEP:</span>
-                    <input type="text" id="cepMercado" class="micelanious1" placeholder="Atualizar CEP">
+                    <input type="text" id="cepMercado" class="micelanious1" disabled>
                     
                     <span>Estado:</span>
-                    <input type="text" id="estadoMercado" class="micelanious1" placeholder="Atualizar Estado">
+                    <input type="text" id="estadoMercado" class="micelanious1" disabled>
                     
                     <span>Cidade:</span>
-                    <input type="text" id="cidadeMercado" class="micelanious1" placeholder="Atualizar Cidade">
+                    <input type="text" id="cidadeMercado" class="micelanious1" disabled>
 
                     <span>Logradouro:</span>
-                    <input type="text" id="logradouroMercado" class="micelanious1" placeholder="Atualizar Logradouro">
+                    <input type="text" id="logradouroMercado" class="micelanious1" disabled>
 
                     <span>Numero:</span>
-                    <input type="text" id="numeroMercado" class="micelanious1" placeholder="Atualizar Numero">
+                    <input type="text" id="numeroMercado" class="micelanious1" disabled>
 
                     <span>Complemento:</span>
-                    <input type="text" id="complementoMercado" class="micelanious1" placeholder="Atualizar Complemento">
-    
-                    <button class="btum" onclick="atualizarMercado()">Atualizar Dados | Mercado</button>
+                    <input type="text" id="complementoMercado" class="micelanious1" disabled>
                 </div>
                 <div class="informações listar-dados" id="MUD">
                     <span class="title">Mudanças do mercado</span>
@@ -134,16 +135,18 @@
                 <div class="informações" id="ADDMUD">
                     <span class="title">Adicionar Mudança</span>
                     
-                    Data: 
-                    <input type="text" id="dataMudanca" placeholder="Adicionar Data">
+                    <span>Data:</span>
+                    <input type="date" id="dataMudanca" placeholder="Adicionar Data">
 
-                    Mudança:
-                    <input type="text" id="descricaoMudanca" placeholder="Adicionar Mudança">
+                    <span>Localização:</span>
+                    <input type="text" id="localizacaoMudanca" placeholder="Insira a localização">
                     
-                    Localização: 
-                    <input type="text" id="localizacaoMudanca" placeholder="Adicionar Localização">
+                    <span>Mudança:</span>
+                    <input type="text" id="descricaoMudanca" placeholder="Insira a mudança">
                     
                     <button class="btum" onclick="adicionarMudanca()">Adicionar Mudança</button>
+
+                    <div class="alerta" id="alertaMudanca"></div>
                 </div>
             </div>
         </div>

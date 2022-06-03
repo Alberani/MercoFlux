@@ -5,7 +5,11 @@ const tempoAtualizacao = 15 * 1000;
 window.onload = () => {
     nomeMercado.innerHTML += sessionStorage.NOME_MERCADO;
 
-    preencherKPIS();
+    obterCorredores();
+
+    obterPassagensUltimaSemana();
+
+    obterMediaSemanas();
 
     obterPassagensHoje();
 
@@ -13,14 +17,6 @@ window.onload = () => {
 
     obterPassagensPeriodo();
 };
-
-function preencherKPIS(){
-    obterCorredores();
-
-    obterPassagensUltimaSemana();
-
-    obterMediaSemanas();
-}
 
 var corredores = [];
 
@@ -78,8 +74,6 @@ function obterPassagensUltimaSemana(){
 
                 kpiMaisPopular.innerHTML = corredorMaisPopular;
                 kpiMenosPopular.innerHTML = corredorMenosPopular;
-
-                console.log(maxPassagens);
             });
         }
         else{
@@ -118,6 +112,7 @@ function obterPassagensHoje(){
     fetch(`registros/obterPassagensHoje?idMercado=${sessionStorage.ID_MERCADO}`).then(function(res){
         if(res.ok){
             res.json().then(function(resposta){
+                console.log(resposta);
                 // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
                 for(let corredor = 0; corredor < resposta.length; corredor++){
@@ -300,7 +295,6 @@ function obterPassagensPeriodo(){
     fetch(`registros/obterPassagensPeriodo?idMercado=${sessionStorage.ID_MERCADO}&corredor1=${corredor1}&corredor2=${corredor2}&inicio=${data_inicio}&fim=${data_fim}`).then(function(res){
         if(res.ok){
             res.json().then(function(resposta){
-                console.log(resposta);
                 plotarGraficoPeriodoDia(resposta, corredor1, corredor2);
             });
         }
