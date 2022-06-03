@@ -71,7 +71,8 @@ function obterPassagensHoje(idMercado){
         JOIN sensor ON idCorredor = fkCorredor
         LEFT JOIN registro ON idSensor = fkSensor AND CONVERT(DATE, momento) = CONVERT(DATE, GETDATE())
         JOIN mercado ON idMercado = fkMercado AND idMercado = ${idMercado}
-        GROUP BY nomeCorredor`;
+        GROUP BY nomeCorredor
+        ORDER BY nomeCorredor`;
     }
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);

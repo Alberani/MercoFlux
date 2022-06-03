@@ -3,6 +3,8 @@ const tempoAtualizacao = 15 * 1000;
 
 // Pegando informações do banco de dados
 window.onload = () => {
+    verificarPerfil();
+
     nomeMercado.innerHTML += sessionStorage.NOME_MERCADO;
 
     obterCorredores();
@@ -17,6 +19,12 @@ window.onload = () => {
 
     obterPassagensPeriodo();
 };
+
+function verificarPerfil(){
+    if(sessionStorage.ID_USUARIO == undefined){
+        location.href = "../login.html";
+    }
+}
 
 var corredores = [];
 
@@ -112,7 +120,6 @@ function obterPassagensHoje(){
     fetch(`registros/obterPassagensHoje?idMercado=${sessionStorage.ID_MERCADO}`).then(function(res){
         if(res.ok){
             res.json().then(function(resposta){
-                console.log(resposta);
                 // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
                 for(let corredor = 0; corredor < resposta.length; corredor++){

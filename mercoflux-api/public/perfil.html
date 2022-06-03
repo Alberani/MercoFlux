@@ -19,8 +19,10 @@
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="projeto.html">PROJETO</a></li>
                     <li><a href="simulador.html">SIMULADOR</a></li>
-                    <li><a href="dashboard.html">DASHBOARD</a></li>
-                    <li class="destaque"><a href="perfil.html">MEU PERFIL</a></li>
+                    <li id="menuCadastro"><a href="cadastro.html">CADASTRO</a></li>
+                    <li id="menuLogin"><a href="login.html">LOGIN</a></li>
+                    <li id="menuDashboard"><a href="dashboard.html">DASHBOARD</a></li>
+                    <li class="destaque" id="menuPerfil"><a href="perfil.html">MEU PERFIL</a></li>
                 </ul>
             </div>
         </div>
@@ -29,15 +31,16 @@
                 <ul>
                     <li><h3>Usuários</h3></li>
                     <li><a href="#Dados_P">Dados pessoais</a></li>
-                    <li><a href="#ADDUSER">Adicionar usuários</a></li>
-                    <li><a href="#LISTARUSER">Listar usuários</a></li>
+                    <li id="menuAddUser"><a href="#ADDUSER">Adicionar usuários</a></li>
+                    <li id="menuListarUser"><a href="#LISTARUSER">Listar usuários</a></li>
                     <li><h3>Mercado</h3></li>
                     <li><a href="#Dados_M">Dados do mercado</a></li>
                     <li><h3>Mudanças</h3></li>
                     <li><a href="#MUD">Histórico de mudanças</a></li>
-                    <li><a href="#ADDMUD">Adicionar mudança</a></li>
+                    <li id="menuAddMud"><a href="#ADDMUD">Adicionar mudança</a></li>
                     <li><h3>Suporte</h3></li>
                     <li><a href="https://mercoflux.on.spiceworks.com/portal">Acessar nosso portal</a></li>
+                    <li><a href="login.html" onclick="deslogar()">Deslogar da conta</a></li>
                 </ul>
             </div>
 
@@ -181,5 +184,6 @@
         </div>
     </body>
 </html>
+<script src="js/main.js"></script>
 <script src="js/moment.js"></script>
 <script src="js/perfil.js"></script>

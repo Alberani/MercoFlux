@@ -15,31 +15,13 @@
                     <img src="images/LogoF.png">
                 </a>
                 <ul class="navbar">
-                    <li>
-                        <a href="index.html">
-                            HOME
-                        </a>
-                    </li>
-                    <li>
-                        <a href="projeto.html">
-                            PROJETO
-                        </a>
-                    </li>
-                    <li>
-                        <a href="simulador.html">
-                            SIMULADOR
-                        </a>
-                    </li>
-                    <li>
-                        <a href="cadastro.html">CADASTRO
-
-                        </a>
-                    </li>
-                    <li class="destaque">
-                        <a href="login.html">
-                            LOGIN
-                        </a>
-                    </li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="projeto.html">PROJETO</a></li>
+                    <li><a href="simulador.html">SIMULADOR</a></li>
+                    <li id="menuCadastro"><a href="cadastro.html">CADASTRO</a></li>
+                    <li class="destaque" id="menuLogin"><a href="login.html">LOGIN</a></li>
+                    <li id="menuDashboard"><a href="dashboard.html">DASHBOARD</a></li>
+                    <li id="menuPerfil"><a href="perfil.html">MEU PERFIL</a></li>
                 </ul>
             </div>
         </div>
@@ -95,7 +77,8 @@
         </div>
     </div>
 </body>
-
+</html>
+<script src="js/main.js"></script>
 <script>
     function entrar(){
         var emailVar = email.value;
@@ -112,8 +95,6 @@
             alertar("E-mail e/ou senha inválido(s)!")
         }
         else{
-            console.log("FORM LOGIN: ", emailVar);
-            console.log("FORM SENHA: ", senhaVar);
             loading.style.display = "block";
     
             fetch("/usuarios/autenticar", {

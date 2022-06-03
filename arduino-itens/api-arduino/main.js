@@ -77,7 +77,7 @@ const serial = async (
                 // Este insert irá inserir os dados na tabela "medida" -> altere se necessário
                 // Este insert irá inserir dados de fk_aquario id=1 >> você deve ter o aquario de id 1 cadastrado.
 
-                sqlquery = `INSERT INTO registro (momento, fkSensor) VALUES (GETDATE(), 1)`;
+                sqlquery = `INSERT INTO registro (momento, fkSensor) VALUES (GETDATE(), 9)`;
 
                 // sqlquery = `INSERT INTO medida (dht11_umidade, dht11_temperatura, luminosidade, lm35_temperatura, chave, momento, fk_aquario) VALUES (${dht11Umidade}, ${dht11Temperatura}, ${luminosidade}, ${lm35Temperatura}, ${chave}, CURRENT_TIMESTAMP, 1)`;
 

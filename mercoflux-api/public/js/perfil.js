@@ -1,10 +1,28 @@
 window.onload = () => {
+    verificarPerfil();
+
     preencherDadosPessoais();
     listarUsuarios();
     preencherDadosMercado();
     listarMudancas();
 
     dataMudanca.value = moment().format("YYYY-MM-DD");
+}
+
+function verificarPerfil(){
+    if(sessionStorage.ID_USUARIO == undefined){
+        location.href = "../login.html";
+    }
+
+    if(sessionStorage.ADM == 'false'){
+        ADDUSER.style.display = "none";
+        LISTARUSER.style.display = "none";
+        ADDMUD.style.display = "none";
+
+        menuAddUser.style.display = "none";
+        menuListarUser.style.display = "none";
+        menuAddMud.style.display = "none";
+    }
 }
 
 function preencherDadosPessoais(){
@@ -299,6 +317,10 @@ function adicionarMudanca(){
             console.log(erro);
         });
     }
+}
+
+function deslogar(){
+    sessionStorage.clear();
 }
 
 var tempoAlerta;
