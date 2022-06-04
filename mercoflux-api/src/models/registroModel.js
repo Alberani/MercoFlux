@@ -15,7 +15,8 @@ function obterPassagensUltimaSemana(idMercado){
         INNER JOIN corredor ON fkCorredor = idCorredor
         INNER JOIN mercado ON fkMercado = idMercado
         WHERE fkMercado = ${idMercado} AND DATE(momento) BETWEEN (CURRENT_DATE - INTERVAL 7 DAY) AND CURRENT_DATE
-        GROUP BY idCorredor`;
+        GROUP BY idCorredor
+        ORDER BY nomeCorredor`;
     }
     else{
         comando = `SELECT nomeCorredor, COUNT(*) AS 'qtdPassagens' FROM registro
@@ -23,7 +24,8 @@ function obterPassagensUltimaSemana(idMercado){
         INNER JOIN corredor ON fkCorredor = idCorredor
         INNER JOIN mercado ON fkMercado = idMercado
         WHERE fkMercado = ${idMercado} AND momento <= GETDATE() AND momento >= DATEADD(DAY, -7, GETDATE())
-        GROUP BY nomeCorredor`;
+        GROUP BY nomeCorredor
+        ORDER BY nomeCorredor`;
     }
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);
@@ -64,7 +66,8 @@ function obterPassagensHoje(idMercado){
             JOIN sensor ON idCorredor = fkCorredor
             LEFT JOIN registro ON idSensor = fkSensor AND DATE(momento) = CURRENT_DATE
             JOIN mercado ON idMercado = fkMercado AND idMercado = ${idMercado}
-            GROUP BY idCorredor`;
+            GROUP BY idCorredor
+            ORDER BY nomeCorredor`;
     }
     else{
         comando = `SELECT nomeCorredor, COUNT(idRegistro) AS 'passagens' FROM corredor
@@ -104,7 +107,7 @@ function obterPassagensPeriodo(idMercado, corredor1, corredor2, dataInicio, data
         JOIN mercado ON idMercado = fkMercado AND idMercado = ${idMercado}
         WHERE nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}'
         GROUP BY idCorredor, DATE(momento)
-        ORDER BY DATE(momento)`;
+        ORDER BY DATE(momento), nomeCorredor`;
     }
     else{
         comando = `SELECT nomeCorredor, CONVERT(DATE, momento) AS 'data', COUNT(idRegistro) AS 'passagens' FROM corredor
@@ -113,7 +116,7 @@ function obterPassagensPeriodo(idMercado, corredor1, corredor2, dataInicio, data
         JOIN mercado ON idMercado = fkMercado AND idMercado = ${idMercado}
         WHERE nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}'
         GROUP BY nomeCorredor, CONVERT(DATE, momento)
-        ORDER BY CONVERT(DATE, momento)`;
+        ORDER BY CONVERT(DATE, momento), nomeCorredor`;
     }
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);
@@ -128,7 +131,7 @@ function obterPassagensPeriodoMes(idMercado, corredor1, corredor2){
             INNER JOIN corredor ON fkCorredor = idCorredor
             INNER JOIN mercado ON fkMercado = idMercado WHERE fkMercado = ${idMercado} AND (nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}') AND DATE(momento) BETWEEN (CURRENT_DATE - INTERVAL 1 YEAR) AND (CURRENT_DATE)
             GROUP BY idCorredor, MONTH(momento)
-            ORDER BY mes`;
+            ORDER BY mes, nomeCorredor`;
     }
     else{
         comando = `SELECT MONTH(momento) AS 'mes', nomeCorredor, COUNT(*) AS 'passagens'  FROM registro
@@ -137,7 +140,7 @@ function obterPassagensPeriodoMes(idMercado, corredor1, corredor2){
         INNER JOIN mercado ON fkMercado = idMercado AND idMercado = ${idMercado}
         WHERE nomeCorredor = '${corredor1}' OR nomeCorredor = '${corredor2}'
         GROUP BY nomeCorredor, MONTH(momento)
-        ORDER BY mes;`;
+        ORDER BY mes, nomeCorredor`;
     }
 
     console.log(`Executando a instrução SQL: \n${comando}\n`);

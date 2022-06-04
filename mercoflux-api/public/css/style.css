@@ -699,9 +699,12 @@ table td{
 }
 
 .heatmap{
-    width: 100%;
-    height: 400px;
-    background-image: url(../images/mapa-de-calor.jpeg);
+    width: 800px;
+    height: 450px;
+}
+
+#heatmap-mercado1{
+    background-image: url(../images/mapas_mercados/mercado1.jpg);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

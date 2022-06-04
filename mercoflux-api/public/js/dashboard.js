@@ -6,6 +6,8 @@ window.onload = () => {
     verificarPerfil();
 
     nomeMercado.innerHTML += sessionStorage.NOME_MERCADO;
+    inicio.value = moment().subtract(1, 'month').format('YYYY-MM-DD');
+    fim.value = moment().format("YYYY-MM-DD");
 
     obterCorredores();
 
