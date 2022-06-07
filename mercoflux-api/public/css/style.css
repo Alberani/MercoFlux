@@ -223,7 +223,7 @@ a:hover{
 /* Div footer */
 
 .footer {
-    background-color: #2c81bf;
+    background: linear-gradient(315deg,#2099bd,#0f3a8e);
     color: #fff;
     font-family: monospace;
     display: flex;
